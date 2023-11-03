@@ -19,4 +19,4 @@ if [ "$first" != 1 ];then
 			echo "unknown architecture"; exit 1 ;;
 		esac
   
-    wget "https://partner-images.canonical.com/core/${version}/current/ubuntu-${version}-core-cloudimg-${archurl}-root.tar.gz" -O ubuntu-jammy-roots.tar.gz
+    wget "https://partner-images.canonical.com/core/${version}/current/ubuntu-${version}-core-cloudimg-${archurl}-root.tar.gz" -O ${tarname}
