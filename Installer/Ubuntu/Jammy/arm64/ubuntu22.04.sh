@@ -1,5 +1,11 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+pkg update -y
+pkg install proot* -y
+pkg install termux-tools -y
+termux-setup-storage
+
+
 time1="$( date +"%r" )"
 
 install1 () {
