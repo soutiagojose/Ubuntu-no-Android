@@ -18,10 +18,10 @@ printf "\e[0m"
 exit 1
 fi
 if [ "$first" != 1 ];then
-if [ -f "ubuntu.tar.gz" ];then
-rm -rf ubuntu.tar.gz
+if [ -f "ubuntu.tar.xz" ];then
+rm -rf ubuntu.tar.xz
 fi
-if [ ! -f "ubuntu.tar.gz" ];then
+if [ ! -f "ubuntu.tar.xz" ];then
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Downloading the ubuntu rootfs, please wait...\n"
 ARCHITECTURE=$(dpkg --print-architecture)
 case "$ARCHITECTURE" in
