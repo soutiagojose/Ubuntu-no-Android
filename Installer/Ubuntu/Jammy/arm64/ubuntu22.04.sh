@@ -1,11 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-pkg update -y
-pkg install proot* -y
-pkg install termux-tools -y
-termux-setup-storage
-
-
 time1="$( date +"%r" )"
 
 install1 () {
@@ -24,10 +18,10 @@ printf "\e[0m"
 exit 1
 fi
 if [ "$first" != 1 ];then
-if [ -f "ubuntu.tar.xz" ];then
-rm -rf ubuntu.tar.xz
+if [ -f "ubuntu.tar.gz" ];then
+rm -rf ubuntu.tar.gz
 fi
-if [ ! -f "ubuntu.tar.xz" ];then
+if [ ! -f "ubuntu.tar.gz" ];then
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Downloading the ubuntu rootfs, please wait...\n"
 ARCHITECTURE=$(dpkg --print-architecture)
 case "$ARCHITECTURE" in
@@ -41,7 +35,7 @@ exit 1
 
 esac
 
-wget https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-arm64-root.tar.xz -q -O ubuntu.tar.xz
+wget https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-arm64-root.tar.xz -q -O ubuntu.tar.gz
 # wget https://partner-images.canonical.com/core/${UBUNTU_VERSION}/current/ubuntu-${UBUNTU_VERSION}-core-cloudimg-${ARCHITECTURE}-root.tar.gz -q -O ubuntu.tar.gz 
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Download complete!\n"
 
@@ -51,7 +45,7 @@ cur=`pwd`
 mkdir -p $directory
 cd $directory
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Decompressing the ubuntu rootfs, please wait...\n"
-proot --link2symlink tar -zxf $cur/ubuntu.tar.xz --exclude='dev'||:
+proot --link2symlink tar -zxf $cur/ubuntu.tar.gz --exclude='dev'||:
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m The ubuntu rootfs have been successfully decompressed!\n"
 printf "\x1b[38;5;214m[${time1}]\e[0m \x1b[38;5;83m[Installer thread/INFO]:\e[0m \x1b[38;5;87m Fixing the resolv.conf, so that you have access to the internet\n"
 printf "nameserver 8.8.8.8\nnameserver 8.8.4.4\n" > etc/resolv.conf
