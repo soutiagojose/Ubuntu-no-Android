@@ -210,6 +210,7 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/us
 command+=" TERM=\$TERM"
 command+=" LANG=C.UTF-8"
 command+=" /bin/bash --login"
+command+=" vncserver-start"
 com="\$@"
 if [ -z "\$1" ];then
     exec \$command
@@ -239,11 +240,11 @@ echo "removing image for some space"
 rm $tarball
 
 
-#DE installation addition
+# Instalação adicional 
 
-wget --tries=20 $dlink/XFCE4/xfce22.sh -O $folder/root/xfce22.sh
+wget --tries=20 $dlink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
 clear
-echo "Setting up the installation of XFCE VNC"
+echo "Configurando a instalação do servidor vnc para o XFCE"
 
 echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
 touch $folder/root/.hushlogin
@@ -253,23 +254,23 @@ echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
 mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
-if [ ! -f /root/xfce22.sh ]; then
-    wget --tries=20 $dlink/XFCE4/xfce22.sh -O /root/xfce22.sh
-    bash ~/xfce22.sh
+if [ ! -f /root/xfce4-config.sh ]; then
+    wget --tries=20 $dlink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
+    bash ~/xfce4-config.sh
 else
-    bash ~/xfce22.sh
+    bash ~/xfce4-config.sh
 fi
 clear
 if [ ! -f /usr/local/bin/vncserver-start ]; then
-    wget --tries=20  $dlink/XFCE4/vncserver-start -O /usr/local/bin/vncserver-start 
-    wget --tries=20 $dlink/XFCE4/vncserver-stop -O /usr/local/bin/vncserver-stop
+    wget --tries=20  $dlink/xfce4/vncserver-start -O /usr/local/bin/vncserver-start 
+    wget --tries=20 $dlink/xfce4/vncserver-stop -O /usr/local/bin/vncserver-stop
     chmod +x /usr/local/bin/vncserver-stop
     chmod +x /usr/local/bin/vncserver-start
 fi
 if [ ! -f /usr/bin/vncserver ]; then
     apt install tigervnc-standalone-server -y
 fi
-rm -rf /root/xfce22.sh
+rm -rf /root/xfce4-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
 bash $bin
