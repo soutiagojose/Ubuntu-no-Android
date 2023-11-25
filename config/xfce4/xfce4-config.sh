@@ -4,10 +4,10 @@
 sudo apt-get update
 
 sudo apt install udisks2 -y
-sudo apt install neofetch -y
 echo "" > /var/lib/dpkg/info/udisks2.postinst
 sudo dpkg --configure -a
 sudo apt-mark hold udisks2
+sudo apt install neofetch -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
 sudo apt-get install sudo wget gpg curl 
