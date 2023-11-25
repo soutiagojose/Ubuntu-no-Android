@@ -10,9 +10,10 @@ sudo apt-mark hold udisks2
 sudo apt install neofetch -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
-sudo apt-get install sudo wget gpg curl 
+sudo apt-get install sudo wget gpg curl -y
 sudo apt-get install nano inetutils-tools dialog -y
 sudo apt-get install xfce4 xfce4-goodies xfce4-terminal exo-utils tigervnc-standalone-server tigervnc-common tigervnc-tools dbus-x11 --no-install-recommends -y
+sudo apt-get install software-properties-common -y
 sudo apt-get clean
 
 mkdir -p ~/.vnc
