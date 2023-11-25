@@ -79,7 +79,7 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 sudo apt-get update
 sudo apt install firefox apt-transport-https code -y
-sudo apt-get install apt-utils gdebi font-viewer apt-transport-https bleachbit tumbler -y
+sudo apt-get install xfce4-panel-profiles apt-utils gdebi font-viewer apt-transport-https bleachbit tumbler -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
