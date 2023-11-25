@@ -10,9 +10,9 @@ sudo dpkg --configure -a
 sudo apt-mark hold udisks2
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
-sudo apt-get install sudo wget gpg curl nano inetutils-tools dialog -y
+sudo apt-get install sudo wget gpg curl 
+sudo apt-get install nano inetutils-tools dialog -y
 sudo apt-get install xfce4 xfce4-goodies xfce4-terminal exo-utils tigervnc-standalone-server tigervnc-common tigervnc-tools dbus-x11 --no-install-recommends -y
-sudo apt-get install apt-utils gdebi font-viewer apt-transport-https bleachbit tumbler -y
 sudo apt-get clean
 
 mkdir -p ~/.vnc
@@ -42,6 +42,9 @@ echo " "
 sudo apt autoremove --purge chromium* -y
 sudo apt autoremove --purge firefox* -y 
 sudo snap remove firefox
+
+sudo apt-get update
+sudo apt-get full-upgrade -y
 
 
 # Adicionar as PPAs de repositórios
@@ -75,9 +78,8 @@ sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://b
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 sudo apt-get update
-sudo apt-get full-upgrade -y
-
 sudo apt install firefox apt-transport-https code -y
+sudo apt-get install apt-utils gdebi font-viewer apt-transport-https bleachbit tumbler -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
