@@ -74,12 +74,22 @@ rm -f packages.microsoft.gpg
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
+sudo apt-get update
+sudo apt-get full-upgrade -y
+
 sudo apt install firefox apt-transport-https code -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
 # Para o VSCode
 sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /usr/share/applications/code*.desktop
+
+# Baixando papel de parede
+wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg
+mv john-towner-JgOeRuGD_Y4.jpg /usr/share/backgrounds/
+
+# Customização do painel xfce
+wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/xfce4/xfce4-panel.tar.bz2
 
 echo "Agora você pode iniciar o vncserver executando vncserver-start"
 echo " "
@@ -108,13 +118,13 @@ source /etc/profile
 vncpasswd
 vncserver-start
 
+
 # Troca o papel de parede
 echo " "
 echo " "
-echo " "
+echo "Carregando perfil de painel"
+xfce4-panel-profiles load xfce4-panel.tar.bz2
 echo -e '\033[1;36mDefinindo o papel de parede\033[0m'
 echo " "
 echo -e '\033[1;97mPoderá trocar em Aplicativos > Configurações > Área de trabalho > Background\033[0m'
-wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg
-mv john-towner-JgOeRuGD_Y4.jpg /usr/share/backgrounds/
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVNC-0/workspace0/last-image -s  /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
