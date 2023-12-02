@@ -17,21 +17,6 @@ sudo apt-get install software-properties-common -y
 sudo apt-get clean
 
 mkdir -p ~/.vnc
-#wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/vncserver-start -P /usr/local/bin/
-#wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/vncserver-stop -P /usr/local/bin/
-chmod +x /usr/local/bin/vncserver-start
-chmod +x /usr/local/bin/vncserver-stop
-
-#echo '#!/bin/bash
-#export PULSE_SERVER=127.0.0.1
-#LANG=ptBR.UTF-8
-#export LANG
-#[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-#[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-#echo $$ > /tmp/xsession.pid
-#dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
-
-#chmod +x ~/.vnc/xstartup
 
 echo " "
 
