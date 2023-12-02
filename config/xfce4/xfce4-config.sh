@@ -97,6 +97,10 @@ source /etc/profile
 
 vncpasswd
 
+vncserver -localhost no -depth 24 -name remote-desktop 1920x1080 :1
+vncserver -kill
+vncserver -localhost no -depth 24 -name remote-desktop 1920x1080 :1
+
 # Troca o papel de parede
 echo " "
 echo " "
