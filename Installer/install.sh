@@ -280,6 +280,7 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
+bash ~/lang-config.sh
 if [ ! -f /root/xfce4-config.sh ]; then
     wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
     bash ~/xfce4-config.sh
@@ -288,7 +289,7 @@ else
 fi
 clear
 
-bash ~/lang-config.sh
+
 clear
 
 chmod +x /usr/local/bin/vncserver-stop
