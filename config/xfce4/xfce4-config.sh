@@ -97,18 +97,24 @@ source /etc/profile
 
 vncpasswd
 
-vncserver -localhost no -depth 24 -name remote-desktop 1920x1080 :1
-vncserver -kill
-vncserver -localhost no -depth 24 -name remote-desktop 1920x1080 :1
+export USER=$(whoami)
+export PORT=1
+GEO="-geometry 1920x1080" vnc
+vncserver -name remote-desktop -geometry 1920x1080 :1
 
 # Troca o papel de parede
 echo " "
 echo " "
 echo "Carregando perfil de painel"
 xfce4-panel-profiles load xfce4-panel.tar.bz2
+rm -rf xfce4-panel.tar.bz2
 echo -e '\033[1;36mDefinindo o papel de parede\033[0m'
 echo " "
 echo -e '\033[1;97mPoderá trocar em Aplicativos > Configurações > Área de trabalho > Background\033[0m'
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVNC-0/workspace0/last-image -s  /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+
+vncserver -kill
+rm -rf /tmp/.X$pt-lock
+rm -rf /tmp/.X11-unix/X$pt
 
 exit
