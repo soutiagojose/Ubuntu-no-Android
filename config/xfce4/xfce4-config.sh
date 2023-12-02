@@ -16,10 +16,6 @@ sudo apt-get install xfce4 xfce4-goodies xfce4-terminal exo-utils tigervnc-stand
 sudo apt-get install software-properties-common -y
 sudo apt-get clean
 
-mkdir -p ~/.vnc
-
-echo " "
-
 # Pacotes instalados via snap não são executáveis no Ubuntu VNC do Andronix e por isso é recomendável a desinstalação desses pacotes que podem ser pré-carregados durante a instalação do Ubuntu no Termux
 sudo apt autoremove --purge chromium* -y
 sudo apt autoremove --purge firefox* -y 
