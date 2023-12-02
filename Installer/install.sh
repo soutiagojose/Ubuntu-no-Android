@@ -222,10 +222,6 @@ mkdir -p ubuntu22-fs/var/tmp
 rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
-wget -q https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/tigervnc/vncpasswd -P ubuntu22-fs/usr/local/bin > /dev/null
-
-chmod +x ubuntu22-fs/usr/local/bin/vnc
-chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 
 # Script de instalação adicional
 wget --tries=20 $extralink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
@@ -254,6 +250,8 @@ case $CHOICE in
         1)
             echo "Você escolheu o idioma Português Brasileiro"
             wget --tries=20 $extralink/pt_br/config.sh -O $folder/root/lang-config.sh
+	    wget --tries=20 $extralink/pt_br/tigervnc/vnc -P ubuntu22-fs/usr/local/bin > /dev/null
+	    wget --tries=20 $extralink/pt_br/tigervnc/vncpasswd -P ubuntu22-fs/usr/local/bin > /dev/null
             wget --tries=20  $extralink/pt_br/tigervnc/vncserver-start -P ubuntu22-fs/usr/local/bin > /dev/null
             wget --tries=20 $extralink/pt_br/tigervnc/vncserver-stop -P ubuntu22-fs/usr/local/bin > /dev/null
             clear
@@ -261,6 +259,8 @@ case $CHOICE in
             ;;
 esac
 
+chmod +x ubuntu22-fs/usr/local/bin/vnc
+chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/vncserver-start
 chmod +x ubuntu22-fs/usr/local/bin/vncserver-stop
 
