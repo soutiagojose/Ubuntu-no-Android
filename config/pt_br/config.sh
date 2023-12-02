@@ -1,3 +1,14 @@
+#!/bin/bash
+
+# Atualizar repositório
+sudo apt update
+sudo apt-get update
+
+# Mudar o idioma para o Portuguê Brasileiro [pt_BR]
+sudo apt install locales -y
+
+mkdir -p ~/.vnc
+
 echo '#!/bin/bash
 export PULSE_SERVER=127.0.0.1
 LANG=pt_BR.UTF-8
