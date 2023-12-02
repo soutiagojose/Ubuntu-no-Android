@@ -17,8 +17,8 @@ sudo apt-get install software-properties-common -y
 sudo apt-get clean
 
 mkdir -p ~/.vnc
-wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/vncserver-start -P /usr/local/bin/
-wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/vncserver-stop -P /usr/local/bin/
+#wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/vncserver-start -P /usr/local/bin/
+#wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/vncserver-stop -P /usr/local/bin/
 chmod +x /usr/local/bin/vncserver-start
 chmod +x /usr/local/bin/vncserver-stop
 
@@ -34,10 +34,6 @@ dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
 chmod +x ~/.vnc/xstartup
 
 echo " "
-
-#echo "Running browser patch"
-#wget https://raw.githubusercontent.com/AndronixApp/AndronixOrigin/master/Uninstall/ubchromiumfix.sh && chmod +x ubchromiumfix.sh
-#./ubchromiumfix.sh && rm -rf ubchromiumfix.sh
 
 # Pacotes instalados via snap não são executáveis no Ubuntu VNC do Andronix e por isso é recomendável a desinstalação desses pacotes que podem ser pré-carregados durante a instalação do Ubuntu no Termux
 sudo apt autoremove --purge chromium* -y
@@ -119,8 +115,6 @@ echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
 
 vncpasswd
-vncserver-start
-
 
 # Troca o papel de parede
 echo " "
@@ -131,3 +125,5 @@ echo -e '\033[1;36mDefinindo o papel de parede\033[0m'
 echo " "
 echo -e '\033[1;97mPoderá trocar em Aplicativos > Configurações > Área de trabalho > Background\033[0m'
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVNC-0/workspace0/last-image -s  /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+
+exit
