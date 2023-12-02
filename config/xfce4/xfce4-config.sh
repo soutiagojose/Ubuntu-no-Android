@@ -111,7 +111,9 @@ rm -rf xfce4-panel.tar.bz2
 echo -e '\033[1;36mDefinindo o papel de parede\033[0m'
 echo " "
 echo -e '\033[1;97mPoderá trocar em Aplicativos > Configurações > Área de trabalho > Background\033[0m'
-xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVNC-0/workspace0/last-image -s  /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+cd $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/
+sed -i 's|backgrounds/xfce/xfce-verticals.png|backgrounds/john-towner-JgOeRuGD_Y4.jpg|' ./xfce4-desktop.xml
+cd $HOME
 
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
