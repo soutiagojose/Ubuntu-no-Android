@@ -39,7 +39,7 @@ O script de instalação deste repositório usa o [PRoot](https://wiki.termux.co
 ## Script de instalação
 Este script ainda está em fase de testes
 ```
-pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/Installer/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
+pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
 ```
 > Este script ainda está em sua versão beta. Não recomendo que seja utilizado para finalidades além de reportar erros e melhorias.
 -->
