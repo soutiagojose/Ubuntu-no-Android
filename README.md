@@ -1,6 +1,9 @@
 ![Ubuntu no Android](https://repository-images.githubusercontent.com/713667201/071927be-df6a-4c8c-b291-65a1f1cd933d)
 # Comece com Ubuntu no Android
 O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos Android sem root, com o uso do terminal Termux e uma VNC.
+> [!NOTE]
+> Esse script de instalação foi feito para dispositivos Android com a arquitetura ARM64
+
 
 | **Comece selecionando alguma das opções abaixo.** |
 |--------------------|
