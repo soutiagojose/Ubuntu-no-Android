@@ -60,6 +60,21 @@ pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubus
 Por padrão, o sistema será instalado no idioma Inglês dos Estados Unidos. Para trocar para o idioma de outra região, será necessário executar os seguintes comandos no terminal com o Ubuntu já iniciado.
 >Para este script, foi utilizado o ICU Locale Portugués do Brasil, que é o `pt_BR` e o formato de codificação `UTF-8`
 
+A solução ágil é executar o script abaixo para que o sistema seja completamente alterado do Inglês dos Estados Unidos para o Português do Brasil
+```shell
+sudo apt-get update
+wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/pt_br/config.sh -O pt_BR-config.sh
+chmod +x pt_BR-config.sh
+bash ubuntu-install.sh
+rm -rf pt_BR-config.sh
+exit
+```
+
+Versão de linha única
+```shell
+sudo apt-get update && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/pt_br/config.sh -O pt_BR-config.sh && chmod +x pt_BR-config.sh && bash ubuntu-install.sh && rm -rf pt_BR-config.sh && exit
+```
+
 ### Passo 1 - atualize os repositórios
 ```shell
 sudo apt-get update
