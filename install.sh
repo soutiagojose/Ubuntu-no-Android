@@ -210,7 +210,7 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/us
 command+=" TERM=\$TERM"
 command+=" LANG=C.UTF-8"
 command+=" /bin/bash --login"
-#command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/vncserver-start"
+command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvnc"
 com="\$@"
 if [ -z "\$1" ];then
     exec \$command
@@ -253,8 +253,8 @@ case $CHOICE in
             wget --tries=20 $extralink/pt_br/config.sh -O $folder/root/lang-config.sh
 	    wget --tries=20 $extralink/pt_br/tigervnc/vnc -P ubuntu22-fs/usr/local/bin > /dev/null
 	    wget --tries=20 $extralink/pt_br/tigervnc/vncpasswd -P ubuntu22-fs/usr/local/bin > /dev/null
-            wget --tries=20  $extralink/pt_br/tigervnc/vncserver-start -P ubuntu22-fs/usr/local/bin > /dev/null
-            wget --tries=20 $extralink/pt_br/tigervnc/vncserver-stop -P ubuntu22-fs/usr/local/bin > /dev/null
+            wget --tries=20  $extralink/pt_br/tigervnc/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
+            wget --tries=20 $extralink/pt_br/tigervnc/stopvnc -P ubuntu22-fs/usr/local/bin > /dev/null
             clear
             echo "Configurando a instalação do servidor vnc para o XFCE"
             ;;
@@ -262,8 +262,8 @@ esac
 
 chmod +x ubuntu22-fs/usr/local/bin/vnc
 chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu22-fs/usr/local/bin/vncserver-start
-chmod +x ubuntu22-fs/usr/local/bin/vncserver-stop
+chmod +x ubuntu22-fs/usr/local/bin/startvnc
+chmod +x ubuntu22-fs/usr/local/bin/stopvnc
 
 echo "fixing shebang of $bin"
 termux-fix-shebang $bin
@@ -293,20 +293,16 @@ clear
 
 clear
 
-chmod +x /usr/local/bin/vncserver-stop
-chmod +x /usr/local/bin/vncserver-start
+chmod +x /usr/local/bin/stopvnc
+chmod +x /usr/local/bin/startvnc
 
 if [ ! -f /usr/bin/vncserver ]; then
     apt install tigervnc-standalone-server -y
 fi
 
-# Auto-inicializador da GUI do VNC
-# echo 'vncserver-start' >> ~/.bashrc
-
 rm -rf /root/xfce4-config.sh
 rm -rf /root/lang-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
-
 
 bash $bin
 
