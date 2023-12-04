@@ -12,29 +12,29 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |[**Instalações necessárias**](#instalações-necessárias)|
 ||
 |[**Resolução de problemas**](#resolução-de-problemas)|
-| **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
-|  **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
-|  **↳** [**Passo 2 - instale o pacote `locales`**](#passo-2---instale-o-pacote-locales)|
-|  **↳** [**Passo 3 - gere o idioma**](#passo-3---gere-o-idioma)|
-|  **↳** [**Passo 4 - inicialize com o sistema**](#passo-4---inicialize-com-o-sistema)|
-|  **↳** [**Passo 5 - trocar o idioma do PulseAudio**](#passo-5---trocar-o-idioma-do-pulseaudio)|
-| **↳** [**Instalar o Firefox como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-firefox-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
-| **↳** [**Firefox crash**](#firefox-crash)|
-| **↳** [**Problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux**](#problema-de-inicialização-no-chromium-web-browser-brave-browser-vivaldi-vscode-e-figma-linux)|
-|  **↳** [**Resolvendo a inicialização do Chromium Web Browser**](#resolvendo-a-inicialização-do-chromium-web-browser)|
-|  **↳** [**Resolvendo a inicialização do Brave Browser**](#resolvendo-a-inicialização-do-brave-web-browser)|
-|  **↳** [**Resolvendo a inicialização do Vivaldi**](#resolvendo-a-inicialização-do-vivaldi-web-browser)|
-|  **↳** [**Resolvendo a inicialização do VSCode**](#resolvendo-a-inicialização-do-vscode)|
-|  **↳** [**Resolvendo a inicialização do Figma Linux**](#resolvendo-a-inicialização-do-figma-linux)|
+|  **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
+|    **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
+|    **↳** [**Passo 2 - instale o pacote `locales`**](#passo-2---instale-o-pacote-locales)|
+|    **↳** [**Passo 3 - gere o idioma**](#passo-3---gere-o-idioma)|
+|    **↳** [**Passo 4 - inicialize com o sistema**](#passo-4---inicialize-com-o-sistema)|
+|    **↳** [**Passo 5 - trocar o idioma do PulseAudio**](#passo-5---trocar-o-idioma-do-pulseaudio)|
+|  **↳** [**Instalar o Firefox como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-firefox-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
+|  **↳** [**Firefox crash**](#firefox-crash)|
+|  **↳** [**Problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux**](#problema-de-inicialização-no-chromium-web-browser-brave-browser-vivaldi-vscode-e-figma-linux)|
+|    **↳** [**Resolvendo a inicialização do Chromium Web Browser**](#resolvendo-a-inicialização-do-chromium-web-browser)|
+|    **↳** [**Resolvendo a inicialização do Brave Browser**](#resolvendo-a-inicialização-do-brave-web-browser)|
+|    **↳** [**Resolvendo a inicialização do Vivaldi**](#resolvendo-a-inicialização-do-vivaldi-web-browser)|
+|    **↳** [**Resolvendo a inicialização do VSCode**](#resolvendo-a-inicialização-do-vscode)|
+|    **↳** [**Resolvendo a inicialização do Figma Linux**](#resolvendo-a-inicialização-do-figma-linux)|
 <!--
 h1
 |[** **]()|
 h1 alt
 |**↳** [** **]()|
 h2
-| **↳** [** **]()|
-h3
 |  **↳** [** **]()|
+h3
+|    **↳** [** **]()|
 -->
 
 # Como funciona?
