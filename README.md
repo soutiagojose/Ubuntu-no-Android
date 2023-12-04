@@ -6,6 +6,8 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |--------------------|
 |[**Como funciona?**](#como-funciona)|
 ||
+|[**Instalações necessárias**](#instalações-necessárias)|
+||
 |[**Resolução de problemas**](#resolução-de-problemas)|
 | **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
 |  **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
@@ -35,6 +37,19 @@ h3
 # Como funciona?
 O script de instalação deste repositório usa o [PRoot](https://wiki.termux.com/wiki/PRoot) para executar a distribuição Linux em seus dispositivos Android sem root.
 
+
+# Instalações necessárias
+Para que tudo funcione corretamente, é necessário a instalação do **Termux**, do **Andronix** e do **AVNC**. O Termux irá instalar e executar a distribuição localmente, o Andronix disponibilizará o script de instalação da distribuição e o AVNC irá visualizar e possibilitar o uso da interface gráfica do Ubuntu.
+|**Onde baixar**|
+|------|
+||
+|**Termux**|
+|<a href="https://github.com/termux/termux-app/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.termux/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a>|
+|**AVNC**|
+|<a href="https://github.com/gujjwal00/avnc/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.gaurav.avnc/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a> <a href="https://play.google.com/store/apps/details?id=com.gaurav.avnc" target="_blank"><img width="256px" src="/badges/get-it-on-google-play.png" alt="Baixe pelo Google Play Store"></a>|
+> [!WARNING]
+> O Termux da Google Play Store está desatualizado e não há mais suporte oficial.
+> 
 <!--
 ## Script de instalação
 Este script ainda está em fase de testes
