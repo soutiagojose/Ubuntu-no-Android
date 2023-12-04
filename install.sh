@@ -301,7 +301,7 @@ if [ ! -f /usr/bin/vncserver ]; then
 fi
 
 # Auto-inicializador da GUI do VNC
-echo 'vncserver-start' >> ~/.bashrc
+# echo 'vncserver-start' >> ~/.bashrc
 
 rm -rf /root/xfce4-config.sh
 rm -rf /root/lang-config.sh
