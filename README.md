@@ -58,7 +58,7 @@ pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubus
 
 ## Trocar o idioma do sistema
 Por padrão, o sistema será instalado no idioma Inglês dos Estados Unidos. Para trocar para o idioma de outra região, será necessário executar os seguintes comandos no terminal com o Ubuntu já iniciado.
->Para este script, foi utilizado o ICU Locale Portugués do Brasil, que é o `pt_BR` e o formato de codificação `UTF-8`
+>Para este script, foi utilizado o [ICU Locale](https://www.localeplanet.com/icu/) Português do Brasil, que é o [`pt_BR`](https://www.localeplanet.com/icu/pt-BR/index.html) e o formato de codificação `UTF-8`
 
 A solução ágil é executar o script abaixo para que o sistema seja completamente alterado do Inglês dos Estados Unidos para o Português do Brasil
 ```shell
