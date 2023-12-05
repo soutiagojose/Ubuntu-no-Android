@@ -226,6 +226,7 @@ wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
 wget --tries=20 $extralink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
+wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
 clear
 
 #GUI Idiomas
@@ -281,7 +282,10 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
+
 bash ~/lang-config.sh
+bash ~/ubuntu-config.sh
+
 if [ ! -f /root/xfce4-config.sh ]; then
     wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
     bash ~/xfce4-config.sh
