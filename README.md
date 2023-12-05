@@ -9,6 +9,8 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |--------------------|
 |[**Como funciona?**](#como-funciona)|
 ||
+|[**Qual a função desse script?**](#qual-a-função-desse-script)|
+||
 |[**Instalações necessárias**](#instalações-necessárias)|
 ||
 |[**Resolução de problemas**](#resolução-de-problemas)|
@@ -39,6 +41,14 @@ h3
 
 # Como funciona?
 O script de instalação deste repositório usa o [PRoot](https://wiki.termux.com/wiki/PRoot) para executar a distribuição Linux em seus dispositivos Android sem root.
+
+# Qual a função desse script?
+- Instalar o Ubuntu em dispositivos Android;
+- Adicionar repositórios que não estão presentes nos repositórios do Ubuntu;
+- Atualizar o repositório do Firefox para que possa ser instalado a partir de um PPA ao invés do instalador snap (padrão) que não funciona no android;
+- Instalar o Figma para linux com suporte ao arm;
+- Corrigir o problema de iniciação do vscode, figma linux, brave-browser e vivaldi, que não são auto-abertos em máquina virtual sem o comando `--no-sandbox`;
+- Trocar o idioma do sistema operacional para o Português do Brasil.
 
 
 # Instalações necessárias
