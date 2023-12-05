@@ -18,6 +18,7 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 ||
 |[**Fazendo a instalação**](#fazendo-a-instalação)|
 |  **↳** [**Passo 1 - instalando o Ubuntu**](#passo-1---instalando-o-ubuntu)|
+|  **↳** [**Passo 2 - Iniciando a interface gráfica**](#passo-2---iniciando-a-interface-gráfica)|
 ||
 |[**Resolução de problemas**](#resolução-de-problemas)|
 |  **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
@@ -138,7 +139,7 @@ Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar
 
 
 
-
+<br><br><br><br>
 # Resolução de problemas
 
 ## Trocar o idioma do sistema
