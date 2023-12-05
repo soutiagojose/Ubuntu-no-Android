@@ -21,6 +21,7 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |  **↳** [**Passo 2 - Iniciando a interface gráfica**](#passo-2---iniciando-a-interface-gráfica)|
 ||
 |[**Resolução de problemas**](#resolução-de-problemas)|
+|  **↳** [**Problemas no Termux**](#problemas-no-termux)|
 |  **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
 |    **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
 |    **↳** [**Passo 2 - instale o pacote `locales`**](#passo-2---instale-o-pacote-locales)|
@@ -142,24 +143,18 @@ Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar
 <br><br><br><br>
 # Resolução de problemas
 
+## Problemas no Termux
+Como informado nas "[instalações necessárias](#instalações-necessárias)", o Termux disponível na Play Store foi descontinuado e sem suporte, por isso, o app quando baixado pela loja não estará funcional, sem poder se conectar com os servidores do terminal. Usar o F-Droid ou o instalável disponível nos [releases do termux](https://github.com/termux/termux-app/releases) para atualizar o app não resolverá o problema do terminal devido o tempo de diferença entre a atualização recente e a ultima atualização do Termux da Google Play Store.
+Para resolver o problema, deverá desinstalar o Termux e reinstalar usando alguma das opções listadas nas "[instalações necessárias](#instalações-necessárias)".
+> [!NOTE]
+> O F-Droid baixa a versão do Termux mais compatível com o seu dispositivo. Já o das releases do Termux no GitHub não faz essa seleção e terá que baixar a correta para o seu dispositivo para que funcione corretamente.
+
 ## Trocar o idioma do sistema
+>[!NOTE]
+> O instalador já corrige essa questão. Só será necessário usar caso esteja usando um instalador diferente desse do repositório ou caso deseje trocar de idioma.
+
 Por padrão, o sistema será instalado no idioma Inglês dos Estados Unidos. Para trocar para o idioma de outra região, será necessário executar os seguintes comandos no terminal com o Ubuntu já iniciado.
 >Para este script, foi utilizado o [ICU Locale](https://www.localeplanet.com/icu/) Português do Brasil, que é o [`pt_BR`](https://www.localeplanet.com/icu/pt-BR/index.html) e o formato de codificação `UTF-8`
-
-A solução ágil é executar o script abaixo para que o sistema seja completamente alterado do Inglês dos Estados Unidos para o Português do Brasil
-```shell
-sudo apt-get update
-wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/pt_br/config.sh -O pt_BR-config.sh
-chmod +x pt_BR-config.sh
-bash ubuntu-install.sh
-rm -rf pt_BR-config.sh
-exit
-```
-
-Versão de linha única
-```shell
-sudo apt-get update && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/pt_br/config.sh -O pt_BR-config.sh && chmod +x pt_BR-config.sh && bash ubuntu-install.sh && rm -rf pt_BR-config.sh && exit
-```
 
 ### Passo 1 - atualize os repositórios
 ```shell
@@ -211,7 +206,8 @@ dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
 
 
 ## Instalar o Firefox como .deb no Ubuntu 22.04 sem ser pelo Snap
-> Se usou o meu instalador, não será necessário fazer essa resolução de problema. O script do passo 3 da instalação do ubuntu já resolve este problema
+>[!NOTE]
+> O instalador já corrige essa questão.
 
 Nesta versão do Ubuntu, o `apt install firefox` não instala o pacote deb, mas sim, o pacote snap, que não funciona nessa versão do Ubuntu por limitações do Android. Para resolver esse problema e poder instalar e atualizar o Firefox, siga o passo a passo:
 
@@ -272,6 +268,9 @@ Caso o firefox mostre o alerta de erro e não consiga acessar nenhuma página. S
 
 
 ## Problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux
+>[!NOTE]
+> O instalador já corrige essa questão para o VSCode que é instalado automaticamente no processo.
+
 Esses programas listados possuem um problema de inicialização dentro do VNC e isso é devido a uma restrição ao `sandbox`. Para resolver esse problema, é necessário a adição de uma `option` ao comando de execução de cada um deles. Listarei o comando a ser colado no terminal para resolver o problema:
 > Para solucionar este problema, utilizo o comando `sed` para procurar pela linha com o executável e substituir por outro comando de execução
 ### Resolvendo a inicialização do Chromium Web Browser
