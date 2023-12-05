@@ -73,6 +73,15 @@ pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubus
 -->
 
 
+# Fazendo a instalação
+
+## Passo 1 - Instalando o Ubuntu
+1. Copie o código abaixo e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
+```shell
+pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
+```
+> [!IMPORTANT]
+> O instalador ainda está em fase de testes. Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
 
 
 
