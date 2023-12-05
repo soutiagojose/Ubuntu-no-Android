@@ -284,6 +284,7 @@ clear
 
 
 bash ~/ubuntu-config.sh
+bash ~/lang-config.sh
 
 if [ ! -f /root/xfce4-config.sh ]; then
     wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
@@ -292,8 +293,6 @@ else
     bash ~/xfce4-config.sh
 fi
 clear
-
-bash ~/lang-config.sh
 
 clear
 
