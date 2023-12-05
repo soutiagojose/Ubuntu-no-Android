@@ -57,7 +57,7 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 sudo apt-get update
 sudo apt install firefox apt-transport-https code -y
-sudo apt-get install xfce4-panel-profiles apt-utils gdebi font-viewer apt-transport-https bleachbit tumbler -y
+sudo apt-get install xfce4-panel-profiles apt-utils gdebi font-viewer apt-transport-https bleachbit tumbler zorin-desktop-themes -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
@@ -71,26 +71,9 @@ mv john-towner-JgOeRuGD_Y4.jpg /usr/share/backgrounds/
 # Customização do painel xfce
 wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/xfce4/xfce4-panel.tar.bz2
 
-echo "Agora você pode iniciar o vncserver executando vncserver-start"
-echo " "
-echo "Ele solicitará que você insira uma senha ao iniciá-lo pela primeira vez."
-echo " "
-echo "O servidor VNC será iniciado em 127.0.0.1:5901"
-echo " "
-echo "Você pode se conectar a este endereço com um visualizador VNC de sua preferência"
-echo " "
-echo "Conectar-se a este endereço abrirá uma janela com o Xfce4 Desktop Environment"
-echo " "
-echo " "
-echo " "
-echo "Executando vncserver-start"
-echo " "
-echo " "
-echo " "
-echo "Para finalizar o servidor VNC, execute vncserver-stop"
-echo " "
-echo " "
-echo " "
+# Instalação do pacote de icones
+wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/icons/Uos-fulldistro-icons.tar.xz
+tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
@@ -114,6 +97,9 @@ echo -e '\033[1;97mPoderá trocar em Aplicativos > Configurações > Área de tr
 cd $HOME/.config/xfce4/xfconf/xfce-perchannel-xml/
 sed -i 's|backgrounds/xfce/xfce-verticals.png|backgrounds/john-towner-JgOeRuGD_Y4.jpg|' ./xfce4-desktop.xml
 cd $HOME
+xfconf-query -c xsettings -p /Net/ThemeName -s ZorinBlue-Dark
+xfconf-query -c xsettings -p /Net/IconThemeName -s Uos-fulldistro-icons
+
 
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
