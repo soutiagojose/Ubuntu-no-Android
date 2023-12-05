@@ -283,7 +283,6 @@ apt update -y && apt install sudo wget -y > /dev/null
 clear
 
 
-bash ~/lang-config.sh
 bash ~/ubuntu-config.sh
 
 if [ ! -f /root/xfce4-config.sh ]; then
@@ -294,6 +293,7 @@ else
 fi
 clear
 
+bash ~/lang-config.sh
 
 clear
 
@@ -304,6 +304,7 @@ if [ ! -f /usr/bin/vncserver ]; then
     apt install tigervnc-standalone-server -y
 fi
 
+rm -rf /root/ubuntu-config.sh
 rm -rf /root/xfce4-config.sh
 rm -rf /root/lang-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
