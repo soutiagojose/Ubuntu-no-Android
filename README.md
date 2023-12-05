@@ -13,6 +13,9 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 ||
 |[**Instalações necessárias**](#instalações-necessárias)|
 ||
+|[**Fazendo a instalação**](#fazendo-a-instalação)|
+|  **↳** [**Passo 1 - instalando o Ubuntu**](#passo-1---instalando-o-ubuntu)|
+||
 |[**Resolução de problemas**](#resolução-de-problemas)|
 |  **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
 |    **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
@@ -75,7 +78,7 @@ pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubus
 
 # Fazendo a instalação
 
-## Passo 1 - Instalando o Ubuntu
+## Passo 1 - instalando o Ubuntu
 1. Copie o código abaixo e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
 ```shell
 pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
