@@ -1,3 +1,6 @@
+<!--
+📄  Documentação
+-->
 ![Ubuntu no Android](https://repository-images.githubusercontent.com/713667201/071927be-df6a-4c8c-b291-65a1f1cd933d)
 # Comece com Ubuntu no Android
 O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos Android sem root, com o uso do terminal Termux e uma VNC.
@@ -65,30 +68,72 @@ Para que tudo funcione corretamente, é necessário a instalação do **Termux**
 |<a href="https://github.com/gujjwal00/avnc/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.gaurav.avnc/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a> <a href="https://play.google.com/store/apps/details?id=com.gaurav.avnc" target="_blank"><img width="256px" src="/badges/get-it-on-google-play.png" alt="Baixe pelo Google Play Store"></a>|
 > [!WARNING]
 > O Termux da Google Play Store está desatualizado e não há mais suporte oficial.
-> 
-<!--
-## Script de instalação
-Este script ainda está em fase de testes
-```
-pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
-```
-> Este script ainda está em sua versão beta. Não recomendo que seja utilizado para finalidades além de reportar erros e melhorias.
--->
 
 
 # Fazendo a instalação
 
 ## Passo 1 - instalando o Ubuntu
 1. Copie o código abaixo e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
+ > [!IMPORTANT]
+ > O instalador ainda está em fase de testes. Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
+
 ```shell
 pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
 ```
+
+> [!NOTE]
+> O código do [passo 1](#passo-1---instalando-o-ubuntu) fará uma atualização dos repositórios e de configurações do Termux. Só confirme teclando `enter`.
+> Exemplo: quando aparecer a pergunta: `*** openssl.conf (Y/I/N/O/D/Z) [default=n] ?` o usuário poderá teclar `y` ou `n` e depois `enter` ou somente teclar `enter` e prosseguir. O ato de somente dar o `enter` já define a configuração padrão. O mesmo será feito quando as perguntas: `*** motod (Y/I/N/O/D/Z) [default=n] ?`, `*** sources.list (Y/I/N/O/D/Z) [default=n] ?`, `*** bash.bashrc (Y/I/N/O/D/Z) [default=n] ?` e`*** openssl.conf (Y/I/N/O/D/Z) [default=n] ?` aparecerem.
+
+> [!CAUTION]
+> Caso o Termux ainda não tenha permissão para ler o armazenamento, o app fará a solicitação que deverá confirmada para evitar possíveis problemas durante a instalação.
+
+2. Escolha o idioma que será o padrão do sistema e depois clique em `<OK>`.
+ 
+3. O próximo passo é definir o padrão de idioma do seu teclado. Aparecerá diversos idiomas com uma numeração ao lado e deverá usar essa numeração para especificar o idioma do seu teclado no campo de inserção: `Country of origin for the keyboard`.
+
 > [!IMPORTANT]
-> O instalador ainda está em fase de testes. Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
+> Se o teclado é padrão inglês, então será a opção `32. English (US)`, ou seja, terá que digitar `32` que é o número representativo do idioma e teclar `enter`. No caso do teclado inglês, deverá escolher a opção `14. English (US) - English (US, alt. int.)` caso utilize o idioma Português como padrão, mas o teclado tem outra formatação.
+>
+> Caso apareca o texto `[more]`, significa que a lista é maior que sua tela e será necessário teclar `enter` até aparecer a opção `Keyboard layout`.
 
+> [!TIP]
+> Você poderá trocar o idioma do teclado nas confirguarações do sistema.
 
+4. Após a configuração do teclado, será perguntado a região/continente. Escolha o item que representa a sua região e digite o número no campo `Geographic area` e logo após, tecle `enter`.
+   
+> [!NOTE]
+> Exemplo: caso esteja no continente americano, deverá procurar o item `2. America` e digitar o número `2` no campo `Geographic area`.
 
+5. Depois de definir a região, será definido o fuso horário. Procure pelo item do fuso horário da sua região e digite o número que representa o item no campo `Time zone`. 
+> [!NOTE]
+> Exemplo: o item `22. Bahia` representa o fuso horário da Bahia, Estado brasileiro. Nesse caso, seria digitado o número `22` no campo `Time zone`.
+ 
+6. Antes de finalizar o processo de instalação será solicitado a criação de senha para poder fazer login no servidor VNC. No campo `Digite a nova senha para o servidor VNC`, faça o que a pergunta auto explica: crie uma senha para poder fazer login no servidor.
+> [!CAUTION]
+>  O terminal não insere um `*` ou algum outro simbolo representativo de que foi inserido algum caractere dentro do campo de criação de senha. Portanto, tome cuidado ao digitar.
 
+## Passo 2 - Iniciando a interface gráfica
+Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar a visualização da interface gráfica do Ubuntu.
+> [!TIP]
+> Nesta documentação foi escolhido o AVNC como aplicativo para executar a visualização da interface gráfica.
+
+1. Abra o seu app o AVNC;
+2. Clique na bolinha com `+`;
+3. Em `Nome (ex. PC do trabalho)`, dê um nome para identificar facilmente o sistema;
+4. Em `Host`, digite `localhost`;
+5. Na `Porta`, o AVNC define por padrão o valor `5900`, mude para `1` que é a porta padrão usada no servidor vnc.
+> [!NOTE]
+> Caso seja outra porta, digite o número da porta usado
+
+6. Em `Qualidade de imagem`, coloque no máximo ou marque a opção `Imagem não processada`;
+7. Em `Nome de usuário`, pode deixar vazio. A versão gratuita não cria nome de usuário;
+8. Em `Senha`, você digita a senha criada no item 6 do [passo 1](#passo-1---instalando-o-ubuntu);
+9. Depois clica em salvar;
+10. Agora clique no card com o nome que você definiu.
+> [!IMPORTANT]
+> Caso apareça o erro `Disconnected`, verifique se o servidor vnc. foi iniciado.
+> Se o servidor vnc for iniciado, aparecerá a seguinte mensagem no termux: `Servidor VNC foi iniciado. A senha padrão é a senha da conta para root`.
 
 
 
