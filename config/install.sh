@@ -66,5 +66,3 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
-
-vncpasswd
