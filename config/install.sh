@@ -69,9 +69,6 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg
 mv john-towner-JgOeRuGD_Y4.jpg /usr/share/backgrounds/
 
-# Customização do painel xfce
-wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/xfce4/xfce4-panel.tar.bz2
-
 # Instalação do pacote de icones
 wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/icons/Uos-fulldistro-icons.tar.xz
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
