@@ -68,5 +68,3 @@ echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
 
 vncpasswd
-
-exit
