@@ -66,6 +66,22 @@ rm -f packages.microsoft.gpg
 #sudo apt-key export 22F3D138 | sudo gpg --dearmour -o /usr/share/keyrings/debian-buster-updates.gpg
 #sudo apt-key export E562B32A | sudo gpg --dearmour -o /usr/share/keyrings/debian-security-buster.gpg
 
+
+#echo '# Note: 2 blank lines are required between entries
+#Package: *
+#Pin: release a=eoan
+#Pin-Priority: 500
+
+#Package: *
+#Pin: origin "deb.debian.org"
+#Pin-Priority: 300
+
+# Pattern includes 'chromium', 'chromium-browser' and similarly
+# named dependencies:
+#Package: chromium*
+#Pin: origin "deb.debian.org"
+#Pin-Priority: 700' | sudo tee /etc/apt/preferences.d/chromium.pref
+
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
