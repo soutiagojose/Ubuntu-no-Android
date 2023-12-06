@@ -54,33 +54,9 @@ rm -f packages.microsoft.gpg
 
 # Corrigindo problema de instalação do Chromium
 
-#echo 'deb [arch=arm64 signed-by=/usr/share/keyrings/debian-buster.gpg] http://deb.debian.org/debian buster main
-#deb [arch=arm64 signed-by=/usr/share/keyrings/debian-buster-updates.gpg] http://deb.debian.org/debian buster-updates main
-#deb [arch=arm64 signed-by=/usr/share/keyrings/debian-security-buster.gpg] http://deb.debian.org/debian-security buster/updates main' | sudo tee /etc/apt/sources.list.d/debian.list
-
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DCC9EFBF77E11517
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
-#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
-
-#sudo apt-key export 77E11517 | sudo gpg --dearmour -o /usr/share/keyrings/debian-buster.gpg
-#sudo apt-key export 22F3D138 | sudo gpg --dearmour -o /usr/share/keyrings/debian-buster-updates.gpg
-#sudo apt-key export E562B32A | sudo gpg --dearmour -o /usr/share/keyrings/debian-security-buster.gpg
-
-
-#echo '# Note: 2 blank lines are required between entries
-#Package: *
-#Pin: release a=eoan
-#Pin-Priority: 500
-
-#Package: *
-#Pin: origin "deb.debian.org"
-#Pin-Priority: 300
-
-# Pattern includes 'chromium', 'chromium-browser' and similarly
-# named dependencies:
-#Package: chromium*
-#Pin: origin "deb.debian.org"
-#Pin-Priority: 700' | sudo tee /etc/apt/preferences.d/chromium.pref
+#sudo add-apt-repository ppa:chromium-team/beta -y
+#echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
+# deb-src https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic  main' | sudo tee /etc/apt/sources.list.d/chromium-team-ubuntu-beta-bionic.list
 
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
