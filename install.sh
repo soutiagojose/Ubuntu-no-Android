@@ -225,8 +225,9 @@ echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
-wget --tries=20 $extralink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
 wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
+wget --tries=20 $extralink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
+wget --tries=20 $extralink/xfce4/xfce4-themes-config.sh -O $folder/root/xfce4-themes-config.sh
 clear
 
 #GUI Idiomas
@@ -288,9 +289,12 @@ bash ~/lang-config.sh
 
 if [ ! -f /root/xfce4-config.sh ]; then
     wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
+    wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-themes-config.sh
     bash ~/xfce4-config.sh
+    bash ~/xfce4-themes-config.sh
 else
     bash ~/xfce4-config.sh
+    bash ~/xfce4-themes-config.sh
 fi
 clear
 
@@ -305,6 +309,7 @@ fi
 
 rm -rf /root/ubuntu-config.sh
 rm -rf /root/xfce4-config.sh
+rm -rf /root/xfce4-themes-config.sh
 rm -rf /root/lang-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
