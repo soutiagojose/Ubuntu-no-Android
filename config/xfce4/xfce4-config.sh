@@ -11,5 +11,3 @@ chmod +x  xfce4-themes-config.sh
 bash xfce4-themes-config.sh
 
 vncpasswd
-
-exit
