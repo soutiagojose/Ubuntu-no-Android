@@ -46,4 +46,3 @@ rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
 rm -rf xfce4-panel.tar.bz2
 rm -rf Uos-fulldistro-icons.tar.xz
-exit
