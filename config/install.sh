@@ -18,8 +18,9 @@ sudo apt-get clean
 
 # Pacotes instalados via snap não são executáveis no Ubuntu VNC do Andronix e por isso é recomendável a desinstalação desses pacotes que podem ser pré-carregados durante a instalação do Ubuntu no Termux
 sudo apt autoremove --purge chromium* -y
-sudo apt autoremove --purge firefox* -y 
+sudo apt autoremove --purge firefox* -y
 sudo snap remove firefox
+sudo apt autoremove --purge snapd -y
 
 sudo apt-get update
 sudo apt-get full-upgrade -y
@@ -50,6 +51,13 @@ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > pa
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 rm -f packages.microsoft.gpg
+
+# Corrigindo problema de instalação do Chromium
+
+#echo 'deb [arch=arm64 signed-by=/usr/share/keyrings/debian-buster.gpg] http://deb.debian.org/debian buster main
+#deb [arch=arm64 signed-by=/usr/share/keyrings/debian-buster-updates.gpg] http://deb.debian.org/debian buster-updates main
+#deb [arch=arm64 signed-by=/usr/share/keyrings/debian-security-buster.gpg] http://deb.debian.org/debian-security buster/updates main' | sudo tee /etc/apt/sources.list.d/debian.list
+
 
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
