@@ -58,6 +58,9 @@ rm -f packages.microsoft.gpg
 #deb [arch=arm64 signed-by=/usr/share/keyrings/debian-buster-updates.gpg] http://deb.debian.org/debian buster-updates main
 #deb [arch=arm64 signed-by=/usr/share/keyrings/debian-security-buster.gpg] http://deb.debian.org/debian-security buster/updates main' | sudo tee /etc/apt/sources.list.d/debian.list
 
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys DCC9EFBF77E11517
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 112695A0E562B32A
 
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
