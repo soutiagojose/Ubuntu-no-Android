@@ -15,8 +15,11 @@ chmod +x /usr/local/bin/stopvnc
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
 
+
+vncpasswd
+
+
 wget --tries=20 https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/xfce4-themes-config.sh
 chmod +x  xfce4-themes-config.sh
 bash xfce4-themes-config.sh
 
-vncpasswd
