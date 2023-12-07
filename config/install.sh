@@ -16,6 +16,7 @@ sudo apt-get install exo-utils tigervnc-standalone-server tigervnc-common tigerv
 sudo apt-get install software-properties-common -y
 sudo apt-get clean
 
+
 # Pacotes instalados via snap não são executáveis no Ubuntu VNC do Andronix e por isso é recomendável a desinstalação desses pacotes que podem ser pré-carregados durante a instalação do Ubuntu no Termux
 sudo apt autoremove --purge chromium* -y
 sudo apt autoremove --purge firefox* -y
