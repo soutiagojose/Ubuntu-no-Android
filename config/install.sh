@@ -91,7 +91,7 @@ sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/
 wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 
 # Instalação do pacote de icones
-wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/icons/Uos-fulldistro-icons.tar.xz
+wget $extralink/icons/Uos-fulldistro-icons.tar.xz
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
