@@ -7,8 +7,6 @@ sudo apt-get install xfce4 xfce4-goodies xfce4-terminal xfce4-panel-profiles dbu
 sudo apt-get clean
 
 mkdir -p ~/.vnc
-#wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/pt_br/tigervnc/startvnc -P /usr/local/bin/
-#wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/pt_br/tigervnc/stopvnc -P /usr/local/bin/
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/stopvnc
 
@@ -19,7 +17,7 @@ source /etc/profile
 vncpasswd
 
 
-wget --tries=20 https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config/xfce4/xfce4-themes-config.sh
+wget --tries=20 $extralink/xfce4/xfce4-themes-config.sh
 chmod +x  xfce4-themes-config.sh
 bash xfce4-themes-config.sh
 
