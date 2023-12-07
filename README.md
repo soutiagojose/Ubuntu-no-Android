@@ -30,23 +30,30 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 ||
 |[**Fazendo a instalação**](#fazendo-a-instalação)|
 |  **↳** [**Passo 1 - instalando o Ubuntu**](#passo-1---instalando-o-ubuntu)|
-|  **↳** [**Passo 2 - Iniciando a interface gráfica**](#passo-2---iniciando-a-interface-gráfica)|
+|  **↳** [**Passo 2 - iniciando a interface gráfica**](#passo-2---iniciando-a-interface-gráfica)|
+|  **↳** [**Passo 3 - finalizando o sistema**](#passo-3---finalizando-o-sistema)|
+||
+|[**Iniciando o sistema Ubuntu**](#iniciando-o-sistema-ubuntu)|
 ||
 |[**Resolução de problemas**](#resolução-de-problemas)|
 |  **↳** [**Problemas no Termux**](#problemas-no-termux)|
+||
 |  **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
 |    **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
 |    **↳** [**Passo 2 - instale o pacote `locales`**](#passo-2---instale-o-pacote-locales)|
 |    **↳** [**Passo 3 - gere o idioma**](#passo-3---gere-o-idioma)|
 |    **↳** [**Passo 4 - inicialize com o sistema**](#passo-4---inicialize-com-o-sistema)|
 |    **↳** [**Passo 5 - trocar o idioma do PulseAudio**](#passo-5---trocar-o-idioma-do-pulseaudio)|
+||
 |  **↳** [**Instalar o Firefox como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-firefox-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
 |    **↳** [**Passo 1 - remova o Firefox**](#passo-1---remova-o-firefox)|
 |    **↳** [**Passo 2 - adicionando o repositório da Mozilla**](#passo-2---adicionando-o-repositório-da-mozilla)|
 |    **↳** [**Passo 3 - priorizar o PPA/apt/deb no lugar do snap**](#passo-3---priorizar-o-ppaaptdeb-no-lugar-do-snap-para-o-firefox)|
 |    **↳** [**Passo 4 - permita atualizações automáticas**](#passo-4---permita-atualizações-automáticas)|
 |    **↳** [**Passo 5 - instalando o Firefox**](#passo-5---instalando-o-firefox)|
+||
 |  **↳** [**Firefox crash**](#firefox-crash)|
+||
 |  **↳** [**Instalar o Chromium Web Browser como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-chromium-web-browser-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
 |    **↳** [**Passo 1 - remova o Chromium**](#passo-1---remova-o-chromium)|
 |    **↳** [**Passo 2 - adicionando o repositório da Chromium Team**](#passo-2---adicionando-o-repositório-da-chromium-team)|
@@ -56,6 +63,7 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |    **↳** [**Passo 6 - permita atualizações automáticas**](#passo-6---permita-atualizações-automáticas)|
 |    **↳** [**Passo 7 - instalando o Chromium**](#passo-7---instalando-o-chromium)|
 |    **↳** [**Passo 8 - corrigir a inicialização do Chromium**](#passo-8---corrigir-a-inicialização-do-chromium)|
+||
 |  **↳** [**Problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux**](#problema-de-inicialização-no-chromium-web-browser-brave-browser-vivaldi-vscode-e-figma-linux)|
 |    **↳** [**Resolvendo a inicialização do Chromium Web Browser**](#resolvendo-a-inicialização-do-chromium-web-browser)|
 |    **↳** [**Resolvendo a inicialização do Brave Browser**](#resolvendo-a-inicialização-do-brave-web-browser)|
@@ -141,7 +149,7 @@ pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubus
 > [!CAUTION]
 >  O terminal não insere um `*` ou algum outro simbolo representativo de que foi inserido algum caractere dentro do campo de criação de senha. Portanto, tome cuidado ao digitar.
 
-## Passo 2 - Iniciando a interface gráfica
+## Passo 2 - iniciando a interface gráfica
 Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar a visualização da interface gráfica do Ubuntu.
 > [!TIP]
 > Nesta documentação foi escolhido o AVNC como aplicativo para executar a visualização da interface gráfica.
@@ -165,7 +173,22 @@ Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar
 > Se o servidor vnc for iniciado, aparecerá a seguinte mensagem no termux: `Servidor VNC foi iniciado. A senha padrão é a senha da conta para root`.<br>
 > Caso persista o erro de inicialização e a porta e host estão corretos, tente recriar a senha do VNC usando o comando `vncpasswd`.
 
+## Passo 3 - finalizando o sistema
+Para finalizar o sistema, ou seja, desligar o Ubuntu, deverá digitar o comando `stopvnc` pelo terminal Termux ou pelo terminal do Ubunut e em seguinda digitar o número da porta do servidor, que por padrão é `1`. Quando o Ubuntu for desligado, o AVNC não irá exibir mais a interface do sistema até que inicie o Ubuntu novamente.
 
+# Iniciando o sistema Ubuntu
+Toda vez que precisar iniciar o sistema, será necessário:
+1. Abrir o app Termux;
+2. Digitar o comando a abaixo e dar `enter` (confirmar):
+   ```shell
+   ./start-ubuntu.sh
+   ```
+3. Escolher a resolução desejada
+4. Abrir o AVNC
+5. Escolher o card com o nome escolhido no [passo: "iniciando a interface gráfica"](#passo-2---iniciando a-interface-gráfica);
+6. Pronto! O sistema foi inicializado.
+ > [!NOTE]
+ > Caso queira encerrar o sistema, utilize o comando `stopvnc` (explicado no [passo: "finalizando o sistema"](#passo-3---finalizando-o-sistema)).
 
 
 
