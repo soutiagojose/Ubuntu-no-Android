@@ -54,28 +54,41 @@ rm -f packages.microsoft.gpg
 
 # Corrigindo problema de instalação do Chromium
 
-#sudo add-apt-repository ppa:chromium-team/beta -y
-#rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
-#echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
+sudo add-apt-repository ppa:chromium-team/beta -y
+rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
+
+echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
 # deb-src https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic  main' | sudo tee /etc/apt/sources.list.d/chromium-team-ubuntu-beta-bionic.list
+
+echo 'Package: *
+Pin: release o=LP-PPA-chromium-team-beta
+Pin-Priority: 1001
+
+Package: chromium*
+Pin: origin "LP-PPA-chromium-team-beta"
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/chromium
+
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-chromium
+
 
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 sudo apt-get update
-sudo apt install firefox apt-transport-https code -y
-sudo apt-get install apt-utils gdebi font-viewer bleachbit tumbler zorin-desktop-themes -y
+sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler zorin-desktop-themes -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
 # Para o VSCode
 sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /usr/share/applications/code*.desktop
 
+# Para Chromium Web Browser
+sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
 # Baixando papel de parede
-wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg
-mv john-towner-JgOeRuGD_Y4.jpg /usr/share/backgrounds/
+wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 
 # Instalação do pacote de icones
 wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/icons/Uos-fulldistro-icons.tar.xz
