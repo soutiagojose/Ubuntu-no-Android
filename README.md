@@ -7,6 +7,13 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 > [!NOTE]
 > Esse script de instalação foi feito para dispositivos Android com a arquitetura ARM64
 
+> [!IMPORTANT]
+> Este instalador não causa nenhum risco ao aparelho. Todo o sistema será execultado dentro do Termux e por não haver root, não irá modificar as configurações do Android. <br>
+> A imagem de instalação do sistema é direta dos servidores do Ubuntu para garatir a autenticidade.<br>
+> O código desse instalador está totalmente aberto para que possa conferir cada arquivo.<br>
+
+>[!WARNING]
+> Caso instale algum arquivo desconhecido e que contenha malware, não é garantido que não afete a memória interna do aparelho visto que mesmo que o malware execulte somente dentro da maquina virtual, existe a possibilidade do Ubuntu ler e modificar os arquivos da memória interna. Só nã há a possibilidade de modificar arquivos protegidos de sistema como exemplo os da pasta `Android/data`.
 
 | **Comece selecionando alguma das opções abaixo.** |
 |--------------------|
