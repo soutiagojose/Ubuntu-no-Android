@@ -29,7 +29,21 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |    **↳** [**Passo 4 - inicialize com o sistema**](#passo-4---inicialize-com-o-sistema)|
 |    **↳** [**Passo 5 - trocar o idioma do PulseAudio**](#passo-5---trocar-o-idioma-do-pulseaudio)|
 |  **↳** [**Instalar o Firefox como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-firefox-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
+|    **↳** [**Passo 1 - remova o Firefox**](#passo-1---remova-o-firefox)|
+|    **↳** [**Passo 2 - adicionando o repositório da Mozilla**](#passo-2---adicionando-o-repositório-da-mozilla)|
+|    **↳** [**Passo 3 - priorizar o PPA/apt/deb no lugar do snap**](#passo-3---priorizar-o-ppaaptdeb-no-lugar-do-snap-para-o-firefox)|
+|    **↳** [**Passo 4 - permita atualizações automáticas**](#passo-4---permita-atualizações-automáticas)|
+|    **↳** [**Passo 5 - instalando o Firefox**](#passo-5---instalando-o-firefox)|
 |  **↳** [**Firefox crash**](#firefox-crash)|
+|  **↳** [**Instalar o Chromium Web Browser como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-chromium-web-browser-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
+|    **↳** [**Passo 1 - remova o Chromium**](#passo-1---remova-o-chromium)|
+|    **↳** [**Passo 2 - adicionando o repositório da Chromium Team**](#passo-2---adicionando-o-repositório-da-chromium-team)|
+|    **↳** [**Passo 3 - priorizar o PPA/apt/deb no lugar do snap para o Chromium**](#passo-3---priorizar-o-ppaaptdeb-no-lugar-do-snap-para-o-chromium)|
+|    **↳** [**Passo 4 - remover a lista de pacotes padrão**](#passo-4---remover-a-lista-de-pacotes-padrão)|
+|    **↳** [**Passo 5 - atualizar a lista de pacotes para instalar**](#passo-5---atualizar-a-lista-de-pacotes-para-instalar)|
+|    **↳** [**Passo 6 - permita atualizações automáticas**](#passo-6---permita-atualizações-automáticas)|
+|    **↳** [**Passo 7 - instalando o Chromium**](#passo-7---instalando-o-chromium)|
+|    **↳** [**Passo 8 - corrigir a inicialização do Chromium**](#passo-8---corrigir-a-inicialização-do-chromium)|
 |  **↳** [**Problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux**](#problema-de-inicialização-no-chromium-web-browser-brave-browser-vivaldi-vscode-e-figma-linux)|
 |    **↳** [**Resolvendo a inicialização do Chromium Web Browser**](#resolvendo-a-inicialização-do-chromium-web-browser)|
 |    **↳** [**Resolvendo a inicialização do Brave Browser**](#resolvendo-a-inicialização-do-brave-web-browser)|
@@ -209,7 +223,8 @@ dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
 >[!NOTE]
 > O instalador já corrige essa questão.
 
-Nesta versão do Ubuntu, o `apt install firefox` não instala o pacote deb, mas sim, o pacote snap, que não funciona nessa versão do Ubuntu por limitações do Android. Para resolver esse problema e poder instalar e atualizar o Firefox, siga o passo a passo:
+>[!IMPORTANT]
+> O Ubuntu fez uma transição do deb para snap que não funciona no sistema que roda no Android devido as limitações root. [Entenda mais aqui sobre a transição](https://ubuntu.com/blog/chromium-in-ubuntu-deb-to-snap-transition).
 
 ### Passo 1 - Remova o Firefox
 Pode ser que haja algum resíduo ou pode ser que haja uma versão do Firefox e deve ser removida antes de iniciar todo esse processo.
@@ -232,7 +247,7 @@ sudo apt update
 ```
 > Use esse comando para atualizar esse repositório
 
-### Passo 3 - Priorizar o PPA/apt/deb no lugar do snap
+### Passo 3 - priorizar o PPA/apt/deb no lugar do snap para o Firefox
 Mesmo com o repositório instalado, pode ser que o terminal opte em instalar pelo snap. Para evitar isso, copie o seguinte código, cole no teminal e tecle `enter`
 ```shell
 echo '
@@ -242,13 +257,13 @@ Pin-Priority: 1001
 ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
 ```
 
-### Passo 4 - Permita atualizações automáticas
+### Passo 4 - permita atualizações automáticas
 O seguinte passo permite que o firefox faça atualizações automáticas quando instalado
 ```shell
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 ```
 
-### Instalando o Firefox
+### Passo 5 - instalando o Firefox
 Agora, com tudo pronto, pode usar o `apt update` para atualizar os repositórios por garantia, ou já seguir direto para a instalação. O comando a seguir instala o Firefox
 ```shell
 sudo apt install firefox -y
@@ -263,6 +278,83 @@ Caso o firefox mostre o alerta de erro e não consiga acessar nenhuma página. S
 5. O resultado padrão será 4. Clique no lápis ✏️ ou dê duplo clique no valor e troque `4` por `0` e após tecle `enter` ou clique no check ☑️.
 6. Reinicie o Firefox (Feche o navegador e abra novamente)
 
+
+## Instalar o Chromium Web Browser como .deb no Ubuntu 22.04 sem ser pelo Snap
+>[!NOTE]
+> O instalador já corrige essa questão. <br>
+> A versão instalada é a beta.
+
+### Passo 1 - remova o Chromium
+Pode ser que haja algum resíduo ou alguma versão Chromium instalada no sistema e deve ser removida antes de iniciar todo esse processo. Execute o comando abaixo:
+```shell
+sudo snap remove chromium
+sudo apt autoremove --purge chromium* -y
+```
+
+### Passo 2 - adicionando o repositório da Chromium Team
+Este é o PPA da Chromium Team que deve ser adicionado a lista de fontes de softwares para que seu terminal possa instalar o pacote deb. Você pode escolher entre a versão beta ou dev.
+>[!NOTE]
+>O repositório beta é mais estável que a dev
+
+**Repositório do Chromium beta**
+```shell
+sudo add-apt-repository ppa:chromium-team/beta -y
+```
+**Repositório do Chromium dev**
+```shell
+sudo add-apt-repository ppa:chromium-team/dev -y
+```
+> [!TIP]
+> Escolha um dos dois.
+
+### Passo 3 - priorizar o PPA/apt/deb no lugar do snap para o Chromium
+Mesmo com o repositório instalado, pode ser que o terminal opte em instalar pelo snap. Para evitar isso, copie o seguinte código, cole no teminal e tecle `enter`
+```shell
+echo 'Package: *
+Pin: release o=LP-PPA-chromium-team-beta
+Pin-Priority: 1001
+
+Package: chromium*
+Pin: origin "LP-PPA-chromium-team-beta"
+Pin-Priority: 1001
+' | sudo tee /etc/apt/preferences.d/chromium
+```
+
+### Passo 4 - remover a lista de pacotes padrão
+A lista de pacotes padrão não traz suporte para a versão Jammy e por este motivo, o [passo 5](#passo-5---atualizar-a-lista-de-pacotes-para-instalar) trará uma solucão para que o `apt` possa instalar o Chromium, mas será necessário remover o buscador de lista padrão.
+```shell
+rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
+```
+
+### Passo 5 - atualizar a lista de pacotes para instalar
+Como explicado no [passo 4](#passo-4---remover-a-lista-de-pacotes-padrão), a lista do repositório não consegue encontrar versões deb para a versão Jammy do Ubuntu. Para resolver o problema será feito um downgrade da lista para a versão Bionic.
+```shell
+echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
+# deb-src https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic  main' | sudo tee /etc/apt/sources.list.d/chromium-team-ubuntu-beta-bionic.list
+```
+> [!NOTE]
+> Com esse comando o `apt install` irá instalar a versão bionic que está disponível para download.
+
+### Passo 6 - permita atualizações automáticas
+O seguinte passo permite que o firefox faça atualizações automáticas quando instalado
+```shell
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-chromium
+```
+
+### Passo 7 - instalando o Chromium
+Agora, com tudo pronto, pode usar o `apt update` para atualizar os repositórios por garantia, ou já seguir direto para a instalação. O comando abaixo instala o Chromium beta.
+```shell
+sudo apt update
+sudo apt install chromium-browser -y
+```
+
+### Passo 8 - corrigir a inicialização do Chromium
+Como citado no "[problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux](#problema-de-inicialização-no-chromium-web-browser-brave-browser-vivaldi-vscode-e-figma-linux)", o Chromium tem problema de inicialização em maquina virtual (VNC). O comando abaixo resolve o problema de inicialização
+```shell
+sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
+```
+>[!IMPORTANT]
+> Esse comando não resolve o problema no caso de instalar apps PWAs do Chromium.
 
 
 
