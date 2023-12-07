@@ -150,18 +150,21 @@ Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar
 2. Clique na bolinha com `+`;
 3. Em `Nome (ex. PC do trabalho)`, dê um nome para identificar facilmente o sistema;
 4. Em `Host`, digite `localhost`;
-5. Na `Porta`, o AVNC define por padrão o valor `5900`, mude para `1` que é a porta padrão usada no servidor vnc.
+5. Na `Porta`, o AVNC define por padrão o valor `5900`, mude para `1` que é a porta padrão usada no servidor vnc;
 > [!NOTE]
 > Caso seja outra porta, digite o número da porta usado
 
-6. Em `Qualidade de imagem`, coloque no máximo ou marque a opção `Imagem não processada`;
-7. Em `Nome de usuário`, pode deixar vazio. A versão gratuita não cria nome de usuário;
-8. Em `Senha`, você digita a senha criada no item 6 do [passo 1](#passo-1---instalando-o-ubuntu);
-9. Depois clica em salvar;
-10. Agora clique no card com o nome que você definiu.
+6. Em `Qualidade de imagem`, marque a opção `Imagem não processada`;
+7. Em `Segurança`, escolha troque a opção `Automático` por `None` ou `VncAuth`;
+8. Em `Nome de usuário`, pode deixar vazio;
+9. Em `Senha`, você digita a senha criada no item 6 do [passo 1](#passo-1---instalando-o-ubuntu);
+10. Depois clique em salvar;
+11. Agora clique no card com o nome que você definiu.
 > [!IMPORTANT]
-> Caso apareça o erro `Disconnected`, verifique se o servidor vnc. foi iniciado.
-> Se o servidor vnc for iniciado, aparecerá a seguinte mensagem no termux: `Servidor VNC foi iniciado. A senha padrão é a senha da conta para root`.
+> Caso apareça o erro `Disconnected`, verifique se o servidor vnc. foi iniciado.<br>
+> Se o servidor vnc for iniciado, aparecerá a seguinte mensagem no termux: `Servidor VNC foi iniciado. A senha padrão é a senha da conta para root`.<br>
+> Caso persista o erro de inicialização e a porta e host estão corretos, tente recriar a senha do VNC usando o comando `vncpasswd`.
+
 
 
 
