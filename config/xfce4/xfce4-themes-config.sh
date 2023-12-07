@@ -1,6 +1,6 @@
 #!/bin/bash
 # Customização do painel xfce
-wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/xfce4/xfce4-panel.tar.bz2
+wget $extralink/xfce4/xfce4-panel.tar.bz2
 
 vncserver -name remote-desktop -geometry 1920x1080 :1
 xfconf-query -c xsettings -p /Net/ThemeName -s ZorinBlue-Dark
