@@ -155,7 +155,7 @@ Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar
 > Caso seja outra porta, digite o número da porta usado
 
 6. Em `Qualidade de imagem`, marque a opção `Imagem não processada`;
-7. Em `Segurança`, escolha troque a opção `Automático` por `None` ou `VncAuth`;
+7. Em `Segurança`, escolha troque a opção `Automático` por `VncAuth`;
 8. Em `Nome de usuário`, pode deixar vazio;
 9. Em `Senha`, você digita a senha criada no item 6 do [passo 1](#passo-1---instalando-o-ubuntu);
 10. Depois clique em salvar;
