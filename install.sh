@@ -226,8 +226,47 @@ wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
 wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
-wget --tries=20 $extralink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
+
+
+
+
+#GUI de interface
+export USER=$(whoami)
+HEIGHT=0
+WIDTH=0
+CHOICE_HEIGHT=5
+TITLE="Select"
+MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
+export PORT=1
+
+OPTIONS=(1 "Ubuntu LXDE"
+	 2 "Ubuntu XFCE")
+
+CHOICE=$(dialog --clear \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
 clear
+case $CHOICE in
+        1)
+            echo "Você escolheu a interface LXDE"
+	    wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
+            clear
+            echo "Configurando a instalação do servidor vnc para o LXDE"
+            ;;
+	2)
+            echo "Você escolheu a interface XFCE"
+	    wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
+            clear
+            echo "Configurando a instalação do servidor vnc para o XFCE"
+            ;;
+esac
+clear
+
+
 
 #GUI Idiomas
 export USER=$(whoami)
@@ -285,14 +324,7 @@ clear
 
 bash ~/ubuntu-config.sh
 bash ~/lang-config.sh
-
-if [ ! -f /root/xfce4-config.sh ]; then
-    wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
-    bash ~/xfce4-config.sh
-else
-    bash ~/xfce4-config.sh
-fi
-clear
+bash ~/ui-config.sh
 
 clear
 
@@ -304,7 +336,7 @@ if [ ! -f /usr/bin/vncserver ]; then
 fi
 
 rm -rf /root/ubuntu-config.sh
-rm -rf /root/xfce4-config.sh
+rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
 rm -rf /root/lang-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
