@@ -15,6 +15,10 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 >[!WARNING]
 > Caso instale algum arquivo desconhecido e que contenha malware, não é garantido que não afete a memória interna do aparelho visto que mesmo que o malware execulte somente dentro da maquina virtual, existe a possibilidade do Ubuntu ler e modificar os arquivos da memória interna. Só nã há a possibilidade de modificar arquivos protegidos de sistema como exemplo os da pasta `Android/data`.
 
+> [!CAUTION]
+> Recomendo que o aparelho tenha pelo menos 40GB de memória interna disponível e 6Gb de memória RAM no mínimo. Pode ser que seja possível usar em aparelhos com 4GB de memória RAM mas nunca foi testado.<br>
+> Não é recomendado usar caso o o aparelho tenha 32Gb de espaço interno e 2gb de memória RAM.
+
 | **Comece selecionando alguma das opções abaixo.** |
 |--------------------|
 |[**Como funciona?**](#como-funciona)|
