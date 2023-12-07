@@ -55,6 +55,7 @@ rm -f packages.microsoft.gpg
 # Corrigindo problema de instalação do Chromium
 
 #sudo add-apt-repository ppa:chromium-team/beta -y
+#rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
 #echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
 # deb-src https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic  main' | sudo tee /etc/apt/sources.list.d/chromium-team-ubuntu-beta-bionic.list
 
