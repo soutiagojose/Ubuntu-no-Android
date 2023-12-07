@@ -17,7 +17,7 @@ source /etc/profile
 vncpasswd
 
 
-wget --tries=20 $extralink/xfce4/xfce4-themes-config.sh
+wget --tries=20 $extralink/xfce/xfce4-themes-config.sh
 chmod +x  xfce4-themes-config.sh
 bash xfce4-themes-config.sh
 
