@@ -18,11 +18,18 @@ export LANG
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 echo $$ > /tmp/xsession.pid" > ~/.vnc/xstartup
 
-# For lxde
-#echo 'dbus-launch --exit-with-session startlxde' > ~/.vnc/xstartup
 
-# For xfce
-echo 'dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
+#!/bin/bash
+
+if dpkg -l | grep -q lxde-core; then
+    echo 'dbus-launch --exit-with-session startlxde' > ~/.vnc/xstartup
+elif dpkg -l | grep -q xfce4; then
+    echo "O pacote xfce4 está instalado. Executando o comando ls..."
+    ls
+else
+    echo 'dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
+fi
+
 
 chmod +x ~/.vnc/xstartup
 
