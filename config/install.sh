@@ -92,7 +92,7 @@ sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/
 
 # Baixando papel de parede
 mkdir -p /usr/share/backgrounds/
-wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+wget $extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 
 # Instalação do pacote de icones
 wget $extralink/icons/Uos-fulldistro-icons.tar.xz
