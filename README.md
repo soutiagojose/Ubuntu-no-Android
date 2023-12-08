@@ -20,6 +20,9 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 > Não é recomendado usar caso o o aparelho tenha 32Gb de espaço interno e 2gb de memória RAM.<br>
 > Usar o sistema em um dispositivo com processamento mais fraco pode causar sobrecarga e danificar componentes internos devido a demanta de processamento que o Ubuntu solicita.
 
+<br>
+<br>
+
 | **Comece selecionando alguma das opções abaixo.** |
 |--------------------|
 |[**Como funciona?**](#como-funciona)|
@@ -81,8 +84,14 @@ h3
 |    **↳** [** **]()|
 -->
 
+<br>
+<br>
+
 # Como funciona?
 O script de instalação deste repositório usa o [PRoot](https://wiki.termux.com/wiki/PRoot) para executar a distribuição Linux em seus dispositivos Android sem root.
+
+<br>
+<br>
 
 # Qual a função desse script?
 - Instalar o Ubuntu em dispositivos Android;
@@ -92,6 +101,9 @@ O script de instalação deste repositório usa o [PRoot](https://wiki.termux.co
 - Corrigir o problema de iniciação do vscode, figma linux, brave-browser e vivaldi, que não são auto-abertos em máquina virtual sem o comando `--no-sandbox`;
 - Trocar o idioma do sistema operacional para o Português do Brasil.
 
+
+<br>
+<br>
 
 # Instalações necessárias
 Para que tudo funcione corretamente, é necessário a instalação do **Termux**, do **Andronix** e do **AVNC**. O Termux irá instalar e executar a distribuição localmente, o Andronix disponibilizará o script de instalação da distribuição e o AVNC irá visualizar e possibilitar o uso da interface gráfica do Ubuntu.
@@ -106,7 +118,12 @@ Para que tudo funcione corretamente, é necessário a instalação do **Termux**
 > O Termux da Google Play Store está desatualizado e não há mais suporte oficial.
 
 
+<br>
+<br>
+
 # Fazendo a instalação
+
+<br>
 
 ## Passo 1 - instalando o Ubuntu
 1. Copie o código abaixo e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
@@ -149,6 +166,8 @@ pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubus
 > [!CAUTION]
 >  O terminal não insere um `*` ou algum outro simbolo representativo de que foi inserido algum caractere dentro do campo de criação de senha. Portanto, tome cuidado ao digitar.
 
+<br>
+
 ## Passo 2 - iniciando a interface gráfica
 Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar a visualização da interface gráfica do Ubuntu.
 > [!TIP]
@@ -173,8 +192,13 @@ Agora que o Ubuntu foi instalado dentro do Termux o próximo passo será iniciar
 > Se o servidor vnc for iniciado, aparecerá a seguinte mensagem no termux: `Servidor VNC foi iniciado. A senha padrão é a senha da conta para root`.<br>
 > Caso persista o erro de inicialização e a porta e host estão corretos, tente recriar a senha do VNC usando o comando `vncpasswd`.
 
+<br>
+
 ## Passo 3 - finalizando o sistema
 Para finalizar o sistema, ou seja, desligar o Ubuntu, deverá digitar o comando `stopvnc` pelo terminal Termux ou pelo terminal do Ubunut e em seguinda digitar o número da porta do servidor, que por padrão é `1`. Quando o Ubuntu for desligado, o AVNC não irá exibir mais a interface do sistema até que inicie o Ubuntu novamente.
+
+<br>
+<br>
 
 # Iniciando o sistema Ubuntu
 Toda vez que precisar iniciar o sistema, será necessário:
@@ -192,14 +216,20 @@ Toda vez que precisar iniciar o sistema, será necessário:
 
 
 
-<br><br><br><br>
+<br>
+<br>
+
 # Resolução de problemas
+
+<br>
 
 ## Problemas no Termux
 Como informado nas "[instalações necessárias](#instalações-necessárias)", o Termux disponível na Play Store foi descontinuado e sem suporte, por isso, o app quando baixado pela loja não estará funcional, sem poder se conectar com os servidores do terminal. Usar o F-Droid ou o instalável disponível nos [releases do termux](https://github.com/termux/termux-app/releases) para atualizar o app não resolverá o problema do terminal devido o tempo de diferença entre a atualização recente e a ultima atualização do Termux da Google Play Store.
 Para resolver o problema, deverá desinstalar o Termux e reinstalar usando alguma das opções listadas nas "[instalações necessárias](#instalações-necessárias)".
 > [!NOTE]
 > O F-Droid baixa a versão do Termux mais compatível com o seu dispositivo. Já o das releases do Termux no GitHub não faz essa seleção e terá que baixar a correta para o seu dispositivo para que funcione corretamente.
+
+<br>
 
 ## Trocar o idioma do sistema
 >[!NOTE]
@@ -208,15 +238,21 @@ Para resolver o problema, deverá desinstalar o Termux e reinstalar usando algum
 Por padrão, o sistema será instalado no idioma Inglês dos Estados Unidos. Para trocar para o idioma de outra região, será necessário executar os seguintes comandos no terminal com o Ubuntu já iniciado.
 >Para este script, foi utilizado o [ICU Locale](https://www.localeplanet.com/icu/) Português do Brasil, que é o [`pt_BR`](https://www.localeplanet.com/icu/pt-BR/index.html) e o formato de codificação `UTF-8`
 
+<br>
+
 ### Passo 1 - atualize os repositórios
 ```shell
 sudo apt-get update
 ```
 
+<br>
+
 ### Passo 2 - instale o pacote `locales`
 ```shell
 sudo apt install locales -y
 ```
+
+<br>
 
 ### Passo 3 - gere o idioma
 ```shell
@@ -224,6 +260,8 @@ sed -i 's/^# *\(pt_BR.UTF-8\)/\1/' /etc/locale.gen
 locale-gen
 ```
 > Troque o `pt_BR` pelo ICU Locale da sua região e o `UTF-*` pelo formato de codificação da sua região.
+
+<br>
 
 ### Passo 4 - inicialize com o sistema
 Esse script fará com que a distribuição Ubuntu sempre seja iniciada no idioma escolhido
@@ -240,22 +278,7 @@ echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
 >
 > Caso o servidor vnc esteja ativo, desative-o.
 
-### Passo 5 - trocar o idioma do PulseAudio
-```shell
-echo '#!/bin/bash
-export PULSE_SERVER=127.0.0.1
-LANG=pt_BR.UTF-8
-export LANG
-[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-echo $$ > /tmp/xsession.pid
-dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
-```
-> Troque o `pt_BR` pelo ICU Locale da sua região
-
-
-
-
+<br>
 
 ## Instalar o Firefox como .deb no Ubuntu 22.04 sem ser pelo Snap
 >[!NOTE]
@@ -263,6 +286,8 @@ dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
 
 >[!IMPORTANT]
 > O Ubuntu fez uma transição do deb para snap que não funciona no sistema que roda no Android devido as limitações root. [Entenda mais aqui sobre a transição](https://ubuntu.com/blog/chromium-in-ubuntu-deb-to-snap-transition).
+
+<br>
 
 ### Passo 1 - Remova o Firefox
 Pode ser que haja algum resíduo ou pode ser que haja uma versão do Firefox e deve ser removida antes de iniciar todo esse processo.
@@ -275,6 +300,8 @@ sudo apt autoremove --purge firefox* -y
 > Use qualquer um dos dois comandos para desinstalar o o pacote do Firefox
 > Eu particularmente uso a do `apt`, mas pode usar os dois por garantia.
 
+<br>
+
 ### Passo 2 - Adicionando o repositório da Mozilla
 Este é o PPA da Mozilla que deve ser adicionado a lista de fontes de softwares para que seu terminal possa instalar o pacote deb
 ```shell
@@ -284,6 +311,8 @@ Este é o PPA da Mozilla que deve ser adicionado a lista de fontes de softwares 
 sudo apt update
 ```
 > Use esse comando para atualizar esse repositório
+
+<br>
 
 ### Passo 3 - priorizar o PPA/apt/deb no lugar do snap para o Firefox
 Mesmo com o repositório instalado, pode ser que o terminal opte em instalar pelo snap. Para evitar isso, copie o seguinte código, cole no teminal e tecle `enter`
@@ -295,17 +324,23 @@ Pin-Priority: 1001
 ' | sudo tee /etc/apt/preferences.d/mozilla-firefox
 ```
 
+<br>
+
 ### Passo 4 - permita atualizações automáticas
 O seguinte passo permite que o firefox faça atualizações automáticas quando instalado
 ```shell
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 ```
 
+<br>
+
 ### Passo 5 - instalando o Firefox
 Agora, com tudo pronto, pode usar o `apt update` para atualizar os repositórios por garantia, ou já seguir direto para a instalação. O comando a seguir instala o Firefox
 ```shell
 sudo apt install firefox -y
 ```
+
+<br>
 
 ## Firefox crash
 Caso o firefox mostre o alerta de erro e não consiga acessar nenhuma página. Será necessário alterar o nível de de segurança do sandbox para 0. Para isso, siga os seguintes passos:
@@ -317,10 +352,14 @@ Caso o firefox mostre o alerta de erro e não consiga acessar nenhuma página. S
 6. Reinicie o Firefox (Feche o navegador e abra novamente)
 
 
+<br>
+
 ## Instalar o Chromium Web Browser como .deb no Ubuntu 22.04 sem ser pelo Snap
 >[!NOTE]
 > O instalador já corrige essa questão. <br>
 > A versão instalada é a beta.
+
+<br>
 
 ### Passo 1 - remova o Chromium
 Pode ser que haja algum resíduo ou alguma versão Chromium instalada no sistema e deve ser removida antes de iniciar todo esse processo. Execute o comando abaixo:
@@ -328,6 +367,8 @@ Pode ser que haja algum resíduo ou alguma versão Chromium instalada no sistema
 sudo snap remove chromium
 sudo apt autoremove --purge chromium* -y
 ```
+
+<br>
 
 ### Passo 2 - adicionando o repositório da Chromium Team
 Este é o PPA da Chromium Team que deve ser adicionado a lista de fontes de softwares para que seu terminal possa instalar o pacote deb. Você pode escolher entre a versão beta ou dev.
@@ -345,6 +386,9 @@ sudo add-apt-repository ppa:chromium-team/dev -y
 > [!TIP]
 > Escolha um dos dois.
 
+
+<br>
+
 ### Passo 3 - priorizar o PPA/apt/deb no lugar do snap para o Chromium
 Mesmo com o repositório instalado, pode ser que o terminal opte em instalar pelo snap. Para evitar isso, copie o seguinte código, cole no teminal e tecle `enter`
 ```shell
@@ -358,11 +402,15 @@ Pin-Priority: 1001
 ' | sudo tee /etc/apt/preferences.d/chromium
 ```
 
+<br>
+
 ### Passo 4 - remover a lista de pacotes padrão
 A lista de pacotes padrão não traz suporte para a versão Jammy e por este motivo, o [passo 5](#passo-5---atualizar-a-lista-de-pacotes-para-instalar) trará uma solucão para que o `apt` possa instalar o Chromium, mas será necessário remover o buscador de lista padrão.
 ```shell
 rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
 ```
+
+<br>
 
 ### Passo 5 - atualizar a lista de pacotes para instalar
 Como explicado no [passo 4](#passo-4---remover-a-lista-de-pacotes-padrão), a lista do repositório não consegue encontrar versões deb para a versão Jammy do Ubuntu. Para resolver o problema será feito um downgrade da lista para a versão Bionic.
@@ -379,12 +427,16 @@ O seguinte passo permite que o firefox faça atualizações automáticas quando 
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-chromium
 ```
 
+<br>
+
 ### Passo 7 - instalando o Chromium
 Agora, com tudo pronto, pode usar o `apt update` para atualizar os repositórios por garantia, ou já seguir direto para a instalação. O comando abaixo instala o Chromium beta.
 ```shell
 sudo apt update
 sudo apt install chromium-browser -y
 ```
+
+<br>
 
 ### Passo 8 - corrigir a inicialização do Chromium
 Como citado no "[problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux](#problema-de-inicialização-no-chromium-web-browser-brave-browser-vivaldi-vscode-e-figma-linux)", o Chromium tem problema de inicialização em maquina virtual (VNC). O comando abaixo resolve o problema de inicialização
@@ -397,28 +449,45 @@ sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/
 
 
 
+<br>
+
 ## Problema de inicialização no Chromium Web Browser, Brave Browser, Vivaldi, Vscode e Figma-Linux
 >[!NOTE]
 > O instalador já corrige essa questão para o VSCode que é instalado automaticamente no processo.
 
 Esses programas listados possuem um problema de inicialização dentro do VNC e isso é devido a uma restrição ao `sandbox`. Para resolver esse problema, é necessário a adição de uma `option` ao comando de execução de cada um deles. Listarei o comando a ser colado no terminal para resolver o problema:
 > Para solucionar este problema, utilizo o comando `sed` para procurar pela linha com o executável e substituir por outro comando de execução
+
+<br>
+
 ### Resolvendo a inicialização do Chromium Web Browser
 ```shell
 sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 ```
+
+<br>
+
 ### Resolvendo a inicialização do Brave Web Browser
 ```shell
 sed -i 's|Exec=/usr/bin/brave-browser-stable|Exec=/usr/bin/brave-browser-stable --no-sandbox|' /usr/share/applications/brave-browser.desktop
 ```
+
+<br>
+
 ### Resolvendo a inicialização do Vivaldi Web Browser
 ```shell
 sed -i 's|Exec=/usr/bin/vivaldi-stable|Exec=/usr/bin/vivaldi-stable --no-sandbox|' /usr/share/applications/vivaldi-stable.desktop
 ```
+
+<br>
+
 ### Resolvendo a inicialização do VSCode
 ```shell
 sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /usr/share/applications/code*.desktop
 ```
+
+<br>
+
 ### Resolvendo a inicialização do Figma Linux
 ```shell
 sed -i 's|Exec=/opt/figma-linux/figma-linux|Exec=/opt/figma-linux/figma-linux --no-sandbox|' /usr/share/applications/figma-linux.desktop
