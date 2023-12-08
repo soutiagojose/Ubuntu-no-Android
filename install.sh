@@ -323,8 +323,8 @@ clear
 
 
 bash ~/ubuntu-config.sh
-bash ~/lang-config.sh
 bash ~/ui-config.sh
+bash ~/lang-config.sh
 
 clear
 
