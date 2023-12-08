@@ -493,3 +493,32 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 sed -i 's|Exec=/opt/figma-linux/figma-linux|Exec=/opt/figma-linux/figma-linux --no-sandbox|' /usr/share/applications/figma-linux.desktop
 ```
 
+<br>
+
+## Resolvendo o problema do `process 9 error` no Termux
+A partir do Android 12, o Termux apresentou instabilidades causados pelos cortes de processos fantasmas (phantom processes). Por padrão o sistema eliminará quaisquer processos fantasma ou que use muita CPU. Devido a esses cortes, o Termux pode apresentar o erro: `[Process completed (signal 9) - press Enter]` e encerrar o sistema Ubuntu e todos os processos de fundo do Termux. Existe uma solução, mas que utiliza do `adb`.
+
+> [!WARNING]
+> Se nunca usou ou nem conheçe o `adb`, essa documentação não trará detalhes aprofundados sobre a ferramenta e por isso, recomendo que se aprofunde mais em outras páginas, principalmente na do Android.
+> - [Android Debug Bridge (adb)](https://developer.android.com/tools/adb)
+
+> [!NOTE]
+> O `adb` já vem instalado no sistema Android, portanto não precisa ser instalado. Para esse processo que visa resolver o problema do `process 9` será necessesário usar um app que possa ter permissões de desenvolvedor e que possa executar os comandos necessários para desativar o os processos fantasmas. Nessa documentação, será usado o próprio Termux, mas dependendo do aparelho, poderá ser necessário utilizar um computador.
+
+### Passo 1 - ativar o modo desenvolvedor do Android
+Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessário:
+> [NOTE]
+> Os passos podem mudar a depender de como o fabricante do dispositivo optou em posicionar a função.
+
+1. Abrir as configurações do sistema;
+2. Ir até opção "sobre o telefone";
+3. Acessar as informações do sistema;
+4. Clicar várias vezes na opção chamada "número de compilação" até aparecer a solicitação de desbloqueio tipo o de tela.
+5. Digite a senha que usa para desbloquear o aparelho;
+6. Aparecerá um alerta toast de que o modo desenvolvedor está ativo;
+7. Volte para o inicio das configurações do sistema.
+
+### Passo 2 - dando as permissões de `adb` para o Termux
+Para poder executar os comandos `adb` no Termux, será necessário conceder ao app as permissões de desenvolvedor.
+> [!IMPORTANT]
+> Para esse processo será necessário o uso do multi-janelas, caso contrário, não dará certo.
