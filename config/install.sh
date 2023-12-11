@@ -91,11 +91,19 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
 # Baixando papel de parede
-mkdir -p /usr/share/backgrounds/
+if [ ! -d "/usr/share/backgrounds/" ];then
+  mkdir -p "/usr/share/backgrounds/"
+fi
+#mkdir -p /usr/share/backgrounds/
 wget $extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 
 # Instalação do pacote de icones
 wget $extralink/icons/Uos-fulldistro-icons.tar.xz
+
+if [ ! -d "/usr/share/icons/" ];then
+  mkdir -p "/usr/share/icons/"
+fi
+
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
