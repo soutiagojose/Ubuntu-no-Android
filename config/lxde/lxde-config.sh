@@ -21,6 +21,7 @@ if [ ! -d "$HOME/.config/lxpanel/" ];then
   mkdir -p "$HOME/.config/lxpanel/"
 fi
 wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config/lxde/lxpanel.tar.zx
+rm -rf $HOME/.config/lxpanel/
 tar -xf lxpanel.tar.xz -C $HOME/.config/ lxpanel
 # Definir o papel de parede
 pcmanfm --set-wallpaper /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg --wallpaper-mode stretch
