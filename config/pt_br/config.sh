@@ -5,7 +5,7 @@ sudo apt update
 sudo apt-get update
 
 # Mudar o idioma para o Portuguê Brasileiro [pt_BR]
-sudo apt install locales -y
+sudo apt-get install locales language-pack-pt -y
 
 mkdir -p ~/.vnc
 
