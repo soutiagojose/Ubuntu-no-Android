@@ -214,7 +214,20 @@ Toda vez que precisar iniciar o sistema, será necessário:
  > [!NOTE]
  > Caso queira encerrar o sistema, utilize o comando `stopvnc` (explicado no [passo: "finalizando o sistema"](#passo-3---finalizando-o-sistema)).
 
+<br>
+<br>
 
+# Fazendo a desinstalação
+
+<br>
+
+Caso deseje desinstalar o sistema, copie e cole o comando abaixo no Termux:
+```shell
+wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/uninstall.sh -O ubuntu-uninstall.sh && chmod +x ubuntu-uninstall.sh && bash ubuntu-uninstall.sh
+```
+> [!IMPORTANT]
+> Lembre-se de ter finalizado o `./start-ubuntu.sh`. Para saber se a distribuição Ubuntu está iniciada, procure pelo seguinte texto: `root@localhost` e caso esteja presente no terminal, a distribuição foi iniciada. Caso seja somente `~ $`, então está fora da distribuição e poderá usar o comando de desinstalação.<br>
+> Caso esteja com a distribuição Ubuntu iniciada, finalize-a com o comando `exit` até trocar o `root@localhost` por `~ $`.
 
 <br>
 <br>
