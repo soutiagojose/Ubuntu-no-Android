@@ -29,7 +29,6 @@ export LANG
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 echo $$ > /tmp/xsession.pid
 dbus-launch --exit-with-session /usr/bin/startxfce4" > ~/.vnc/xstartup
-
 else
     echo "null"
 fi
