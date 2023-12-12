@@ -226,6 +226,7 @@ wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
 wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
+wget --tries=20 $extralink/lang.sh -O $folder/root/ubuntu-config-lang.sh
 
 
 
@@ -269,6 +270,9 @@ esac
 clear
 
 
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
+
+
 echo "fixing shebang of $bin"
 termux-fix-shebang $bin
 echo "making $bin executable"
@@ -288,58 +292,7 @@ clear
 
 bash ~/ubuntu-config.sh
 bash ~/ui-config.sh
-
-clear
-
-
-
-
-#GUI Idiomas
-export USER=$(whoami)
-HEIGHT=0
-WIDTH=0
-CHOICE_HEIGHT=5
-TITLE="Select"
-MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
-export PORT=1
-
-OPTIONS=(1 "Português (brasileiro)")
-
-CHOICE=$(dialog --clear \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-        1)
-            echo "Você escolheu o idioma Português Brasileiro"
-            wget --tries=20 $extralink/pt_br/config.sh -O $folder/root/lang-config.sh
-	    wget --tries=20 $extralink/pt_br/tigervnc/vnc -P ubuntu22-fs/usr/local/bin > /dev/null
-	    wget --tries=20 $extralink/pt_br/tigervnc/vncpasswd -P ubuntu22-fs/usr/local/bin > /dev/null
-            wget --tries=20 $extralink/pt_br/tigervnc/stopvnc -P ubuntu22-fs/usr/local/bin > /dev/null
-            clear
-            echo "Configurando a instalação do servidor vnc para o XFCE"
-	    if dpkg -l | grep -q lxde-core; then
-	      wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
-	    elif dpkg -l | grep -q xfce4; then
-	      wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
-	    else
-	      echo 'Não identifiquei a interface'
-	    fi
-            ;;
-esac
-
-chmod +x ubuntu22-fs/usr/local/bin/vnc
-chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu22-fs/usr/local/bin/startvnc
-chmod +x ubuntu22-fs/usr/local/bin/startvncserver
-chmod +x ubuntu22-fs/usr/local/bin/stopvnc
-
-# Configurando o idioma
-
+bash ~/ubuntu-config-lang.sh
 bash ~/lang-config.sh
 
 chmod +x /usr/local/bin/stopvnc
@@ -351,6 +304,7 @@ if [ ! -f /usr/bin/vncserver ]; then
 fi
 
 rm -rf /root/ubuntu-config.sh
+rm -rf /root/ubuntu-config-lang.sh
 rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
 rm -rf /root/lang-config.sh
