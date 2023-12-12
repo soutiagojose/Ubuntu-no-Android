@@ -38,6 +38,8 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 ||
 |[**Iniciando o sistema Ubuntu**](#iniciando-o-sistema-ubuntu)|
 ||
+|[**Fazendo a desinstalação**](#fazendo-a-desinstalação)|
+||
 |[**Resolução de problemas**](#resolução-de-problemas)|
 |  **↳** [**Problemas no Termux**](#problemas-no-termux)|
 ||
