@@ -269,6 +269,30 @@ esac
 clear
 
 
+echo "fixing shebang of $bin"
+termux-fix-shebang $bin
+echo "making $bin executable"
+chmod +x $bin
+echo "removing image for some space"
+rm $tarball
+
+echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
+touch $folder/root/.hushlogin
+echo "#!/bin/bash
+rm -rf /etc/resolv.conf
+echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+mkdir -p ~/.vnc
+apt update -y && apt install sudo wget -y > /dev/null
+clear
+
+
+bash ~/ubuntu-config.sh
+bash ~/ui-config.sh
+
+clear
+
+
+
 
 #GUI Idiomas
 export USER=$(whoami)
@@ -308,28 +332,9 @@ chmod +x ubuntu22-fs/usr/local/bin/startvnc
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 chmod +x ubuntu22-fs/usr/local/bin/stopvnc
 
-echo "fixing shebang of $bin"
-termux-fix-shebang $bin
-echo "making $bin executable"
-chmod +x $bin
-echo "removing image for some space"
-rm $tarball
+# Configurando o idioma
 
-echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
-touch $folder/root/.hushlogin
-echo "#!/bin/bash
-rm -rf /etc/resolv.conf
-echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
-mkdir -p ~/.vnc
-apt update -y && apt install sudo wget -y > /dev/null
-clear
-
-
-bash ~/ubuntu-config.sh
-bash ~/ui-config.sh
 bash ~/lang-config.sh
-
-clear
 
 chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
