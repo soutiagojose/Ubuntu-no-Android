@@ -319,10 +319,16 @@ case $CHOICE in
             wget --tries=20 $extralink/pt_br/config.sh -O $folder/root/lang-config.sh
 	    wget --tries=20 $extralink/pt_br/tigervnc/vnc -P ubuntu22-fs/usr/local/bin > /dev/null
 	    wget --tries=20 $extralink/pt_br/tigervnc/vncpasswd -P ubuntu22-fs/usr/local/bin > /dev/null
-            wget --tries=20  $extralink/pt_br/tigervnc/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
             wget --tries=20 $extralink/pt_br/tigervnc/stopvnc -P ubuntu22-fs/usr/local/bin > /dev/null
             clear
             echo "Configurando a instalação do servidor vnc para o XFCE"
+	    if dpkg -l | grep -q lxde-core; then
+	      wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
+	    elif dpkg -l | grep -q xfce4; then
+	      wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
+	    else
+	      echo 'Não identifiquei a interface'
+	    fi
             ;;
 esac
 
