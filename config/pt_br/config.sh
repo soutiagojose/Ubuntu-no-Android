@@ -18,9 +18,6 @@ export LANG
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 echo $$ > /tmp/xsession.pid" > ~/.vnc/xstartup
 
-
-#!/bin/bash
-
 if dpkg -l | grep -q lxde-core; then
     echo 'dbus-launch --exit-with-session startlxde' > ~/.vnc/xstartup
 elif dpkg -l | grep -q xfce4; then
