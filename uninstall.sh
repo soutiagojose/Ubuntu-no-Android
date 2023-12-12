@@ -6,5 +6,6 @@ chmod 777 -R ubuntu22-fs
 rm -rf ubuntu22-fs
 rm -rf ubuntu22-binds
 rm -rf ubuntu-install.sh
-rm -rm start-ubuntu.sh
+rm -rf start-ubuntu.sh
+rm -rf ubuntu-uninstall.sh
 echo "Concluido"
