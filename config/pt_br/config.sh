@@ -19,12 +19,28 @@ export LANG
 echo $$ > /tmp/xsession.pid" > ~/.vnc/xstartup
 
 if dpkg -l | grep -q lxde-core; then
-    echo 'dbus-launch --exit-with-session startlxde' > ~/.vnc/xstartup
+echo "#!/bin/bash
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+export PULSE_SERVER=127.0.0.1
+LANG=pt_BR.UTF-8
+export LANG
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+echo $$ > /tmp/xsession.pid
+dbus-launch --exit-with-session startlxde" > ~/.vnc/xstartup
 elif dpkg -l | grep -q xfce4; then
-    echo "O pacote xfce4 está instalado. Executando o comando ls..."
-    ls
+echo "#!/bin/bash
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+export PULSE_SERVER=127.0.0.1
+LANG=pt_BR.UTF-8
+export LANG
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+echo $$ > /tmp/xsession.pid
+dbus-launch --exit-with-session /usr/bin/startxfce4" > ~/.vnc/xstartup
+
 else
-    echo 'dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
+    echo "null"
 fi
 
 
