@@ -9,20 +9,13 @@ TITLE="vncserver-start"
 MENU="Escolha alguma das seguintes opções:"
 export PORT=1
 
-if dpkg -l | grep -q xfce4; then
+
 OPTIONS=(1 "Iniciar o vncserver na resolução Ultrawide HD"
          2 "Iniciar o vncserver na resolução Quad-HD"
          3 "Iniciar o vncserver na resolução Full-HD"
          4 "Iniciar o vncserver na resolução HD"
          5 "Iniciar o vncserver com resolução e porta customizada"
          6 "Iniciar o vncserver com resolução, porta e escala customizada")
-else
-OPTIONS=(1 "Iniciar o vncserver na resolução Ultrawide HD"
-         2 "Iniciar o vncserver na resolução Quad-HD"
-         3 "Iniciar o vncserver na resolução Full-HD"
-         4 "Iniciar o vncserver na resolução HD"
-         5 "Iniciar o vncserver com resolução e porta customizada")
-fi
 
 
 
@@ -39,30 +32,22 @@ case $CHOICE in
         1)
             echo "Você escolheu a resolução UWHD resolution"
             GEO="-geometry 2560x1080" vnc
-            if dpkg -l | grep -q xfce4; then
-              xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
-            fi
+            xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
             ;;
         2)
             echo "Você escolheu a resolução QHD resolution"
             GEO="-geometry 2560x1440" vnc
-            if dpkg -l | grep -q xfce4; then
-              xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
-            fi
+            xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
             ;;
         3)
             echo "Você escolheu a resolução Full HD resolution"
             GEO="-geometry 1920x1080" vnc
-            if dpkg -l | grep -q xfce4; then
-              xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
-            fi
+            xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
             ;;
         4)
             echo "Você escolheu a resolução HD-ready resolution"
             GEO="-geometry 1280x720" vnc
-            if dpkg -l | grep -q xfce4; then
-              xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
-            fi
+            xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
             ;;
         5)
             echo "Você escolheu definir a resolução e porta manualmente"
@@ -71,11 +56,8 @@ case $CHOICE in
             echo "Insira o número da porta. Exemplo: 2"
             read port
             GEO="-geometry $custom" PORT=$port vnc
-            if dpkg -l | grep -q xfce4; then
-              xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
-            fi
+            xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s 1
             ;;
-if dpkg -l | grep -q xfce4; then
          6)
             echo "Você escolheu definir a resolução e porta manualmente"
             echo "Insira a resolução personalizada no formato WIDTHxHEIGHT (LARGURA x ALTURA). Exemplo: 1920x1200"
@@ -87,7 +69,4 @@ if dpkg -l | grep -q xfce4; then
             GEO="-geometry $custom" PORT=$port vnc
             xfconf-query -c xsettings -p /Gdk/WindowScalingFactor -s $scaling
             ;;
-fi
 esac
-
-bash --login
