@@ -210,7 +210,7 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/us
 command+=" TERM=\$TERM"
 command+=" LANG=C.UTF-8"
 command+=" /bin/bash --login"
-command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvnc"
+command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"
 com="\$@"
 if [ -z "\$1" ];then
     exec \$command
@@ -254,12 +254,14 @@ case $CHOICE in
         1)
             echo "Você escolheu a interface LXDE"
 	    wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
+     	    wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
             clear
             echo "Configurando a instalação do servidor vnc para o LXDE"
             ;;
 	2)
             echo "Você escolheu a interface XFCE"
 	    wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
+            wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
             clear
             echo "Configurando a instalação do servidor vnc para o XFCE"
             ;;
@@ -303,6 +305,7 @@ esac
 chmod +x ubuntu22-fs/usr/local/bin/vnc
 chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/startvnc
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 chmod +x ubuntu22-fs/usr/local/bin/stopvnc
 
 echo "fixing shebang of $bin"
@@ -330,6 +333,7 @@ clear
 
 chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
+chmod +x /usr/local/bin/startvncserver
 
 if [ ! -f /usr/bin/vncserver ]; then
     apt install tigervnc-standalone-server -y
@@ -342,5 +346,3 @@ rm -rf /root/lang-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
 bash $bin
-
-#bash start-ubuntu.sh
