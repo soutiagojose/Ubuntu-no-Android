@@ -226,9 +226,6 @@ wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
 wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
-wget --tries=20 $extralink/lang.sh -O $folder/root/ubuntu-config-lang.sh
-
-
 
 
 #GUI de interface
@@ -252,23 +249,21 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1)
-            echo "Você escolheu a interface LXDE"
-	    wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
-     	    wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
-            clear
-            echo "Configurando a instalação do servidor vnc para o LXDE"
-            ;;
-	2)
-            echo "Você escolheu a interface XFCE"
-	    wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
-            wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
-            clear
-            echo "Configurando a instalação do servidor vnc para o XFCE"
-            ;;
+1)
+echo "Você escolheu a interface LXDE"
+wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
+wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
+echo "Configurando a instalação do servidor vnc para o LXDE"
+;;
+2)
+echo "Você escolheu a interface XFCE"
+wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
+wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
+echo "Configurando a instalação do servidor vnc para o XFCE"
+;;
 esac
-clear
 
+clear
 
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 
@@ -292,7 +287,6 @@ clear
 
 bash ~/ubuntu-config.sh
 bash ~/ui-config.sh
-bash ~/ubuntu-config-lang.sh
 bash ~/lang-config.sh
 
 chmod +x /usr/local/bin/stopvnc
@@ -304,7 +298,6 @@ if [ ! -f /usr/bin/vncserver ]; then
 fi
 
 rm -rf /root/ubuntu-config.sh
-rm -rf /root/ubuntu-config-lang.sh
 rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
 rm -rf /root/lang-config.sh
