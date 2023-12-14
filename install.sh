@@ -287,6 +287,7 @@ clear
 
 bash ~/ubuntu-config.sh
 bash ~/ui-config.sh
+bash ~/pt_br-lang.sh
 bash ~/lang-config.sh
 
 chmod +x /usr/local/bin/stopvnc
@@ -300,6 +301,7 @@ fi
 rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
+bash ~/pt_br-lang.sh
 rm -rf /root/lang-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
