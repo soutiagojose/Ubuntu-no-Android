@@ -137,7 +137,6 @@ clear
 case $CHOICE in
 1)
 wget $extralink/pt_br/lang.sh -O pt_br-lang.sh
-bash pt_br-lang.sh
 ;;
 esac
 
