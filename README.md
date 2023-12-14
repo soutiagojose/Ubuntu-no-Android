@@ -522,7 +522,7 @@ A partir do Android 12, o Termux apresentou instabilidades causados pelos cortes
 
 ### Passo 1 - ativar o modo desenvolvedor do Android
 Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessário:
-> [NOTE]
+> [!NOTE]
 > Os passos podem mudar a depender de como o fabricante do dispositivo optou em posicionar a função.
 
 1. Abrir as configurações do sistema;
