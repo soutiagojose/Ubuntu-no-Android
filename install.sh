@@ -285,9 +285,10 @@ apt update -y && apt install sudo wget -y > /dev/null
 clear
 
 bash ~/ubuntu-config.sh
-bash ~/pt_br-lang.sh
+bash ~/locale.sh
 bash ~/ui-config.sh
-bash ~/lang-config.sh
+bash ~/locale.sh
+bash ~/locale-config.sh
 
 chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
