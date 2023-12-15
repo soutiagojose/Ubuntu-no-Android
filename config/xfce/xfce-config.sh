@@ -1,5 +1,7 @@
 #!/bin/bash
 
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
+
 #Get the necessary components
 sudo apt-get update
 
