@@ -285,9 +285,7 @@ apt update -y && apt install sudo wget -y > /dev/null
 clear
 
 bash ~/ubuntu-config.sh
-bash ~/locale.sh
 bash ~/ui-config.sh
-bash ~/locale-config.sh
 
 chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
@@ -300,8 +298,6 @@ fi
 rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
-rm -rf /root/locale-config.sh
-rm -rf /root/locale.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
 bash $bin
