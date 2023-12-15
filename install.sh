@@ -287,7 +287,6 @@ clear
 bash ~/ubuntu-config.sh
 bash ~/locale.sh
 bash ~/ui-config.sh
-bash ~/locale.sh
 bash ~/locale-config.sh
 
 chmod +x /usr/local/bin/stopvnc
