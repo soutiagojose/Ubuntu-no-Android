@@ -32,6 +32,8 @@ case $CHOICE in
 1)
 wget $extralink/pt_br/config.sh -O locale-config.sh
 wget $extralink/pt_br/tigervnc/xfce/locale.sh
+bash locale.sh
+bash locale-config.sh
 ;;
 esac
 
@@ -48,3 +50,5 @@ wget --tries=20 $extralink/xfce/xfce4-themes-config.sh
 chmod +x  xfce4-themes-config.sh
 bash xfce4-themes-config.sh
 
+rm -rf locale.sh
+rm -rf locale-config.sh
