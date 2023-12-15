@@ -301,8 +301,8 @@ fi
 rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
-bash ~/pt_br-lang.sh
-rm -rf /root/lang-config.sh
+rm -rf /root/locale-config.sh
+rm -rf /root/locale.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
 bash $bin
