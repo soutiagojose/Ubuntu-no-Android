@@ -31,6 +31,8 @@ case $CHOICE in
 1)
 wget $extralink/pt_br/config.sh -O locale-config.sh
 wget $extralink/pt_br/tigervnc/lxde/locale.sh
+bash locale.sh
+bash locale-config.sh
 ;;
 esac
 
@@ -44,3 +46,6 @@ vncpasswd
 wget --tries=20 $extralink/lxde/lxde-themes-config.sh
 chmod +x  lxde-themes-config.sh
 bash lxde-themes-config.sh
+
+rm -rf locale.sh
+rm -rf locale-config.sh
