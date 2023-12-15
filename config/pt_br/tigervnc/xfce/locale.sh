@@ -14,3 +14,18 @@ chmod +x /usr/local/bin/vnc
 chmod +x /usr/local/bin/vncpasswd
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/stopvnc
+
+
+mkdir -p ~/.vnc
+
+echo "#!/bin/bash
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+export PULSE_SERVER=127.0.0.1
+LANG=pt_BR.UTF-8
+export LANG
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+echo $$ > /tmp/xsession.pid
+dbus-launch --exit-with-session /usr/bin/startxfce4" > ~/.vnc/xstartup
+
+chmod +x ~/.vnc/xstartup
