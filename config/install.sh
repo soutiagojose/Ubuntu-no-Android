@@ -136,7 +136,8 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
 1)
-wget $extralink/pt_br/lang.sh -O pt_br-lang.sh
+wget $extralink/pt_br/config.sh -O locale-config.sh
+wget $extralink/pt_br/locale.sh
 ;;
 esac
 
