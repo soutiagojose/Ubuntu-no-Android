@@ -140,8 +140,3 @@ wget $extralink/pt_br/config.sh -O locale-config.sh
 wget $extralink/pt_br/locale.sh
 ;;
 esac
-
-chmod +x /usr/local/bin/vnc
-chmod +x /usr/local/bin/vncpasswd
-chmod +x /usr/local/bin/startvnc
-chmod +x /usr/local/bin/stopvnc
