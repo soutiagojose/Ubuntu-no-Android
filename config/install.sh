@@ -9,13 +9,14 @@ sudo apt install udisks2 -y
 echo "" > /var/lib/dpkg/info/udisks2.postinst
 sudo dpkg --configure -a
 sudo apt-mark hold udisks2
-sudo apt install neofetch -y
+#sudo apt install neofetch -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
 sudo apt-get install sudo wget gpg curl -y
 sudo apt-get install nano inetutils-tools dialog -y
 sudo apt-get install exo-utils tigervnc-standalone-server tigervnc-common tigervnc-tools dbus-x11 --no-install-recommends -y
-sudo apt-get install software-properties-common nautilus -y
+sudo apt-get install software-properties-common -y
+#sudo apt-get install nautilus -y
 sudo apt-get clean
 
 
@@ -26,7 +27,7 @@ sudo snap remove firefox
 sudo apt autoremove --purge snapd -y
 
 sudo apt-get update
-sudo apt-get full-upgrade -y
+#sudo apt-get full-upgrade -y
 
 
 # Adicionar as PPAs de repositórios
@@ -111,8 +112,6 @@ tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
-
-
 
 
 ## Seletor de idiomas
