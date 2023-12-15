@@ -19,7 +19,9 @@ if dpkg -l | grep -q lxde-core; then
     [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
     echo $$ > /tmp/xsession.pid
     dbus-launch --exit-with-session startlxde" > ~/.vnc/xstartup
-elif dpkg -l | grep -q xfce4; then
+fi
+
+if dpkg -l | grep -q xfce4; then
     echo "#!/bin/bash
     [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
     export PULSE_SERVER=127.0.0.1
@@ -29,13 +31,9 @@ elif dpkg -l | grep -q xfce4; then
     [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
     echo $$ > /tmp/xsession.pid
     dbus-launch --exit-with-session /usr/bin/startxfce4" > ~/.vnc/xstartup
-else
-    echo "null"
 fi
 
-
 chmod +x ~/.vnc/xstartup
-
 
 
 ## Gerar o idioma
