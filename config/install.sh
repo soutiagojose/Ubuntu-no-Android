@@ -112,30 +112,3 @@ tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
-
-
-## Seletor de idiomas
-export USER=$(whoami)
-HEIGHT=0
-WIDTH=0
-CHOICE_HEIGHT=5
-TITLE="Select"
-MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
-export PORT=1
-
-OPTIONS=(1 "Português (brasileiro)")
-
-CHOICE=$(dialog --clear \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-1)
-wget $extralink/pt_br/config.sh -O locale-config.sh
-wget $extralink/pt_br/locale.sh
-;;
-esac
