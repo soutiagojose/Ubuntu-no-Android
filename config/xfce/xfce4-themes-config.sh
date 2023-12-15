@@ -1,4 +1,6 @@
 #!/bin/bash
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
+
 # Customização do painel xfce
 wget $extralink/xfce/xfce4-panel.tar.bz2
 
