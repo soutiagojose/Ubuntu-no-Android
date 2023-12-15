@@ -24,3 +24,9 @@ fi
 if dpkg -l | grep -q xfce4;then
     wget --tries=20 "$extralink/pt_br/tigervnc/xfce/startvnc" -P /usr/local/bin > /dev/null
 fi
+
+
+chmod +x /usr/local/bin/vnc
+chmod +x /usr/local/bin/vncpasswd
+chmod +x /usr/local/bin/startvnc
+chmod +x /usr/local/bin/stopvnc
