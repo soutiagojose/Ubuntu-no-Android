@@ -39,9 +39,6 @@ esac
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/stopvnc
 
-echo "export DISPLAY=":1"" >> /etc/profile
-source /etc/profile
-
 vncpasswd
 
 wget --tries=20 $extralink/lxde/lxde-themes-config.sh
