@@ -1,5 +1,7 @@
 #!/bin/bash
 
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
+
 #Get the necessary components
 sudo apt-get update
 
@@ -13,8 +15,11 @@ chmod +x /usr/local/bin/stopvnc
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
 
-https://github.com/allytiago/Ubuntu-no-Android/raw/beta/config/lxde/lxpanel.tar.gz
+vncpasswd
+
+
 # Configurações de aparência
+$extralink/lxde/lxpanel.tar.gz
 
 #Configurações do painel
 if [ ! -d "$HOME/.config/lxpanel/" ];then
@@ -32,4 +37,4 @@ sed -i 's/ThemeName=.*/ThemeName=ZorinBlue-Dark/' ~/.config/lxsession/LXDE/deskt
 # Definir pacote de ícones
 sed -i 's/IconThemeName=.*/IconThemeName=Uos-fulldistro-icons/' ~/.config/lxsession/LXDE/desktop.conf
 
-vncpasswd
+
