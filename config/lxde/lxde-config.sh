@@ -17,24 +17,6 @@ source /etc/profile
 
 vncpasswd
 
-
-# Configurações de aparência
-$extralink/lxde/lxpanel.tar.gz
-
-#Configurações do painel
-if [ ! -d "$HOME/.config/lxpanel/" ];then
-  mkdir -p "$HOME/.config/lxpanel/"
-fi
-wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config/lxde/lxpanel.tar.xz
-tar -xf lxpanel.tar.xz -C $HOME/.config/ lxpanel
-
-# Definir o papel de parede
-pcmanfm --set-wallpaper /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg --wallpaper-mode stretch
-
-#Definir tema
-sed -i 's/ThemeName=.*/ThemeName=ZorinBlue-Dark/' ~/.config/lxsession/LXDE/desktop.conf
-
-# Definir pacote de ícones
-sed -i 's/IconThemeName=.*/IconThemeName=Uos-fulldistro-icons/' ~/.config/lxsession/LXDE/desktop.conf
-
-
+wget --tries=20 $extralink/lxde/lxde-themes-config.sh
+chmod +x  lxde-themes-config.sh
+bash lxde-themes-config.sh
