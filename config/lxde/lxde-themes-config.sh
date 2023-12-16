@@ -150,7 +150,7 @@ quit_manager/layout=top
 
 [GTK]
 sNet/ThemeName=ZorinBlue-Dark
-sNet/IconThemeName=Uos-fulldistro-icons
+sNet/IconThemeName=ZorinBlue-Dark
 sGtk/FontName=Sans 10
 iGtk/ToolbarStyle=3
 iGtk/ButtonImages=1
@@ -188,7 +188,7 @@ menu_prefix=lxde-' | sudo tee $HOME/.config/lxsession/LXDE/desktop.conf
 
 echo '[Settings]
 gtk-theme-name=ZorinBlue-Dark
-gtk-icon-theme-name=Uos-fulldistro-icons
+gtk-icon-theme-name=ZorinBlueDark
 gtk-font-name=Sans 10
 gtk-cursor-theme-size=18
 gtk-toolbar-style=GTK_TOOLBAR_BOTH_HORIZ
