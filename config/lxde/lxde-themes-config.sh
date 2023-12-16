@@ -33,9 +33,6 @@ sed -i 's|wallpaper=/etc/alternatives/desktop-background|wallpaper=/usr/share/ba
 sed -i 's|polkit/command=lxpolkit|polkit/command=|' ~/.config/lxsession/LXDE/desktop.conf
 
 
-polkit/command=
-
-
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
