@@ -1,7 +1,5 @@
 #!/bin/bash
 
-extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
-
 vncserver -name remote-desktop -geometry 1920x1080 :1
 
 mkdir $HOME/.config/gtk-3.0/
