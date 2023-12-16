@@ -49,3 +49,4 @@ bash lxde-themes-config.sh
 
 rm -rf locale.sh
 rm -rf locale-config.sh
+rm -rf lxde-themes-config.sh
