@@ -111,3 +111,6 @@ tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
+
+mkdir $HOME/.config/gtk-3.0/
+echo 'file:///sdcard' | sudo tee $HOME/.config/gtk-3.0/bookmarks
