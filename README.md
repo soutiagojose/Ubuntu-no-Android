@@ -85,6 +85,15 @@ h2
 h3
 |    **↳** [** **]()|
 -->
+---
+> [!CAUTION]
+> Área de alto risco, só acesse se tiver certeza do que estará fazendo.
+
+| [**Configurações adb**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md) |
+|---------|
+||
+---
+
 
 <br>
 <br>
