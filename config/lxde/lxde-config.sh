@@ -43,7 +43,7 @@ chmod +x /usr/local/bin/stopvnc
 
 vncpasswd
 
-#wget --tries=20 $extralink/lxde/lxde-themes-config.sh
+wget --tries=20 $extralink/lxde/lxde-themes-config.sh
 chmod +x  lxde-themes-config.sh
 bash lxde-themes-config.sh
 
