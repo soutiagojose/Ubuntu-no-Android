@@ -2,7 +2,6 @@
 
 vncserver -name remote-desktop -geometry 1920x1080 :1
 
-mkdir $HOME/.config/gtk-3.0/
 mkdir $HOME/.config/lxsession
 mkdir $HOME/.config/lxsession/LXDE
 
