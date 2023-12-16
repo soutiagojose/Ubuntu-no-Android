@@ -9,14 +9,14 @@ sudo apt install udisks2 -y
 echo "" > /var/lib/dpkg/info/udisks2.postinst
 sudo dpkg --configure -a
 sudo apt-mark hold udisks2
-#sudo apt install neofetch -y
+sudo apt install neofetch -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
 sudo apt-get install sudo wget gpg curl -y
 sudo apt-get install nano inetutils-tools dialog -y
 sudo apt-get install exo-utils tigervnc-standalone-server tigervnc-common tigervnc-tools dbus-x11 --no-install-recommends -y
 sudo apt-get install software-properties-common -y
-#sudo apt-get install nautilus -y
+sudo apt-get install nautilus -y
 sudo apt-get clean
 
 
@@ -27,7 +27,7 @@ sudo snap remove firefox
 sudo apt autoremove --purge snapd -y
 
 sudo apt-get update
-#sudo apt-get full-upgrade -y
+sudo apt-get full-upgrade -y
 
 
 # Adicionar as PPAs de repositórios
@@ -70,8 +70,7 @@ Pin-Priority: 1001
 
 Package: chromium*
 Pin: origin "LP-PPA-chromium-team-beta"
-Pin-Priority: 1001
-' | sudo tee /etc/apt/preferences.d/chromium
+Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/chromium
 
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-chromium
 
@@ -82,15 +81,15 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] http
 
 sudo apt-get update
 sudo apt install zorin-desktop-themes -y
-#sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
+sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
 # Para o VSCode
-#sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /usr/share/applications/code*.desktop
+sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /usr/share/applications/code*.desktop
 
 # Para Chromium Web Browser
-#sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
+sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
 # Baixando papel de parede
 if [ ! -d "/usr/share/backgrounds/" ];then
@@ -107,8 +106,6 @@ if [ ! -d "/usr/share/icons/" ];then
 fi
 
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
-
-
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
