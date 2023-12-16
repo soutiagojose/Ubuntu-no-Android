@@ -27,7 +27,14 @@ sed -i 's|wallpaper=/etc/alternatives/desktop-background|wallpaper=/usr/share/ba
 #sed -i 's|sNet/ThemeName=*|sNet/ThemeName=ZorinBlue-Dark|' ~/.config/lxsession/LXDE/desktop.conf
 
 # Definir pacote de ícones
-#sed -i 's|sNet/IconThemeName=*|sNet/IconThemeName=Uos-fulldistro-icons/' ~/.config/lxsession/LXDE/desktop.conf
+#sed -i 's|sNet/IconThemeName=*|sNet/IconThemeName=Uos-fulldistro-icons|' ~/.config/lxsession/LXDE/desktop.conf
+
+
+sed -i 's|polkit/command=lxpolkit|polkit/command=|' ~/.config/lxsession/LXDE/desktop.conf
+
+
+polkit/command=
+
 
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
