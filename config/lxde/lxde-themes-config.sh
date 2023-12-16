@@ -17,7 +17,7 @@ vncserver -name remote-desktop -geometry 1920x1080 :1
 wget "$extralink/lxde/lxpanel.tar.xz"
 wget "$extralink/lxde/lxsession.tar.xz"
 tar -xf lxpanel.tar.xz -C $HOME/.config/ lxpanel
-tar -xf lxsession.tar.xz -C $HOME/.config/ lxpanel
+tar -xf lxsession.tar.xz -C $HOME/.config/ lxsession
 
 # Definir o papel de parede
 #pcmanfm --set-wallpaper /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg --wallpaper-mode stretch
