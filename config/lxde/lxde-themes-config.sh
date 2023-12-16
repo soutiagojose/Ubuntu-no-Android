@@ -2,23 +2,7 @@
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 
-
-
 vncserver -name remote-desktop -geometry 1920x1080 :1
-
-
-#Configurações do painel
-#if [ ! -d "$HOME/.config/lxpanel/" ];then
-#  mkdir -p "$HOME/.config/lxpanel/"
-#fi
-
-# Customização do painel xfce
-
-#wget "$extralink/lxde/lxpanel.tar.xz"
-#wget "$extralink/lxde/lxsession.tar.xz"
-#tar -xf lxpanel.tar.xz -C $HOME/.config/ lxpanel
-#tar -xf lxsession.tar.xz -C $HOME/.config/ lxsession
-#🎨 Configurações do tema
 
 mkdir $HOME/.config/gtk-3.0/
 mkdir $HOME/.config/lxsession
@@ -26,7 +10,6 @@ mkdir $HOME/.config/lxsession/LXDE
 
 echo '[Command]
 Logout=lxde-logout' | sudo tee $HOME/.config/lxpanel/LXDE/config
-
 
 echo '# lxpanel <profile> config file. Manually editing is not recommended.
 # Use preference dialog in lxpanel to adjust config when you can.
@@ -185,7 +168,6 @@ lxde=true
 [Environment]
 menu_prefix=lxde-' | sudo tee $HOME/.config/lxsession/LXDE/desktop.conf
 
-
 echo '[Settings]
 gtk-theme-name=ZorinBlue-Dark
 gtk-icon-theme-name=Uos-fulldistro-icons
@@ -205,8 +187,6 @@ gtk-xft-rgba=rgb' | sudo tee $HOME/.config/gtk-3.0/settings.ini
 # Definir o papel de parede
 #pcmanfm --set-wallpaper /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg --wallpaper-mode stretch
 sed -i 's|wallpaper=/etc/alternatives/desktop-background|wallpaper=/usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg|' ~/.config/pcmanfm/LXDE/desktop-items-0.conf
-
-
 
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
