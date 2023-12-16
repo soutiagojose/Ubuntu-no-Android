@@ -100,12 +100,14 @@ wget $extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/b
 
 # Instalação do pacote de icones
 wget $extralink/icons/Uos-fulldistro-icons.tar.xz
+wget $extralink/icons/ZorinBlue-Dark.tar.gz
 
 if [ ! -d "/usr/share/icons/" ];then
   mkdir -p "/usr/share/icons/"
 fi
 
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
+tar -xf ZorinBlue-Dark.tar.gz -C /usr/share/icons
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
