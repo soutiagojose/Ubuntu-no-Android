@@ -103,6 +103,35 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   </property>
 </channel>' | sudo tee  $HOME/.config/xfce4/xconf/xfce-perchannel-xml/xsettings.xml
 
+echo -e "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"
+
 rm -rf xfce4-panel.tar.bz2
 rm -rf Uos-fulldistro-icons.tar.xz
 
