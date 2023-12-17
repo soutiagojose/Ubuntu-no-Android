@@ -1,8 +1,13 @@
 #!/bin/bash
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
-
+#
 # Customização do painel xfce
 wget $extralink/xfce/xfce4-panel.tar.bz2
+
+vncserver -name remote-desktop -geometry 1920x1080 :1
+vncserver -kill
+rm -rf /tmp/.X$pt-lock
+rm -rf /tmp/.X11-unix/X$pt
 
 vncserver -name remote-desktop -geometry 1920x1080 :1
 xfconf-query -c xsettings -p /Net/ThemeName -s ZorinBlue-Dark
@@ -16,3 +21,6 @@ rm -rf Uos-fulldistro-icons.tar.xz
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
+
+# Replicação para casos de erro
+
