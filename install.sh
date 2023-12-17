@@ -259,6 +259,9 @@ echo "Configurando a instalação do servidor vnc para o LXDE"
 echo "Você escolheu a interface XFCE"
 wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
 wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver-primary -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20  $extralink/xfce/start-ubuntu-xfce.sh
+chmod +x start-ubuntu-xfce.sh
 echo "Configurando a instalação do servidor vnc para o XFCE"
 ;;
 esac
@@ -266,6 +269,7 @@ esac
 clear
 
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver-primary
 
 
 echo "fixing shebang of $bin"
@@ -300,4 +304,5 @@ rm -rf /root/ui-config.sh
 rm -rf /root/xfce4-themes-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
+bash start-ubuntu-xfce.sh
 bash $bin
