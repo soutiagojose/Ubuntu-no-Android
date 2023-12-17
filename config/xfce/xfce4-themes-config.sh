@@ -7,6 +7,12 @@ extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/co
 wget $extralink/xfce/xfce4-panel.tar.bz2
 
 GEO="" vnc
+vncserver -kill
+rm -rf /root/.vnc/localhost:5901.pid
+rm -rf /tmp/.X$pt-lock
+rm -rf /tmp/.X11-unix/X$pt
+
+vncserver -name remote-desktop -geometry 1920x1080 :1
 echo -e ""
 echo -e ""
 echo -e ""
@@ -44,6 +50,12 @@ echo -e "
 "
 xfconf-query -c xsettings -p /Net/ThemeName -s ZorinBlue-Dark
 
+vncserver -kill
+rm -rf /root/.vnc/localhost:5901.pid
+rm -rf /tmp/.X$pt-lock
+rm -rf /tmp/.X11-unix/X$pt
+
+vncserver -name remote-desktop -geometry 1920x1080 :1
 vncserver -kill
 rm -rf /root/.vnc/localhost:5901.pid
 rm -rf /tmp/.X$pt-lock
