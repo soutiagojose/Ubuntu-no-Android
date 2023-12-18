@@ -9,7 +9,7 @@ sudo apt install udisks2 -y
 echo "" > /var/lib/dpkg/info/udisks2.postinst
 sudo dpkg --configure -a
 sudo apt-mark hold udisks2
-sudo apt install neofetch -y
+#sudo apt install neofetch -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
 sudo apt-get install sudo wget gpg curl -y
@@ -26,9 +26,7 @@ sudo apt autoremove --purge firefox* -y
 sudo snap remove firefox
 sudo apt autoremove --purge snapd -y
 
-sudo apt-get update
 sudo apt-get full-upgrade -y
-
 
 # Adicionar as PPAs de repositórios
 # Caso não queira adicionar algum desses repositórios, apague a linha e o comentário (o texto que vem após o #) relacionado ao PPA do repositório 
@@ -79,9 +77,9 @@ echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";'
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
-sudo apt-get update
+sudo apt update
 sudo apt install zorin-desktop-themes -y
-sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
+#sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
