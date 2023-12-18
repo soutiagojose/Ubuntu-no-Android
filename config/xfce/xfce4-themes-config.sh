@@ -36,6 +36,9 @@ echo 'file:///sdcard' | sudo tee $HOME/.config/gtk-3.0/bookmarks
 #mkdir $HOME/.config/xfce4/xconf
 #mkdir $HOME/.config/xfce4/xconf/xfce-perchannel-xml
 
+# Certificação para caso de erro
+
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVNC-0/workspace0/last-image -s /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 #sed -i 's|property name="last-image" type="string" value="/usr/share/backgrounds/xfce/xfce-verticals.png"property name="last-image" type="string" value="/usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg"|' $HOME/.config/xfce4/xconf/xfce-perchannel-xml/xfce4-desktop.xml
 
 vncserver -kill
