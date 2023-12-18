@@ -28,28 +28,28 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1)
-            echo "Você escolheu a resolução UWHD resolution"
-            GEO="-geometry 2560x1080" vnc
-            ;;
-        2)
-            echo "Você escolheu a resolução QHD resolution"
-            GEO="-geometry 2560x1440" vnc
-            ;;
-        3)
-            echo "Você escolheu a resolução Full HD resolution"
-            GEO="-geometry 1920x1080" vnc
-            ;;
-        4)
-            echo "Você escolheu a resolução HD-ready resolution"
-            GEO="-geometry 1280x720" vnc
-            ;;
-        5)
-            echo "Você escolheu definir a resolução e porta manualmente"
-            echo "Insira a resolução personalizada no formato WIDTHxHEIGHT (LARGURA x ALTURA). Exemplo: 1920x1200"
-            read custom
-            echo "Insira o número da porta. Exemplo: 2"
-            read port
-            GEO="-geometry $custom" PORT=$port vnc
-            ;;
+1)
+echo "Você escolheu a resolução UWHD resolution"
+GEO="-geometry 2560x1080" vnc
+;;
+2)
+echo "Você escolheu a resolução QHD resolution"
+GEO="-geometry 2560x1440" vnc
+;;
+3)
+echo "Você escolheu a resolução Full HD resolution"
+GEO="-geometry 1920x1080" vnc
+;;
+4)
+echo "Você escolheu a resolução HD-ready resolution"
+GEO="-geometry 1280x720" vnc
+;;
+5)
+echo "Você escolheu definir a resolução e porta manualmente"
+echo "Insira a resolução personalizada no formato WIDTHxHEIGHT (LARGURA x ALTURA). Exemplo: 1920x1200"
+read custom
+echo "Insira o número da porta. Exemplo: 2"
+read port
+GEO="-geometry $custom" PORT=$port vnc
+;;
 esac
