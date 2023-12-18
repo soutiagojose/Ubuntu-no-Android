@@ -251,23 +251,25 @@ clear
 case $CHOICE in
 1)
 echo "Você escolheu a interface LXDE"
+echo "Configurando a instalação do servidor vnc para o LXDE"
 wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
 wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
-echo "Configurando a instalação do servidor vnc para o LXDE"
 ;;
 2)
 echo "Você escolheu a interface XFCE"
-wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
-#wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
-chmod +x start-ubuntu-xfce.sh
 echo "Configurando a instalação do servidor vnc para o XFCE"
+wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
+#wget --tries=20 $extralink/xfce/xfce4-themes-config.sh -O $folder/root/xfce4-themes-config.sh
+chmod +x $folder/root/xfce4-themes-config.sh
+#wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
 ;;
 esac
 
 clear
 
+chmod +x $folder/root/ubuntu-config.sh
+chmod +x $folder/root/ui-config.sh
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
-chmod +x ubuntu22-fs/usr/local/bin/startvncserver-primary
 
 
 echo "fixing shebang of $bin"
@@ -299,8 +301,6 @@ fi
 
 rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
-rm -rf /root/xfce4-themes-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
-bash start-ubuntu-xfce.sh
 bash $bin
