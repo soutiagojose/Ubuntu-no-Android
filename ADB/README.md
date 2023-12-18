@@ -56,6 +56,25 @@ Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessá
 Para poder executar os comandos `adb` no Termux, será necessário conceder ao app as permissões de desenvolvedor.
 > [!IMPORTANT]
 > Para esse processo será necessário o uso do multi-janelas, caso contrário, não dará certo.
+1. Vá nas "_**opções do desenvolvedor**_" nas "_**configurações**_" do aparelho;
+2. Procure pela opção "_**depuração por wi-fi**_" abra e ative-a;
+> [!IMPORTANT]
+> Caso apareça a a mensagem "_**Permitir a depuração por WI-FI nesta rede? / Nome da rede (SSID) / Endereço do WI-FI (BSSID)**_", permita. <br>
+> Caso prefira, poderá marcar a opção "_**sempre permitir nesta rede**_".
+
+3. Abra o Termux em multi-janela com as configurações. Os dois devem estar abertos ao mesmo tempo para que o pareamento seja feito corretamente.
+> [!IMPORTANT]
+> Caso ative a opção de pareamento em janela normal e abra o Termux e depois volte para a janela do modo desenvolvedor, o código de pareamento irá mudar, por isso que deverá seguir os próximos passos em multijanela.<br>
+
+<details>
+  <summary>Exemplo</summary>
+  <img height="500px" src="https://github.com/allytiago/Ubuntu-no-Android/assets/47113005/96ab7b0b-f787-4e9a-9a54-d40ddca40a21">
+</details>
+
+> [!TIP]
+> A ordem não é importante, o que importa é que os dois apps esteja em multi-janela como no exemplo acima.
+
+4. Na opção "_**depuração por wi-fi**_", clique em "_**parear o dispositivo com um código de pareamento**_"
 
 ### Passo 3 - resolver o problema do `process 9 error`
 > [!CAUTION]
