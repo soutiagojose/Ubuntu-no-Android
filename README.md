@@ -92,6 +92,11 @@ h3
 | [**Configurações adb**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md) |
 |---------|
 ||
+|[**`Process 9 error` no Termux**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#process-9-error-no-termux)|
+|  **↳** [**Ativar o modo desenvolvedor do Android**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#ativar-o-modo-desenvolvedor-do-android)|
+|  **↳** [**Desativar o monitor de processos fantasmas pelo `feature flags`**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#desativar-o-monitor-de-processos-fantasmas-pelo-feature-flags)|
+|  **↳** [**Dar as permissões de `adb` para o Termux**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#dar-as-permissões-de-adb--para-o-termux)|
+|  **↳** [**Desativar o monitor de processos fantasmas pelo Termux**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#desativar-o-monitor-de-processos-fantasmas-pelo-termux)|
 ---
 
 
