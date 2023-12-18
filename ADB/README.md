@@ -57,24 +57,29 @@ Para poder executar os comandos `adb` no Termux, será necessário conceder ao a
 > [!IMPORTANT]
 > Para esse processo será necessário o uso do multi-janelas, caso contrário, não dará certo.
 
-
-
-
-### Passo 3 - resolver o problema do `process 9 error` no Termux
+### Passo 3 - resolver o problema do `process 9 error`
 > [!CAUTION]
 > Como informado, todos os comandos de `adb` presentes nessa página são de modificação do sistema e os mesmos podem causar problemas que só serão resolvidos em caso de restauração aos padrões de fábrica e talvez até sejam irreversíveis. Tome cuidado, se continuar será por sua conta e risco.
 
 > [!NOTE]
 > Nem todos os aparelhos tem a possibilidade de usar o `adb` diretamente no dispositivo e serão dependentes de um computador com Windows, macOS ou Linux.
 
-#### Passo 3.1 - verifique os dispositivos `adb`
-Com o comando abaixo será possível verificar quais dispositivos estão pareados. Certifique que Termux esteja pareado para continuar os próximos passos.
+#### Passos pelo `feature flags`
+> [!NOTE]
+> Nem todos os dispositivos terão a possibilidade de usar esse passo.
+
+1. Vá nas _**opções do desenvolvedor**_ nas _**configurações**_ do aparelho;
+2. Procure pela opção _**feature flags**_;
+3. Desative a opção `settings_enable_monitor_phantom_procs`;
+4. Pronto!
+
+#### Passos pelo Termux
+
+1. Verifique os dispositivos pareados usando o comando abaixo. Certifique que Termux esteja pareado para continuar os próximos passos.
 ```shell
 adb devices
 ```
-
-#### Passo 3.2 - execute os seguintes comandos:
-Os comandos abaixo irão resolver o problema
+2. Execute os seguintes comandos:
 ```shell
 adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent"
 ```
@@ -84,3 +89,4 @@ adb shell "/system/bin/device_config put activity_manager max_phantom_processes 
 ```shell
 adb shell settings put global settings_enable_monitor_phantom_procs false
 ```
+3. Pronto! Poderá desativar as opções do desenvolvedor caso deseje.
