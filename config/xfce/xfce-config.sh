@@ -8,6 +8,7 @@ sudo apt-get update
 sudo apt-get install xfce4 xfce4-goodies xfce4-terminal xfce4-panel-profiles dbus-x11 --no-install-recommends -y
 sudo apt-get clean
 
+mkdir -p ~/.vnc
 
 ## Seletor de idiomas
 export USER=$(whoami)
@@ -38,7 +39,7 @@ bash locale-config.sh
 esac
 
 
-#mkdir -p ~/.vnc
+
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/stopvnc
 
