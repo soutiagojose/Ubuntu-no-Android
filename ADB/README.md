@@ -85,18 +85,36 @@ Para poder executar os comandos `adb` no Termux, será necessário conceder ao a
 ```shell
 pkg install android-tools -y
 ```
-6. Execute o comando abaixo:
+6. Execute o comando `adb pair`:
 ```shell
-adb pair <IP_Address>:<port> <code>
+adb pair IP_Address:port code
 ```
 > [!IMPORTANT]
-> Substitua o `<IP_Address>` pelo endereço IP que aparece ao clicar em "_**parear o dispositivo com um código de pareamento**_". Após o texto "_**endereço IP e porta**_;<br>
-> Substitua o `<port>` pelo número da porta que apareçe ao lado do endereço IP (os 5 dígitos após os `:` (dois pontos));<br>
-> Substitua o `<code>` pelo código de 6 dígitos que aparece acima do endereço IP e abaixo do texto "_**código de pareamento por WI-FI**_".<br>
+> Substitua o `IP_Address` pelo endereço IP que aparece ao clicar em "_**parear o dispositivo com um código de pareamento**_". Após o texto "_**endereço IP e porta**_;<br>
+> Substitua o `port` pelo número da porta que apareçe ao lado do endereço IP (os 5 dígitos após os `:` (dois pontos));<br>
+> Substitua o `code` pelo código de 6 dígitos que aparece acima do endereço IP e abaixo do texto "_**código de pareamento por WI-FI**_".<br>
 > Exemplo: `adb pair 123.456.7.89:12345 123456`<br>
 > Obs.: Pode trocar o endereço IP por `localhost`.
 
 7. Tecle `enter` para confirmar.
+> [!NOTE]
+> Quando pareado, aparecerá uma mensagens de sucesso em inglês
+8. Verifique a lista de dispositivos pareados usando o comando `adb devices`. Caso apareça a mensagem `List of devices attached` e mais nenhuma outra mensagem listando os dispositivos pareados, deverá fazer o pareamento do Termux para executar os comandos adb.
+9. Execute o comando `adb connect` para reconectar o Termux ao adb via WI-FI
+```shell
+adb connect IP_Address:port
+```
+> [!IMPORTANT]
+> Substitua o `IP_Address` pelo endereço IP que aparece em "_**endereço IP e porta**_", logo abaixo de "_**Nome do dispositivo**_;<br>
+> Substitua o `port` pelo número da porta que apareçe ao lado do endereço IP (os 5 dígitos após os `:` (dois pontos));<br>
+> Exemplo: `adb connect 123.456.7.89:12345`<br>
+> Obs.: Pode trocar o endereço IP por `localhost`.<br>
+> Após teclar `enter` para conectar, aparecerá a mensagem "_**connected to 123.456.7.89**_"
+
+10. Repita o comando do ítem 8. Deverá aparecer o endereço ip conectado e logo ao lado a mensagem `online` ou `device`;
+11. Agora pode executar os comandos adb pelo Termux.
+> [!IMPORTANT]
+> Não desligue ou se desconecte da rede WI-Fi, nem reinicie o dispositivo celular, caso contráriom deverá refazer o processo de se reconectar ao adb novamente.
 
 ### Desativar o monitor de processos fantasmas pelo Termux
 > [!CAUTION]
@@ -109,6 +127,9 @@ adb pair <IP_Address>:<port> <code>
 ```shell
 adb devices
 ```
+>[!NOTE]
+> Caso o Termux não esteja conectado, siga os passos do item 8, 9 e 10 do passo: [dar as permissões de `adb` para o Termux](#dar-as-permissões-de-adb-para-o-termux).
+
 2. Execute os seguintes comandos:
 ```shell
 adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent"
