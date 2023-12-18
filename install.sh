@@ -253,7 +253,7 @@ case $CHOICE in
 echo "Você escolheu a interface LXDE"
 echo "Configurando a instalação do servidor vnc para o LXDE"
 wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
-wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
+#wget --tries=20  $extralink/pt_br/tigervnc/lxde/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
 ;;
 2)
 echo "Você escolheu a interface XFCE"
