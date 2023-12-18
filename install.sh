@@ -258,6 +258,7 @@ wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
 echo "Você escolheu a interface XFCE"
 echo "Configurando a instalação do servidor vnc para o XFCE"
 wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
+wget --tries=20 $extralink/xfce/xfce4-panel.tar.bz2 $folder/root/xfce4-panel.tar.bz2
 chmod +x $folder/root/xfce4-themes-config.sh
 ;;
 esac
