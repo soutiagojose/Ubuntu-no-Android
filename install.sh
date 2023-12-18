@@ -258,9 +258,7 @@ echo "Configurando a instalação do servidor vnc para o LXDE"
 2)
 echo "Você escolheu a interface XFCE"
 wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
-wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver-primary -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20  $extralink/xfce/start-ubuntu-xfce.sh
+#wget --tries=20  $extralink/pt_br/tigervnc/xfce/startvncserver -P ubuntu22-fs/usr/local/bin > /dev/null
 chmod +x start-ubuntu-xfce.sh
 echo "Configurando a instalação do servidor vnc para o XFCE"
 ;;
