@@ -31,8 +31,8 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
 1)
-wget --tries=20 $extralink/pt_br/config.sh -O locale-config.sh
 wget --tries=20 $extralink/pt_br/tigervnc/xfce/locale.sh
+wget --tries=20 $extralink/pt_br/config.sh -O locale-config.sh
 wget --tries=20 $extralink/pt_br/tigervnc/xfce/startvncserver -P /usr/local/bin > /dev/null
 bash locale.sh
 bash locale-config.sh
