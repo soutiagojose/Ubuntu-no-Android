@@ -56,3 +56,31 @@ Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessá
 Para poder executar os comandos `adb` no Termux, será necessário conceder ao app as permissões de desenvolvedor.
 > [!IMPORTANT]
 > Para esse processo será necessário o uso do multi-janelas, caso contrário, não dará certo.
+
+
+
+
+### Passo 3 - resolver o problema do `process 9 error` no Termux
+> [!CAUTION]
+> Como informado, todos os comandos de `adb` presentes nessa página são de modificação do sistema e os mesmos podem causar problemas que só serão resolvidos em caso de restauração aos padrões de fábrica e talvez até sejam irreversíveis. Tome cuidado, se continuar será por sua conta e risco.
+
+> [!NOTE]
+> Nem todos os aparelhos tem a possibilidade de usar o `adb` diretamente no dispositivo e serão dependentes de um computador com Windows, macOS ou Linux.
+
+#### Passo 3.1 - verifique os dispositivos `adb`
+Com o comando abaixo será possível verificar quais dispositivos estão pareados. Certifique que Termux esteja pareado para continuar os próximos passos.
+```shell
+adb devices
+```
+
+#### Passo 3.2 - execute os seguintes comandos:
+Os comandos abaixo irão resolver o problema
+```shell
+adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent"
+```
+```shell
+adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"
+```
+```shell
+adb shell settings put global settings_enable_monitor_phantom_procs false
+```
