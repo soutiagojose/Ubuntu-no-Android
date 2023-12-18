@@ -31,8 +31,9 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
 1)
-wget $extralink/pt_br/config.sh -O locale-config.sh
-wget $extralink/pt_br/tigervnc/xfce/locale.sh
+wget --tries=20 $extralink/pt_br/config.sh -O locale-config.sh
+wget --tries=20 $extralink/pt_br/tigervnc/xfce/locale.sh
+wget --tries=20 $extralink/pt_br/tigervnc/xfce/startvncserver -P /usr/local/bin > /dev/null
 bash locale.sh
 bash locale-config.sh
 ;;
@@ -42,10 +43,12 @@ esac
 
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/stopvnc
+chmod +x /usr/local/bin/startvncserver
 
+echo "export DISPLAY=":1"" >> /etc/profile
+source /etc/profile
 
 vncpasswd
-
 
 wget --tries=20 $extralink/xfce/xfce4-themes-config.sh
 chmod +x  xfce4-themes-config.sh
