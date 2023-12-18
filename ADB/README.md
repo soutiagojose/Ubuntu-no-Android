@@ -16,8 +16,11 @@ Com essas configurações, será possível tirar algumas limitações do sistema
 |--------------------|
 ||
 |[**`Process 9 error` no Termux**](#process-9-error-no-termux)|
-|  **↳** [**Passo 1 - ativar o modo desenvolvedor do Android**](#passo-1---ativar-o-modo-desenvolvedor-do-android)|
-|  **↳** [**Passo 2 - dar as permissões de `adb` para o Termux**](#passo-2---dar-as-permissões-de-adb--para-o-termux)|
+|  **↳** [**Ativar o modo desenvolvedor do Android**](#ativar-o-modo-desenvolvedor-do-android)|
+|  **↳** [**Desativar o monitor de processos fantasmas pelo `feature flags`**](#desativar-o-monitor-de-processos-fantasmas-pelo-feature-flags)|
+|  **↳** [**Dar as permissões de `adb` para o Termux**](#dar-as-permissões-de-adb--para-o-termux)|
+|  **↳** [**Desativar o monitor de processos fantasmas pelo Termux**](#desativar-o-monitor-de-processos-fantasmas-pelo-termux)|
+
 <!--
 h1
 |[** **]()|
