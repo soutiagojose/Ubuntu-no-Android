@@ -9,7 +9,7 @@ sudo apt install udisks2 -y
 echo "" > /var/lib/dpkg/info/udisks2.postinst
 sudo dpkg --configure -a
 sudo apt-mark hold udisks2
-#sudo apt install neofetch -y
+sudo apt install neofetch -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y
 sudo apt-get install sudo wget gpg curl -y
@@ -72,14 +72,13 @@ Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/chromium
 
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-chromium
 
-
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 sudo apt update
 sudo apt install zorin-desktop-themes -y
-#sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
+sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
@@ -98,11 +97,9 @@ wget $extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/b
 
 # Instalação do pacote de icones
 wget $extralink/icons/Uos-fulldistro-icons.tar.xz
-#wget $extralink/icons/ZorinBlue-Dark.tar.gz
 
 if [ ! -d "/usr/share/icons/" ];then
   mkdir -p "/usr/share/icons/"
 fi
 
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
-#tar -xf ZorinBlue-Dark.tar.gz -C /usr/share/icons
