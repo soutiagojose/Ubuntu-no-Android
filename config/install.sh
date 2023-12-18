@@ -1,5 +1,7 @@
 #!/bin/bash
 
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
+
 #Get the necessary components
 sudo apt-get update
 
@@ -14,7 +16,9 @@ sudo apt-get install sudo wget gpg curl -y
 sudo apt-get install nano inetutils-tools dialog -y
 sudo apt-get install exo-utils tigervnc-standalone-server tigervnc-common tigervnc-tools dbus-x11 --no-install-recommends -y
 sudo apt-get install software-properties-common -y
+sudo apt-get install nautilus -y
 sudo apt-get clean
+
 
 # Pacotes instalados via snap não são executáveis no Ubuntu VNC do Andronix e por isso é recomendável a desinstalação desses pacotes que podem ser pré-carregados durante a instalação do Ubuntu no Termux
 sudo apt autoremove --purge chromium* -y
@@ -22,9 +26,7 @@ sudo apt autoremove --purge firefox* -y
 sudo snap remove firefox
 sudo apt autoremove --purge snapd -y
 
-sudo apt-get update
 sudo apt-get full-upgrade -y
-
 
 # Adicionar as PPAs de repositórios
 # Caso não queira adicionar algum desses repositórios, apague a linha e o comentário (o texto que vem após o #) relacionado ao PPA do repositório 
@@ -66,18 +68,17 @@ Pin-Priority: 1001
 
 Package: chromium*
 Pin: origin "LP-PPA-chromium-team-beta"
-Pin-Priority: 1001
-' | sudo tee /etc/apt/preferences.d/chromium
+Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/chromium
 
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-chromium-team-beta:bionic";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-chromium
-
 
 # PPA do Brave Browser
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
-sudo apt-get update
-sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler zorin-desktop-themes -y
+sudo apt update
+sudo apt install zorin-desktop-themes -y
+sudo apt install firefox chromium-browser apt-transport-https code apt-utils gdebi font-viewer bleachbit tumbler -y
 
 # Alguns pacotes tem dificuldades ou não foram projetados para serem abertos em sandbox/virtualização
 # Solução é adicionar o comando --no-sandbox na linha referente ao executável
@@ -88,11 +89,17 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
 # Baixando papel de parede
-wget https://raw.githubusercontent.com/allytiago/start-setup-ubuntu-andronix/main/setup/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+if [ ! -d "/usr/share/backgrounds/" ];then
+  mkdir -p "/usr/share/backgrounds/"
+fi
+#mkdir -p /usr/share/backgrounds/
+wget $extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 
 # Instalação do pacote de icones
-wget https://github.com/allytiago/Ubuntu-no-Android/raw/main/config/icons/Uos-fulldistro-icons.tar.xz
-tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
+wget $extralink/icons/Uos-fulldistro-icons.tar.xz
 
-echo "export DISPLAY=":1"" >> /etc/profile
-source /etc/profile
+if [ ! -d "/usr/share/icons/" ];then
+  mkdir -p "/usr/share/icons/"
+fi
+
+tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons

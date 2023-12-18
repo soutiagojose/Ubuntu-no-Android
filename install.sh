@@ -2,7 +2,7 @@
 pkg install wget -y 
 folder=ubuntu22-fs
 cur=`pwd`
-extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 if [ -d "$folder" ]; then
 	first=1
 	echo "skipping downloading"
@@ -210,7 +210,7 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/us
 command+=" TERM=\$TERM"
 command+=" LANG=C.UTF-8"
 command+=" /bin/bash --login"
-command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvnc"
+command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"
 com="\$@"
 if [ -z "\$1" ];then
     exec \$command
@@ -226,10 +226,9 @@ wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
 wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
-wget --tries=20 $extralink/xfce4/xfce4-config.sh -O $folder/root/xfce4-config.sh
-clear
 
-#GUI Idiomas
+
+#GUI de interface
 export USER=$(whoami)
 HEIGHT=0
 WIDTH=0
@@ -238,7 +237,8 @@ TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
-OPTIONS=(1 "Português (brasileiro)")
+OPTIONS=(1 "Ubuntu LXDE"
+	 2 "Ubuntu XFCE")
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -249,22 +249,26 @@ CHOICE=$(dialog --clear \
 
 clear
 case $CHOICE in
-        1)
-            echo "Você escolheu o idioma Português Brasileiro"
-            wget --tries=20 $extralink/pt_br/config.sh -O $folder/root/lang-config.sh
-	    wget --tries=20 $extralink/pt_br/tigervnc/vnc -P ubuntu22-fs/usr/local/bin > /dev/null
-	    wget --tries=20 $extralink/pt_br/tigervnc/vncpasswd -P ubuntu22-fs/usr/local/bin > /dev/null
-            wget --tries=20  $extralink/pt_br/tigervnc/startvnc -P ubuntu22-fs/usr/local/bin > /dev/null
-            wget --tries=20 $extralink/pt_br/tigervnc/stopvnc -P ubuntu22-fs/usr/local/bin > /dev/null
-            clear
-            echo "Configurando a instalação do servidor vnc para o XFCE"
-            ;;
+1)
+echo "Você escolheu a interface LXDE"
+echo "Configurando a instalação do servidor vnc para o LXDE"
+wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
+;;
+2)
+echo "Você escolheu a interface XFCE"
+echo "Configurando a instalação do servidor vnc para o XFCE"
+wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
+wget --tries=20 $extralink/xfce/xfce4-panel.tar.bz2 $folder/root/xfce4-panel.tar.bz2
+chmod +x $folder/root/xfce4-themes-config.sh
+;;
 esac
 
-chmod +x ubuntu22-fs/usr/local/bin/vnc
-chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
-chmod +x ubuntu22-fs/usr/local/bin/startvnc
-chmod +x ubuntu22-fs/usr/local/bin/stopvnc
+clear
+
+chmod +x $folder/root/ubuntu-config.sh
+chmod +x $folder/root/ui-config.sh
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
+
 
 echo "fixing shebang of $bin"
 termux-fix-shebang $bin
@@ -282,33 +286,19 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
-
 bash ~/ubuntu-config.sh
-bash ~/lang-config.sh
-
-if [ ! -f /root/xfce4-config.sh ]; then
-    wget --tries=20 $extralink/xfce4/xfce4-config.sh -O /root/xfce4-config.sh
-    bash ~/xfce4-config.sh
-else
-    bash ~/xfce4-config.sh
-fi
-clear
-
-clear
+bash ~/ui-config.sh
 
 chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
+chmod +x /usr/local/bin/startvncserver
 
 if [ ! -f /usr/bin/vncserver ]; then
     apt install tigervnc-standalone-server -y
 fi
 
 rm -rf /root/ubuntu-config.sh
-rm -rf /root/xfce4-config.sh
-rm -rf /root/xfce4-themes-config.sh
-rm -rf /root/lang-config.sh
+rm -rf /root/ui-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
 bash $bin
-
-#bash start-ubuntu.sh
