@@ -202,8 +202,8 @@ gtk-xft-hintstyle=hintslight
 gtk-xft-rgba=rgb' | sudo tee $HOME/.config/gtk-3.0/settings.ini
 
 echo 'file:///sdcard' | sudo tee $HOME/.config/gtk-3.0/bookmarks
+
 # Definir o papel de parede
-#pcmanfm --set-wallpaper /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg --wallpaper-mode stretch
 sed -i 's|wallpaper=/etc/alternatives/desktop-background|wallpaper=/usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg|' ~/.config/pcmanfm/LXDE/desktop-items-0.conf
 
 vncserver -kill
