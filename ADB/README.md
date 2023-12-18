@@ -39,7 +39,7 @@ A partir do Android 12, o Termux apresentou instabilidades causados pelos cortes
 > [!NOTE]
 > O `adb` já vem instalado no sistema Android, portanto não precisa ser instalado. Para esse processo que visa resolver o problema do `process 9` será necessesário usar um app que possa ter permissões de desenvolvedor e que possa executar os comandos necessários para desativar o os processos fantasmas. Nessa documentação, será usado o próprio Termux, mas dependendo do aparelho, poderá ser necessário utilizar um computador.
 
-### Passo 1 - ativar o modo desenvolvedor do Android
+### Ativar o modo desenvolvedor do Android
 Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessário:
 > [!NOTE]
 > Os passos podem mudar a depender de como o fabricante do dispositivo optou em posicionar a função.
@@ -52,7 +52,16 @@ Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessá
 6. Aparecerá um alerta toast de que o modo desenvolvedor está ativo;
 7. Volte para o inicio das configurações do sistema.
 
-### Passo 2 - dar as permissões de `adb` para o Termux
+### Desativar o monitor de processos fantasmas pelo `feature flags`
+> [!NOTE]
+> Nem todos os dispositivos terão a possibilidade de usar esse passo.
+
+1. Vá nas _**opções do desenvolvedor**_ nas _**configurações**_ do aparelho;
+2. Procure pela opção _**feature flags**_;
+3. Desative a opção `settings_enable_monitor_phantom_procs`;
+4. Pronto!
+
+### Dar as permissões de `adb` para o Termux
 Para poder executar os comandos `adb` no Termux, será necessário conceder ao app as permissões de desenvolvedor.
 > [!IMPORTANT]
 > Para esse processo será necessário o uso do multi-janelas, caso contrário, não dará certo.
@@ -71,25 +80,30 @@ Para poder executar os comandos `adb` no Termux, será necessário conceder ao a
 > [!TIP]
 > A ordem não é importante, o que importa é que os dois apps esteja em multi-janela como no exemplo acima.
 
-4. Na opção "_**depuração por wi-fi**_", clique em "_**parear o dispositivo com um código de pareamento**_"
+4. Na opção "_**depuração por wi-fi**_", clique em "_**parear o dispositivo com um código de pareamento**_";
+5. No Termux, instale o pacote `android-tools`:
+```shell
+pkg install android-tools -y
+```
+6. Execute o comando abaixo:
+```shell
+adb pair <IP_Address>:<port> <code>
+```
+> [!IMPORTANT]
+> Substitua o `<IP_Address>` pelo endereço IP que aparece ao clicar em "_**parear o dispositivo com um código de pareamento**_". Após o texto "_**endereço IP e porta**_;<br>
+> Substitua o `<port>` pelo número da porta que apareçe ao lado do endereço IP (os 5 dígitos após os `:` (dois pontos));<br>
+> Substitua o `<code>` pelo código de 6 dígitos que aparece acima do endereço IP e abaixo do texto "_**código de pareamento por WI-FI**_".<br>
+> Exemplo: `adb pair 123.456.7.89:12345 123456`<br>
+> Obs.: Pode trocar o endereço IP por `localhost`.
 
-### Passo 3 - resolver o problema do `process 9 error`
+7. Tecle `enter` para confirmar.
+
+### Desativar o monitor de processos fantasmas pelo Termux
 > [!CAUTION]
 > Como informado, todos os comandos de `adb` presentes nessa página são de modificação do sistema e os mesmos podem causar problemas que só serão resolvidos em caso de restauração aos padrões de fábrica e talvez até sejam irreversíveis. Tome cuidado, se continuar será por sua conta e risco.
 
 > [!NOTE]
 > Nem todos os aparelhos tem a possibilidade de usar o `adb` diretamente no dispositivo e serão dependentes de um computador com Windows, macOS ou Linux.
-
-#### Passos pelo `feature flags`
-> [!NOTE]
-> Nem todos os dispositivos terão a possibilidade de usar esse passo.
-
-1. Vá nas _**opções do desenvolvedor**_ nas _**configurações**_ do aparelho;
-2. Procure pela opção _**feature flags**_;
-3. Desative a opção `settings_enable_monitor_phantom_procs`;
-4. Pronto!
-
-#### Passos pelo Termux
 
 1. Verifique os dispositivos pareados usando o comando abaixo. Certifique que Termux esteja pareado para continuar os próximos passos.
 ```shell
