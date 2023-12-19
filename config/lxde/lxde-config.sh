@@ -33,12 +33,14 @@ case $CHOICE in
 1)
 wget $extralink/pt_br/config.sh -O locale-config.sh
 wget $extralink/pt_br/tigervnc/lxde/locale.sh
+wget --tries=20 $extralink/pt_br/tigervnc/lxde/startvncserver -P /usr/local/bin > /dev/null
 bash locale.sh
 bash locale-config.sh
 ;;
 esac
 
 chmod +x /usr/local/bin/startvnc
+chmod +x /usr/local/bin/startvncserver
 chmod +x /usr/local/bin/stopvnc
 
 echo "export DISPLAY=":1"" >> /etc/profile
