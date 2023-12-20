@@ -32,17 +32,7 @@ h3
 <br>
 <br>
 
-# `Process 9 error` no Termux
-A partir do Android 12, o Termux apresentou instabilidades causados pelos cortes de processos fantasmas (phantom processes). Por padrão o sistema eliminará quaisquer processos fantasma ou que use muita CPU. Devido a esses cortes, o Termux pode apresentar o erro: `[Process completed (signal 9) - press Enter]` e encerrar o sistema Ubuntu e todos os processos de fundo do Termux. Existe uma solução, mas que utiliza do `adb`.
-
-> [!WARNING]
-> Se nunca usou ou nem conheçe o `adb`, essa documentação não trará detalhes aprofundados sobre a ferramenta e por isso, recomendo que se aprofunde mais em outras páginas, principalmente na do Android.
-> - [Android Debug Bridge (adb)](https://developer.android.com/tools/adb)
-
-> [!NOTE]
-> O `adb` já vem instalado no sistema Android, portanto não precisa ser instalado. Para esse processo que visa resolver o problema do `process 9` será necessesário usar um app que possa ter permissões de desenvolvedor e que possa executar os comandos necessários para desativar o os processos fantasmas. Nessa documentação, será usado o próprio Termux, mas dependendo do aparelho, poderá ser necessário utilizar um computador.
-
-### Ativar o modo desenvolvedor do Android
+# Ativar o modo desenvolvedor do Android
 Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessário:
 > [!NOTE]
 > Os passos podem mudar a depender de como o fabricante do dispositivo optou em posicionar a função.
@@ -55,16 +45,10 @@ Esse modo vem desabilitado por padrão no sistema. Para ativa-lo, será necessá
 6. Aparecerá um alerta toast de que o modo desenvolvedor está ativo;
 7. Volte para o inicio das configurações do sistema.
 
-### Desativar o monitor de processos fantasmas pelo `feature flags`
-> [!NOTE]
-> Nem todos os dispositivos terão a possibilidade de usar esse passo.
+<br>
+<br>
 
-1. Vá nas _**opções do desenvolvedor**_ nas _**configurações**_ do aparelho;
-2. Procure pela opção _**feature flags**_;
-3. Desative a opção `settings_enable_monitor_phantom_procs`;
-4. Pronto!
-
-### Dar as permissões de `adb` para o Termux
+# Dar as permissões de `adb` para o Termux
 Para poder executar os comandos `adb` no Termux, será necessário conceder ao app as permissões de desenvolvedor.
 > [!IMPORTANT]
 > Para esse processo será necessário o uso do multi-janelas, caso contrário, não dará certo.
@@ -119,7 +103,33 @@ adb connect IP_Address:port
 > [!IMPORTANT]
 > Não desligue ou se desconecte da rede WI-Fi, nem reinicie o dispositivo celular, caso contráriom deverá refazer o processo de se reconectar ao adb novamente.
 
-### Desativar o monitor de processos fantasmas pelo Termux
+<br>
+<br>
+
+# `Process 9 error` no Termux
+A partir do Android 12, o Termux apresentou instabilidades causados pelos cortes de processos fantasmas (phantom processes). Por padrão o sistema eliminará quaisquer processos fantasma ou que use muita CPU. Devido a esses cortes, o Termux pode apresentar o erro: `[Process completed (signal 9) - press Enter]` e encerrar o sistema Ubuntu e todos os processos de fundo do Termux. Existe uma solução, mas que utiliza do `adb`.
+
+> [!WARNING]
+> Se nunca usou ou nem conheçe o `adb`, essa documentação não trará detalhes aprofundados sobre a ferramenta e por isso, recomendo que se aprofunde mais em outras páginas, principalmente na do Android.
+> - [Android Debug Bridge (adb)](https://developer.android.com/tools/adb)
+
+> [!NOTE]
+> O `adb` já vem instalado no sistema Android, portanto não precisa ser instalado. Para esse processo que visa resolver o problema do `process 9` será necessesário usar um app que possa ter permissões de desenvolvedor e que possa executar os comandos necessários para desativar o os processos fantasmas. Nessa documentação, será usado o próprio Termux, mas dependendo do aparelho, poderá ser necessário utilizar um computador.
+
+<br>
+
+## Desativar o monitor de processos fantasmas pelo `feature flags`
+> [!NOTE]
+> Nem todos os dispositivos terão a possibilidade de usar esse passo.
+
+1. Vá nas _**opções do desenvolvedor**_ nas _**configurações**_ do aparelho;
+2. Procure pela opção _**feature flags**_;
+3. Desative a opção `settings_enable_monitor_phantom_procs`;
+4. Pronto!
+
+<br>
+
+## Desativar o monitor de processos fantasmas pelo Termux
 > [!CAUTION]
 > Como informado, todos os comandos de `adb` presentes nessa página são de modificação do sistema e os mesmos podem causar problemas que só serão resolvidos em caso de restauração aos padrões de fábrica e talvez até sejam irreversíveis. Tome cuidado, se continuar será por sua conta e risco.
 
@@ -144,3 +154,28 @@ adb shell "/system/bin/device_config put activity_manager max_phantom_processes 
 adb shell settings put global settings_enable_monitor_phantom_procs false
 ```
 3. Pronto! Poderá desativar as opções do desenvolvedor caso deseje.
+
+<br>
+<br>
+
+# Aumententar a RAM Plus dos aparelhos Samsung
+> [!IMPORTANT]
+> Os comandos podem mudar a depender do aparelho e da versão do Android a ser utilizada.
+
+A RAM Plus é uma memória virtual que consome parte do espaço da memória interna do dispositivo para ser usado como [memória swap](https://developer.android.com/topic/performance/memory-management). Por utilizar da memória ROM do aparelho, o seu uso pode deixar o dispositivo um pouco mais lento devido a diferença de velocidade de leitura entre a memória ROM e RAM. O seu uso será recomendádo quando a memória RAM física do dispositivo precisar da RAM virtual para conseguir executar tarefas específicas.
+
+Em algumas situações, as opções nativas do sistema não são o suficiente, mas para quem é usuário Samsung, poderá usar o `adb` para ter mais opções de memória RAM virtual no RAM PLus. Para ter mais opções, siga os passos abaixo:
+> [!WARNING]
+> Esses passos só podem ser usados em dispositivos da Samsung e com suporte ao RAM Plus.
+
+1. Faça a conexão com o depurador WI-FI da forma que foi explicada no item 9 do tópico "[dar as permissões de `adb` para o Termux](#dar-as-permissões-de-adb-para-o-termux)"
+2. Execute o comando abaixo:
+```shell
+adb shell settings put global ram_expand_size_list 2,4,6,8,12
+```
+> [!TIP]
+> Troque os números 2,4,6,8 pelos números disponíveis nas opções da sua RAM Plus e adicione novos números para representar as capacidades em gigabytes de memória RAM, mas lembre-se que quanto maior a memória, mas espaço interno será consumido.
+
+3. Vá nas _***configurações > assistência do aparelho > memória > RAM Plus**_ e escolha a opção desejada.
+4. O aparelho irá solicitar uma confirmação e reiniciar. Após o reiniciamento, o RAM Plus estará usando a opção escolhida.
+   
