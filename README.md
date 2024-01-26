@@ -46,9 +46,9 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |  **↳** [**Trocar o idioma do sistema**](#trocar-o-idioma-do-sistema)|
 |    **↳** [**Passo 1 - atualize os repositórios**](#passo-1---atualize-os-repositórios)|
 |    **↳** [**Passo 2 - instale o pacote `locales`**](#passo-2---instale-o-pacote-locales)|
-|    **↳** [**Passo 3 - gere o idioma**](#passo-3---gere-o-idioma)|
-|    **↳** [**Passo 4 - inicialize com o sistema**](#passo-4---inicialize-com-o-sistema)|
-|    **↳** [**Passo 5 - trocar o idioma do PulseAudio**](#passo-5---trocar-o-idioma-do-pulseaudio)|
+|    **↳** [**Passo 3 - instale os pacotes de idioma**](#passo-3---instale-os-pacotes-de-idioma)|
+|    **↳** [**Passo 4 - gere o idioma**](#passo-3---gere-o-idioma)|
+|    **↳** [**Passo 5 - inicialize com o sistema**](#passo-4---inicialize-com-o-sistema)|
 ||
 |  **↳** [**Instalar o Firefox como .deb no Ubuntu 22.04 sem ser ser pelo Snap**](#instalar-o-firefox-como-deb-no-ubuntu-2204-sem-ser-pelo-snap)|
 |    **↳** [**Passo 1 - remova o Firefox**](#passo-1---remova-o-firefox)|
@@ -280,10 +280,16 @@ sudo apt-get update
 ```shell
 sudo apt install locales -y
 ```
+### Passo 3 - instale os pacotes de idioma
+```shell
+sudo apt-get install language-pack-pt language-pack-pt-base language-pack-gnome-pt language-pack-gnome-pt-base -y
+```
+>[!NOTE]
+>Troque o `pt` ou `pt-base` pela sigla do seu idioma. 
 
 <br>
 
-### Passo 3 - gere o idioma
+### Passo 4 - gere o idioma
 ```shell
 sed -i 's/^# *\(pt_BR.UTF-8\)/\1/' /etc/locale.gen
 locale-gen
@@ -292,7 +298,7 @@ locale-gen
 
 <br>
 
-### Passo 4 - inicialize com o sistema
+### Passo 5 - inicialize com o sistema
 Esse script fará com que a distribuição Ubuntu sempre seja iniciada no idioma escolhido
 ```shell
 echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
