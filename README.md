@@ -15,11 +15,6 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 >[!WARNING]
 > Caso instale algum arquivo desconhecido e que contenha malware, não é garantido que não afete a memória interna do aparelho visto que mesmo que o malware execulte somente dentro da maquina virtual, existe a possibilidade do Ubuntu ler e modificar os arquivos da memória interna. Só nã há a possibilidade de modificar arquivos protegidos de sistema como exemplo os da pasta `Android/data`.
 
-> [!CAUTION]
-> Recomendo que o aparelho tenha pelo menos 40GB de memória interna disponível e 6Gb de memória RAM no mínimo. Pode ser que seja possível usar em aparelhos com 4GB de memória RAM mas nunca foi testado.<br>
-> Não é recomendado usar caso o o aparelho tenha 32Gb de espaço interno e 2gb de memória RAM.<br>
-> Usar o sistema em um dispositivo com processamento mais fraco pode causar sobrecarga e danificar componentes internos devido a demanta de processamento que o Ubuntu solicita.
-
 <br>
 <br>
 
@@ -28,6 +23,8 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |[**Como funciona?**](#como-funciona)|
 ||
 |[**Qual a função desse script?**](#qual-a-função-desse-script)|
+||
+|[**Requisitos mínimos**](#requisitos-mínimos)|
 ||
 |[**Instalações necessárias**](#instalações-necessárias)|
 ||
@@ -86,19 +83,6 @@ h3
 |    **↳** [** **]()|
 -->
 ---
-> [!CAUTION]
-> Área de alto risco, só acesse se tiver certeza do que estará fazendo.
-
-| [**Configurações adb**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md) |
-|---------|
-||
-|[**`Process 9 error` no Termux**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#process-9-error-no-termux)|
-|  **↳** [**Ativar o modo desenvolvedor do Android**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#ativar-o-modo-desenvolvedor-do-android)|
-|  **↳** [**Desativar o monitor de processos fantasmas pelo `feature flags`**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#desativar-o-monitor-de-processos-fantasmas-pelo-feature-flags)|
-|  **↳** [**Dar as permissões de `adb` para o Termux**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#dar-as-permissões-de-adb--para-o-termux)|
-|  **↳** [**Desativar o monitor de processos fantasmas pelo Termux**](https://github.com/allytiago/Ubuntu-no-Android/blob/beta/ADB/README.md#desativar-o-monitor-de-processos-fantasmas-pelo-termux)|
----
-
 
 <br>
 <br>
@@ -120,6 +104,26 @@ O script de instalação deste repositório usa o [PRoot](https://wiki.termux.co
 
 <br>
 <br>
+
+# Requisitos mínimos
+Para o bom funcionamento do sistema, será necessário que atenda às especificações abaixo
+|  Área | Requisito | Recomendável |Aceito, mas não recomendado |
+| ------------- | --- | ------------- | ---- |
+|Sistema operacional| Android 10 ou superior|
+| RAM  | 6GB  | 8GB ou mais | 4GB|
+|Memória interna do aparelho| 128GB¹ | 256GB ou mais|
+|Espaço livre| 40GB de espaço livre na memmória interna|
+|Apps| Termux, aplicativo de VNC da sua escolha|
+|Adicional|Devido restrições do Android, a depender da versão disponível no seu aparelho será necessário desativar o Phantom Process|
+
+>[!NOTE]
+>¹ O sistema não inicia em aparelhos que possuem a memória interna de 64GB ou 32GB
+
+> [!CAUTION]
+> Usar o sistema em um dispositivo com processamento mais fraco pode causar sobrecarga e danificar componentes internos devido a alta demanta de processamento.
+<br>
+<br>
+
 
 # Instalações necessárias
 Para que tudo funcione corretamente, é necessário a instalação do **Termux**, do **Andronix** e do **AVNC**. O Termux irá instalar e executar a distribuição localmente, o Andronix disponibilizará o script de instalação da distribuição e o AVNC irá visualizar e possibilitar o uso da interface gráfica do Ubuntu.
