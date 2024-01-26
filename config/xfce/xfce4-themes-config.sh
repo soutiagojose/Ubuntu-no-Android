@@ -1,5 +1,7 @@
 #!/bin/bash
 
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
+
 vncserver -name remote-desktop -geometry 1920x1080 :1
 echo -e "
 
@@ -24,6 +26,8 @@ echo -e "
 xfconf-query -c xsettings -p /Net/ThemeName -s ZorinBlue-Dark
 xfconf-query -c xsettings -p /Net/IconThemeName -s Uos-fulldistro-icons
 xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitorVNC-0/workspace0/last-image -s /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+wget --tries=20 $extralink/xfce/xfce4-panel.tar.bz2 $folder/root/xfce4-panel.tar.bz2
+chmod +x ./xfce4-panel.tar.bz2
 xfce4-panel-profiles load xfce4-panel.tar.bz2
 mkdir $HOME/.config/gtk-3.0/
 echo 'file:///sdcard' | sudo tee $HOME/.config/gtk-3.0/bookmarks
