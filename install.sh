@@ -19,6 +19,8 @@ if [ "$first" != 1 ];then
 		case `dpkg --print-architecture` in
 		aarch64)
 			archurl="arm64" ;;
+   		arm)
+			archurl="armhf" ;;
 		*)
 			echo "unknown architecture"; exit 1 ;;
 		esac
