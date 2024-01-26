@@ -10,6 +10,16 @@ sudo apt-get clean
 
 mkdir -p ~/.vnc
 
+echo '#!/bin/bash
+export PULSE_SERVER=127.0.0.1
+export LANG
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+echo $$ > /tmp/xsession.pid
+dbus-launch --exit-with-session /usr/bin/startxfce4' > ~/.vnc/xstartup
+
+chmod +x ~/.vnc/xstartup
+
 ## Seletor de idiomas
 export USER=$(whoami)
 HEIGHT=0
@@ -19,7 +29,7 @@ TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
-OPTIONS=(1 "Português (brasileiro)")
+OPTIONS=(1 "Português (Brasil)")
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -34,6 +44,7 @@ case $CHOICE in
 wget --tries=20 $extralink/pt_br/tigervnc/xfce/locale.sh
 wget --tries=20 $extralink/pt_br/config.sh -O locale-config.sh
 wget --tries=20 $extralink/pt_br/tigervnc/xfce/startvncserver -P /usr/local/bin > /dev/null
+sed -i '\|export PULSE_SERVER=127.0.0.1|a LANG=pt_BR.UTF-8|' ~/.vnc/xstartup
 bash locale.sh
 bash locale-config.sh
 ;;
