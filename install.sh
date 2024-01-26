@@ -3,10 +3,12 @@ pkg install wget -y
 folder=ubuntu22-fs
 cur=`pwd`
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
+
 if [ -d "$folder" ]; then
 	first=1
 	echo "skipping downloading"
 fi
+
 tarball="ubuntu22-rootfs.tar.gz"
 
 termux-setup-storage
@@ -20,9 +22,9 @@ if [ "$first" != 1 ];then
 		*)
 			echo "unknown architecture"; exit 1 ;;
 		esac
-        wget "https://partner-images.canonical.com/core/jammy/current/ubuntu-jammy-core-cloudimg-${archurl}-root.tar.gz" -O $tarball
+        	wget "https://partner-images.canonical.com/core/jammy/current/ubuntu-jammy-core-cloudimg-${archurl}-root.tar.gz" -O $tarball
 
-fi
+	fi
 	mkdir -p "$folder"
 	cd "$folder"
 	echo "Decompressing Rootfs, please be patient."
@@ -54,12 +56,12 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/stat" ]; then
 	EOF
 fi
 
-
 if [ ! -f "${cur}/${folder}/proc/fakethings/version" ]; then
 	cat <<- EOF > "${cur}/${folder}/proc/fakethings/version"
-	Linux version 5.4.0-faked (gcc version 4.9.x (Ubuntu in Android fake /proc/version) ) #1 SMP PREEMPT Sun Sep 13 00:00:00 IST 2020
+	Linux version 5.4.0-faked (andronix@fakeandroid) (gcc version 4.9.x (Andronix fake /proc/version) ) #1 SMP PREEMPT Sun Sep 13 00:00:00 IST 2020
 	EOF
 fi
+
 
 if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 	cat <<- EOF > "${cur}/${folder}/proc/fakethings/vmstat"
@@ -210,7 +212,6 @@ command+=" PATH=/usr/local/sbin:/usr/local/bin:/bin:/usr/bin:/sbin:/usr/sbin:/us
 command+=" TERM=\$TERM"
 command+=" LANG=C.UTF-8"
 command+=" /bin/bash --login"
-command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"
 com="\$@"
 if [ -z "\$1" ];then
     exec \$command
@@ -222,7 +223,6 @@ EOM
 mkdir -p ubuntu22-fs/var/tmp
 rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
-wget -q  -P ubuntu22-fs/usr/local/bin > /dev/null
 
 # Script de instalação adicional
 wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
@@ -253,32 +253,35 @@ case $CHOICE in
 echo "Você escolheu a interface LXDE"
 echo "Configurando a instalação do servidor vnc para o LXDE"
 wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"|' ./start-ubuntu.sh
 ;;
 2)
 echo "Você escolheu a interface XFCE"
 echo "Configurando a instalação do servidor vnc para o XFCE"
 wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
-wget --tries=20 $extralink/xfce/xfce4-panel.tar.bz2 $folder/root/xfce4-panel.tar.bz2
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"|' ./start-ubuntu.sh
 chmod +x $folder/root/xfce4-themes-config.sh
 ;;
+
 esac
 
 clear
 
 chmod +x $folder/root/ubuntu-config.sh
 chmod +x $folder/root/ui-config.sh
-chmod +x ubuntu22-fs/usr/local/bin/startvncserver
-
 
 echo "fixing shebang of $bin"
 termux-fix-shebang $bin
+
 echo "making $bin executable"
 chmod +x $bin
+
 echo "removing image for some space"
 rm $tarball
 
 echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
 touch $folder/root/.hushlogin
+
 echo "#!/bin/bash
 rm -rf /etc/resolv.conf
 echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
