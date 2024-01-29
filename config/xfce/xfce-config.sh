@@ -74,16 +74,20 @@ case $CHOICE in
 clear
 echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
+
 # Mudar o idioma para o Português Brasileiro [pt_BR]
 sudo apt-get install locales language-pack-pt language-pack-pt-base language-pack-gnome-pt language-pack-gnome-pt-base -y
+
 ## Gerar o idioma
 sed -i 's/^# *\(pt_BR.UTF-8\)/\1/' /etc/locale.gen
 locale-gen
+
 ## Exportar os comandos de configuração de idioma para ~/.bashrc
 ## Essa configuração necessita de reboot
 echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
+
 # Arquivos necessários para a tradução do VNC
 wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P /usr/local/bin > /dev/null
