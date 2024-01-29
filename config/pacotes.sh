@@ -8,6 +8,8 @@ sudo apt-get install font-vewer -y
 sudo apt-get install tumbler -y
 sudo apt-get install gpg curl -y
 sudo apt-get install bleachbit -y
+sudo apt-get install keyboard-configuration -y
+sudo apt-get install tzdata -y
 
 # PPAs de repositórios
 
