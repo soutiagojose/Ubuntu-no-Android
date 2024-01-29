@@ -22,7 +22,7 @@ sudo apt get install tigervnc-standalone-server tigervnc-common tigervnc-tools -
 sudo apt-get install keyboard-configuration -y  #A configuração da fonte do seu console será atualizada na próxima vez que o seu sistema reinicie.  Se você quiser atualizá-lo agora, execute ‘setupcon’ em um console virtual.
 sudo apt-get install tzdata -y #Execute 'dpkg-reconfigure tzdata' se quiser alterar a configuração
 
-sudo apt-get install software-properties-common -y
+sudo apt-get install software-properties-common --no-install-recommends -y
 #sudo apt-get install nautilus -y
 #sudo apt install neofetch -y
 sudo apt-get install gpg curl -y
