@@ -3,6 +3,9 @@
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
 
 wget --tries=20 $extralink/config.sh -O $folder/root/config.sh
+chmod +x config.sh
+
+bash config.sh
 
 # Instalar pacotes necessários da interface
 sudo apt-get install lxde-core lxterminal lxappearance --no-install-recommends -y
