@@ -553,9 +553,9 @@ sed -i 's|Exec=/opt/figma-linux/figma-linux|Exec=/opt/figma-linux/figma-linux --
 # Lista de aparelhos usados nos testes
 
 > [!NOTE]
-> 🟢 Funcionou/Passou
-> 🔴 Não funcionou
-> 🟠 Inconclusivo/Sem dados suficientes ou ainda sendo testado
+> 🟢 Funcionou/Passou. <br>
+> 🔴 Não funcionou. <br>
+> 🟠 Inconclusivo/Sem dados suficientes ou ainda sendo testado. <br>
 
 
 | Dispositivo | Versão do Android | Memória interna |Memória RAM | Status |
@@ -565,5 +565,5 @@ sed -i 's|Exec=/opt/figma-linux/figma-linux|Exec=/opt/figma-linux/figma-linux --
 |Samsung Galaxy Tab A9+| 13 | 64GB  | 4GB | 🔴 |
 |Xiaomi Mi Pad 3       | 7  | 64GB  | 4GB | 🔴 |
 
-> [!INFO]
+> [!NOTE]
 > Caso seu aparelho não esteja na lista e ao tentar fazer a instalação note que não deu certo, [relate o problema aqui](https://github.com/allytiago/Ubuntu-no-Android/issues).
