@@ -261,7 +261,6 @@ echo "Você escolheu a interface XFCE"
 echo "Configurando a instalação do servidor vnc para o XFCE"
 wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
-chmod +x $folder/root/xfce4-themes-config.sh
 ;;
 3)
 echo "Versão sem interface gráfica"
