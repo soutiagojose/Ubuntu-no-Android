@@ -73,10 +73,10 @@ wget --tries=20 "$extralink/pt_br/tigervnc/lxde/startvnc" -P /usr/local/bin > /d
 wget --tries=20 "$extralink/pt_br/tigervnc/lxde/startvncserver" -P /usr/local/bin > /dev/null
 
 sed -i 's|export LANG|LANG=pt_BR.UTF-8\nexport LANG|' ~/.vnc/xstartup
-
-
 ;;
 esac
+
+
 
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/startvncserver
