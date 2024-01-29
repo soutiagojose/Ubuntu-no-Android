@@ -238,7 +238,7 @@ MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following o
 export PORT=1
 
 OPTIONS=(1 "Ubuntu LXDE"
-	 2 "Ubuntu XFCE"
+	     2 "Ubuntu XFCE"
          3 "No GUI")
 
 CHOICE=$(dialog --clear \
@@ -271,7 +271,6 @@ esac
 
 clear
 
-chmod +x $folder/root/ubuntu-config.sh
 chmod +x $folder/root/ui-config.sh
 
 echo "fixing shebang of $bin"
@@ -293,18 +292,16 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
-bash ~/ubuntu-config.sh
 bash ~/ui-config.sh
 
 chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/startvncserver
 
-#if [ ! -f /usr/bin/vncserver ]; then
-#    apt install tigervnc-standalone-server -y
-#fi
+if [ ! -f /usr/bin/vncserver ]; then
+    apt install tigervnc-standalone-server -y
+fi
 
-rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
 
