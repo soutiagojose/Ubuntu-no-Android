@@ -10,6 +10,27 @@ chmod +x pacotes.sh
 
 bash config.sh
 
+clear
+echo -e  "\033[0;32mXFCE UI\033[0m"
+echo -e "
+
+
+
+
+"
+echo -e "
+
+
+
+
+"
+echo -e "
+
+
+
+
+"
+
 # Instalar pacotes necessários da interface
 sudo apt-get install lxde-core lxterminal lxappearance --no-install-recommends -y
 sudo apt-get clean
