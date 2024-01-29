@@ -146,12 +146,24 @@ Para que tudo funcione corretamente, é necessário a instalação do **Termux**
 <br>
 
 ## Passo 1 - instalando o Ubuntu
-1. Copie o código abaixo e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
+1. Escolha entre uma das versões abaixo, copie e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
  > [!IMPORTANT]
- > O instalador ainda está em fase de testes. Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
+ > Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
 
+>[!NOTE]
+> A versão `estável` é a finalizada, com menos problemas de instalação.
+>A versão `beta` é a de testes. Antes da versão `estável` ser atualizada, a versão `beta` que será usada para testar, encontrar problemas e trazer melhorias. Esta é uma versão com muito mais problemas.
+
+**Estável**
 ```shell
 pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
+```
+
+**Beta**
+> [!IMPORTANT]
+> Só escolha esta versão se a intenção for a de contribuir com melhorias ou adições de novas funções.
+```shell
+pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
 ```
 
 > [!NOTE]
