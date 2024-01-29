@@ -84,8 +84,7 @@ else
     if [ $? -eq 0 ]; then
         echo "Download concluído com sucesso."
     else
-        echo "Erro ao baixar o arquivo VNC."
-        exit 1
+        echo "Erro ao baixar o arquivo vnc."
     fi
 fi
 
@@ -98,8 +97,7 @@ else
     if [ $? -eq 0 ]; then
         echo "Download concluído com sucesso."
     else
-        echo "Erro ao baixar o arquivo VNC."
-        exit 1
+        echo "Erro ao baixar o arquivo startvnc."
     fi
 fi
 
@@ -112,8 +110,7 @@ else
     if [ $? -eq 0 ]; then
         echo "Download concluído com sucesso."
     else
-        echo "Erro ao baixar o arquivo VNC."
-        exit 1
+        echo "Erro ao baixar o arquivo startvncserver."
     fi
 fi
 
@@ -126,8 +123,7 @@ else
     if [ $? -eq 0 ]; then
         echo "Download concluído com sucesso."
     else
-        echo "Erro ao baixar o arquivo VNC."
-        exit 1
+        echo "Erro ao baixar o arquivo stopvnc."
     fi
 fi
 
@@ -140,8 +136,7 @@ else
     if [ $? -eq 0 ]; then
         echo "Download concluído com sucesso."
     else
-        echo "Erro ao baixar o arquivo VNC."
-        exit 1
+        echo "Erro ao baixar o arquivo vncpasswd."
     fi
 fi
 
