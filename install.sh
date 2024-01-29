@@ -227,8 +227,6 @@ rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 
 # Script de instalação adicional
-#wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
-
 
 #GUI de interface
 export USER=$(whoami)
