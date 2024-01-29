@@ -1,6 +1,6 @@
 #!/bin/bash
 
-extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 
 wget --tries=20 "$extralink/config.sh"
 wget --tries=20 "$extralink/pacotes.sh"
@@ -93,8 +93,8 @@ echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
 wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P /usr/local/bin > /dev/null
-wget --tries=20 "$extralink/pt_br/tigervnc/lxde/startvnc" -P /usr/local/bin > /dev/null
-wget --tries=20 "$extralink/pt_br/tigervnc/lxde/startvncserver" -P /usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvnc" -P /usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P /usr/local/bin > /dev/null
 sed -i 's|export LANG|LANG=pt_BR.UTF-8\nexport LANG|' ~/.vnc/xstartup
 ;;
 2)
