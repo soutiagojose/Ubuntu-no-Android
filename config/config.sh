@@ -31,5 +31,4 @@ fi
 
 wget $extralink/icons/Uos-fulldistro-icons.tar.xz
 
-
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
