@@ -72,6 +72,8 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |    **↳** [**Resolvendo a inicialização do Vivaldi**](#resolvendo-a-inicialização-do-vivaldi-web-browser)|
 |    **↳** [**Resolvendo a inicialização do VSCode**](#resolvendo-a-inicialização-do-vscode)|
 |    **↳** [**Resolvendo a inicialização do Figma Linux**](#resolvendo-a-inicialização-do-figma-linux)|
+||
+|[**Lista de aparelhos usados nos testes**](#lista-de-aparelhos-usados-nos-testes)|
 <!--
 h1
 |[** **]()|
@@ -106,7 +108,8 @@ O script de instalação deste repositório usa o [PRoot](https://wiki.termux.co
 <br>
 
 # Requisitos mínimos
-Para o bom funcionamento do sistema, será necessário que atenda às especificações abaixo
+Para o bom funcionamento do sistema, será necessário que atenda às especificações abaixo. Também é possível conferir quais dispositvos funcionam e quais não nessa lista: [aparelhos usados nos testes](#lista-de-aparelhos-usados-nos-testes)
+
 |  Área | Requisito | Recomendável |Aceito, mas não recomendado |
 | ------------- | --- | ------------- | ---- |
 |Sistema operacional| Android 10 ou superior|
@@ -543,3 +546,24 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 ```shell
 sed -i 's|Exec=/opt/figma-linux/figma-linux|Exec=/opt/figma-linux/figma-linux --no-sandbox|' /usr/share/applications/figma-linux.desktop
 ```
+
+<br>
+<br>
+
+# Lista de aparelhos usados nos testes
+
+> [!NOTE]
+> 🟢 Funcionou/Passou
+> 🔴 Não funcionou
+> 🟠 Inconclusivo/Sem dados suficientes ou ainda sendo testado
+
+
+| Dispositivo | Versão do Android | Memória interna |Memória RAM | Status |
+| ------------- | --- | ------------- | ---- | --- |
+|Samsung Galaxy S20 FE | 13 | 128GB | 6GB | 🟢 |
+|Motorola Moto G22     | 12 | 128GB | 4GB | 🟢 |
+|Samsung Galaxy Tab A9+| 13 | 64GB  | 4GB | 🔴 |
+|Xiaomi Mi Pad 3       | 7  | 64GB  | 4GB | 🔴 |
+
+> [!INFO]
+> Caso seu aparelho não esteja na lista e ao tentar fazer a instalação note que não deu certo, [relate o problema aqui](https://github.com/allytiago/Ubuntu-no-Android/issues).
