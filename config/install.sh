@@ -6,14 +6,23 @@ extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/co
 #Get the necessary components
 sudo apt-get update
 
+sudo apt-get install sudo -y
+sudo apt-get install wget -y
+sudo apt-get install nano -y
+sudo apt-get install dialog -y
+sudo apt-get install inetutils-tools -y
+sudo apt-get install dbus-x11 -y
+sudo apt-get install exo-utils -y
+sudo apt get install tigervnc-standalone-server tigervnc-common tigervnc-tools --no-install-recommends -y
+
 #sudo apt install udisks2 -y
 #echo "" > /var/lib/dpkg/info/udisks2.postinst
 #sudo dpkg --configure -a
 #sudo apt-mark hold udisks2
 sudo apt-get install keyboard-configuration -y  #A configuração da fonte do seu console será atualizada na próxima vez que o seu sistema reinicie.  Se você quiser atualizá-lo agora, execute ‘setupcon’ em um console virtual.
 sudo apt-get install tzdata -y #Execute 'dpkg-reconfigure tzdata' se quiser alterar a configuração
-sudo apt-get install sudo wget nano inetutils-tools dialog -y
-sudo apt-get install exo-utils tigervnc-standalone-server tigervnc-common tigervnc-tools dbus-x11 --no-install-recommends -y
+
+sudo apt-get install exo-utils  dbus-x11 --no-install-recommends -y
 sudo apt-get install software-properties-common -y
 #sudo apt-get install nautilus -y
 #sudo apt install neofetch -y
