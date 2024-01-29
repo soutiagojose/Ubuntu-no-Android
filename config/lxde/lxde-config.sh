@@ -37,7 +37,8 @@ TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
-OPTIONS=(1 "Português (brasileiro)")
+OPTIONS=(1 "Português (brasileiro)"
+         2 "Default (en_US)")
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -51,32 +52,98 @@ case $CHOICE in
 1)
 echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
-
 # Mudar o idioma para o Português Brasileiro [pt_BR]
 sudo apt-get install locales language-pack-pt language-pack-pt-base language-pack-gnome-pt language-pack-gnome-pt-base -y
-
 ## Gerar o idioma
 sed -i 's/^# *\(pt_BR.UTF-8\)/\1/' /etc/locale.gen
 locale-gen
-
 ## Exportar os comandos de configuração de idioma para ~/.bashrc
 ## Essa configuração necessita de reboot
 echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
-
 # Arquivos necessários para a tradução do VNC
 wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/lxde/startvnc" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/lxde/startvncserver" -P /usr/local/bin > /dev/null
-
 sed -i 's|export LANG|LANG=pt_BR.UTF-8\nexport LANG|' ~/.vnc/xstartup
+;;
+2)
+sed -i 's|export LANG|LANG=en_US.UTF-8\nexport LANG|' ~/.vnc/xstartup
 ;;
 esac
 
+if [ -e /usr/local/bin/vnc ]; then
+  echo ""
+else
+  wget --tries=20 "$extralink/tigervnc/vnc" -P /usr/local/bin > /dev/null
 
+    # Verificar se o download foi bem-sucedido
+    if [ $? -eq 0 ]; then
+        echo "Download concluído com sucesso."
+    else
+        echo "Erro ao baixar o arquivo VNC."
+        exit 1
+    fi
+fi
+
+if [ -e /usr/local/bin/startvnc ]; then
+  echo ""
+else
+  wget --tries=20 "$extralink/tigervnc/startvnc" -P /usr/local/bin > /dev/null
+
+    # Verificar se o download foi bem-sucedido
+    if [ $? -eq 0 ]; then
+        echo "Download concluído com sucesso."
+    else
+        echo "Erro ao baixar o arquivo VNC."
+        exit 1
+    fi
+fi
+
+if [ -e /usr/local/bin/startvncserver ]; then
+  echo ""
+else
+  wget --tries=20 "$extralink/tigervnc/startvncserver" -P /usr/local/bin > /dev/null
+
+    # Verificar se o download foi bem-sucedido
+    if [ $? -eq 0 ]; then
+        echo "Download concluído com sucesso."
+    else
+        echo "Erro ao baixar o arquivo VNC."
+        exit 1
+    fi
+fi
+
+if [ -e /usr/local/bin/stopvnc ]; then
+  echo ""
+else
+  wget --tries=20 "$extralink/tigervnc/stopvnc" -P /usr/local/bin > /dev/null
+
+    # Verificar se o download foi bem-sucedido
+    if [ $? -eq 0 ]; then
+        echo "Download concluído com sucesso."
+    else
+        echo "Erro ao baixar o arquivo VNC."
+        exit 1
+    fi
+fi
+
+if [ -e /usr/local/bin/vncpasswd ]; then
+  echo ""
+else
+  wget --tries=20 "$extralink/tigervnc/vncpasswd" -P /usr/local/bin > /dev/null
+
+    # Verificar se o download foi bem-sucedido
+    if [ $? -eq 0 ]; then
+        echo "Download concluído com sucesso."
+    else
+        echo "Erro ao baixar o arquivo VNC."
+        exit 1
+    fi
+fi
 
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/startvncserver
