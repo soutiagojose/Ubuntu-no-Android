@@ -2,8 +2,11 @@
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
 
-wget --tries=20 $extralink/config.sh -O $folder/root/config.sh
+wget --tries=20 "$extralink/config.sh" -O $folder/root/config.sh
+wget --tries=20 "$extralink/pacotes.sh"
+
 chmod +x config.sh
+chmod +x pacotes.sh
 
 bash config.sh
 
@@ -282,3 +285,5 @@ vncserver -kill
 rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
 rm -rf Uos-fulldistro-icons.tar.xz
+
+bash pacotes.sh
