@@ -6,7 +6,7 @@ WIDTH=0
 CHOICE_HEIGHT=5
 BACKTITLE="Seleção de resolução"
 TITLE="vncserver-start"
-MENU="Escolha alguma das seguintes opções:"
+MENU="Choose any of the following options:"
 export PORT=1
 
 
