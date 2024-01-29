@@ -227,7 +227,7 @@ rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 
 # Script de instalação adicional
-wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
+#wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
 
 
 #GUI de interface
@@ -240,7 +240,8 @@ MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following o
 export PORT=1
 
 OPTIONS=(1 "Ubuntu LXDE"
-	 2 "Ubuntu XFCE")
+	 2 "Ubuntu XFCE"
+         3 "No GUI")
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -263,6 +264,9 @@ echo "Configurando a instalação do servidor vnc para o XFCE"
 wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 chmod +x $folder/root/xfce4-themes-config.sh
+;;
+3)
+echo "Versão sem interface gráfica"
 ;;
 
 esac
@@ -298,9 +302,9 @@ chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/startvncserver
 
-if [ ! -f /usr/bin/vncserver ]; then
-    apt install tigervnc-standalone-server -y
-fi
+#if [ ! -f /usr/bin/vncserver ]; then
+#    apt install tigervnc-standalone-server -y
+#fi
 
 rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
