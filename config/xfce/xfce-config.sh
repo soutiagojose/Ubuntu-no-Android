@@ -2,8 +2,8 @@
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
 
-wget --tries=20 $extralink/config.sh -O $folder/root/config.sh
-wget --tries=20 $extralink/pacotes.sh
+wget --tries=20 "$extralink/config.sh" -O $folder/root/config.sh
+wget --tries=20 "$extralink/pacotes.sh"
 
 chmod +x config.sh
 chmod +x pacotes.sh
