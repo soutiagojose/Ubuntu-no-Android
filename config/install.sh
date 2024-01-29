@@ -12,7 +12,7 @@ sudo apt-get install nano -y
 sudo apt-get install dialog -y
 sudo apt-get install inetutils-tools -y
 sudo apt-get install dbus-x11 -y
-sudo apt-get install exo-utils -y
+sudo apt-get install exo-utils --no-install-recommends -y
 sudo apt get install tigervnc-standalone-server tigervnc-common tigervnc-tools --no-install-recommends -y
 
 #sudo apt install udisks2 -y
