@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install software-properties-common --no-install-recommends -y
+sudo apt-get install software-properties-common -y
 
 # PPAs de repositórios
 ## PPA do Chromium
