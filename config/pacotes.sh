@@ -41,8 +41,6 @@ sudo add-apt-repository ppa:libreoffice/ppa -y
 ## PPA do Tema do ZorinOS
 sudo add-apt-repository ppa:zorinos/stable -y
 
-
-
 ## PPA do VSCode
 sudo apt-get install gpg -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
