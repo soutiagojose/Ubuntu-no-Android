@@ -54,8 +54,8 @@ GEO="-geometry $custom" PORT=$port vnc
 ;;
 esac
 
-sudo apt-get install keyboard-configuration tzdata -y
+#sudo apt-get install keyboard-configuration tzdata -y
 
-sudo sed -i 's|sudo apt-get install keyboard-configuration tzdata -y||' /usr/local/bin/startvncserver
+#sudo sed -i 's|sudo apt-get install keyboard-configuration tzdata -y||' /usr/local/bin/startvncserver
 
 bash --login
