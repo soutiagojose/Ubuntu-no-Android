@@ -53,7 +53,6 @@ sudo apt-get install curl -y
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
-
 sudo apt update
 
 # Instalar os pacotes
@@ -71,7 +70,6 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
 sudo apt-get install nautilus -y
-sudo apt-get install neofetch -y
 sudo apt-get install gdebi -y
 sudo apt-get install font-vewer -y
 sudo apt-get install tumbler -y
