@@ -3,6 +3,23 @@
 sudo apt-get install software-properties-common --no-install-recommends -y
 
 # PPAs de repositórios
+## PPA do Chromium
+sudo add-apt-repository ppa:chromium-team/beta -y
+### Será necessário remover a lista atual para usar uma lista referente a uma versão antiga, a Bionic
+rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
+### Adicionar a nova lista
+echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
+# deb-src https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic  main' | sudo tee /etc/apt/sources.list.d/chromium-team-ubuntu-beta-bionic.list
+### Esse comando dá a prioridade de uso para a PPA ao invés do instalador snad e faz com que seja possível baixar a versão mais recente
+echo 'Package: *
+Pin: release o=LP-PPA-chromium-team-beta
+Pin-Priority: 1001
+
+Package: chromium*
+Pin: origin "LP-PPA-chromium-team-beta"
+Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/chromium
+# Atualizar a lista de repositórios para adicionar as novas listas
+sudo apt update
 
 ## PPA do Firefox
 sudo add-apt-repository ppa:mozillateam/ppa -y
@@ -16,8 +33,7 @@ sudo add-apt-repository ppa:libreoffice/ppa -y
 ## PPA do Tema do ZorinOS
 sudo add-apt-repository ppa:zorinos/stable -y
 
-## PPA do Chromium
-sudo add-apt-repository ppa:chromium-team/beta -y
+
 
 ## PPA do VSCode
 sudo apt-get install gpg -y
@@ -44,7 +60,7 @@ Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/mozilla-firefox
 echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
 
 ## Chromium
-### Será necessário remover a lista atual para usar uma lista referente a uma versão antiga, a Bionic
+
 rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
 
 ### Adicionar a nova lista
