@@ -23,6 +23,14 @@ sudo apt update
 
 ## PPA do Firefox
 sudo add-apt-repository ppa:mozillateam/ppa -y
+### Esse comando dá a prioridade de uso para a PPA ao invés do instalador snad e faz com que seja possível baixar o Firefox mais recente
+echo 'Package: *
+Pin: release o=LP-PPA-mozillateam
+Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/mozilla-firefox
+
+### Dá a possibilidade do Firefox atualizar quando houver uma atualização
+echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
+
 
 ## PPA do Inkscape
 sudo add-apt-repository ppa:inkscape.dev/stable -y
