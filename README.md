@@ -134,9 +134,9 @@ Para que tudo funcione corretamente, é necessário a instalação do **Termux**
 |------|
 ||
 |**Termux**|
-|<a href="https://github.com/termux/termux-app/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.termux/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a>|
+|<a href="https://github.com/termux/termux-app/releases" target="_blank"><img width="144px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.termux/" target="_blank"><img width="144px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a>|
 |**AVNC**|
-|<a href="https://github.com/gujjwal00/avnc/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.gaurav.avnc/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a> <a href="https://play.google.com/store/apps/details?id=com.gaurav.avnc" target="_blank"><img width="256px" src="/badges/get-it-on-google-play.png" alt="Baixe pelo Google Play Store"></a>|
+|<a href="https://github.com/gujjwal00/avnc/releases" target="_blank"><img width="144px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.gaurav.avnc/" target="_blank"><img width="144px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a> <a href="https://play.google.com/store/apps/details?id=com.gaurav.avnc" target="_blank"><img width="144px" src="/badges/get-it-on-google-play.png" alt="Baixe pelo Google Play Store"></a>|
 > [!WARNING]
 > O Termux da Google Play Store está desatualizado e não há mais suporte oficial.
 
