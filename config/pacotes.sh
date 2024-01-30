@@ -56,35 +56,6 @@ sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://b
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 
 
-# Resolução de problemas
-
-## Firefox
-### Esse comando dá a prioridade de uso para a PPA ao invés do instalador snad e faz com que seja possível baixar o Firefox mais recente
-echo 'Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-
-### Dá a possibilidade do Firefox atualizar quando houver uma atualização
-echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | sudo tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
-
-## Chromium
-
-rm -rf /etc/apt/sources.list.d/chromium-team-ubuntu-beta-jammy.list
-
-### Adicionar a nova lista
-echo 'deb https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic main
-# deb-src https://ppa.launchpadcontent.net/chromium-team/beta/ubuntu/ bionic  main' | sudo tee /etc/apt/sources.list.d/chromium-team-ubuntu-beta-bionic.list
-
-### Esse comando dá a prioridade de uso para a PPA ao invés do instalador snad e faz com que seja possível baixar a versão mais recente
-echo 'Package: *
-Pin: release o=LP-PPA-chromium-team-beta
-Pin-Priority: 1001
-
-Package: chromium*
-Pin: origin "LP-PPA-chromium-team-beta"
-Pin-Priority: 1001' | sudo tee /etc/apt/preferences.d/chromium
-
-# Atualizar a lista de repositórios para adicionar as novas listas
 sudo apt update
 
 # Instalar os pacotes
