@@ -238,7 +238,7 @@ MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following o
 export PORT=1
 
 OPTIONS=(1 "Ubuntu LXDE"
-	     2 "Ubuntu XFCE"
+	 2 "Ubuntu XFCE"
          3 "No GUI")
 
 CHOICE=$(dialog --clear \
