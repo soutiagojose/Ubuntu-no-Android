@@ -297,9 +297,9 @@ chmod +x /usr/local/bin/stopvnc
 chmod +x /usr/local/bin/startvnc
 chmod +x /usr/local/bin/startvncserver
 
-if [ ! -f /usr/bin/vncserver ]; then
-    apt install tigervnc-standalone-server -y
-fi
+#if [ ! -f /usr/bin/vncserver ]; then
+#    apt install tigervnc-standalone-server -y
+#fi
 
 rm -rf /root/ui-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
