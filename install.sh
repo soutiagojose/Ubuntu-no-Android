@@ -300,6 +300,7 @@ chmod +x /usr/local/bin/startvncserver
 #if [ ! -f /usr/bin/vncserver ]; then
 #    apt install tigervnc-standalone-server -y
 #fi
+sudo apt-get full-upgrade -y
 
 rm -rf /root/ui-config.sh
 rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
