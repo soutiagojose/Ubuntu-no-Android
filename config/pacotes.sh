@@ -9,7 +9,7 @@ sudo apt-get install tumbler -y
 sudo apt-get install gpg curl -y
 sudo apt-get install bleachbit -y
 sudo apt-get install keyboard-configuration -y
-sudo apt-get install tzdata -y
+sudo apt-get install tzdata -y #dpkg-reconfigure tzdata
 
 # PPAs de repositórios
 
