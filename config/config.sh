@@ -25,12 +25,14 @@ if [ ! -d "/usr/share/backgrounds/" ];then
   mkdir -p "/usr/share/backgrounds/"
 fi
 
-wget $extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
+wget "$extralink/wallpapers/unsplash/john-towner-JgOeRuGD_Y4.jpg"  -O /usr/share/backgrounds/john-towner-JgOeRuGD_Y4.jpg
 
 # Baixando pacote de icones
-if [ ! -d "/usr/share/icons/" ];then
-  mkdir -p "/usr/share/icons/"
+if [ ! -d "/usr/share/icons" ];then
+  mkdir -p "/usr/share/icons"
 fi
+
+
 
 wget "$extralink/icons/Uos-fulldistro-icons.tar.xz"
 
