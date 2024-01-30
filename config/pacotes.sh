@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get install software-properties-common -y
+sudo apt-get install software-properties-common -y # o problema pode estar aqui
 
 # PPAs de repositórios
 ## PPA do Chromium
