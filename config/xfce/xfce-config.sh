@@ -1,6 +1,6 @@
 #!/bin/bash
 
-extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 
 wget --tries=20 "$extralink/config.sh" -O $folder/root/config.sh
 wget --tries=20 "$extralink/pacotes.sh"
