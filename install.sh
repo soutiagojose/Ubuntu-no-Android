@@ -229,7 +229,45 @@ mkdir -p ubuntu22-fs/var/tmp
 rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 
+# Seletor de idiomas
+
+
+
 # Script de instalação adicional
+export USER=$(whoami)
+HEIGHT=0
+WIDTH=0
+CHOICE_HEIGHT=5
+TITLE="Select"
+MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
+export PORT=1
+
+OPTIONS=(1 "Default (en_US)"
+		 2 "Português brasileiro (pt_BR)"
+        )
+
+CHOICE=$(dialog --clear \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+1)
+echo ""
+;;
+2)
+echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
+echo "As configurações de idioma já serão instaladas..."
+echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
+echo "As configurações de idioma já serão instaladas..."
+
+# Mudar o idioma para o Português Brasileiro [pt_BR]
+
+;;
+esac
 
 #GUI de interface
 export USER=$(whoami)
