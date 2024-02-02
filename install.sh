@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-pkg install wget pulseaudio -y 
+pkg install wget pulseaudio dbus -y 
 folder=ubuntu22-fs
 cur=`pwd`
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
@@ -257,6 +257,17 @@ clear
 case $CHOICE in
 1)
 echo ""
+wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+chmod +x ubuntu22-fs/usr/local/bin/vnc
+chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
+chmod +x ubuntu22-fs/usr/local/bin/startvnc
+chmod +x ubuntu22-fs/usr/local/bin/stopvnc
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
+clear
 ;;
 2)
 echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
@@ -265,6 +276,7 @@ echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
 wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-base.sh
 chmod +x $folder/root/language-base.sh
+clear
 ;;
 esac
 
@@ -310,6 +322,13 @@ sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/fi
 ;;
 4)
 echo "Gnome UI"
+wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
+chmod +x $folder/root/ui-config.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+mkdir /data/data/com.termux/files/usr/var/run/dbus
+sed -i '\|unset LD_PRELOAD|a dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket' ./start-ubuntu.sh
+#dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
 ;;
 
 
