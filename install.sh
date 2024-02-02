@@ -237,9 +237,11 @@ TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
-OPTIONS=(1 "Ubuntu LXDE"
-	 2 "Ubuntu XFCE"
-         3 "No GUI")
+OPTIONS=(1 "No GUI"
+		 2 "LXDE"
+		 3 "XFCE"
+		 4 "Gnome"
+        )
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -251,22 +253,25 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
 1)
-echo "Você escolheu a interface LXDE"
-echo "Configurando a instalação do servidor vnc para o LXDE"
+echo ""
+;;
+2)
+echo "LXDE UI"
+
 wget --tries=20 "$extralink/lxde/lxde-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
-2)
-echo "Você escolheu a interface XFCE"
-echo "Configurando a instalação do servidor vnc para o XFCE"
+3)
+echo "XFCE UI"
 wget --tries=20 "$extralink/xfce/xfce-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
-3)
-echo "Versão sem interface gráfica"
+4)
+echo "Gnome UI"
 ;;
+
 
 esac
 
@@ -303,6 +308,7 @@ chmod +x /usr/local/bin/startvncserver
 sudo apt-get full-upgrade -y
 
 rm -rf /root/ui-config.sh
-rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
+rm -rf ~/.bash_profile
+clear" > $folder/root/.bash_profile 
 
 bash $bin
