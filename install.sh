@@ -336,6 +336,7 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
+bash ~/language-base.sh
 bash ~/ui-config.sh
 
 chmod +x /usr/local/bin/stopvnc
