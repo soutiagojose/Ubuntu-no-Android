@@ -33,6 +33,7 @@ echo -e "
 clear
 # Instalar pacotes necessários da interface
 sudo apt-get install gnome-shell gnome-terminal gnome-tweaks gnome-shell-extensions gnome-shell-extension-ubuntu-dock -y
+sudo apt-get install  yaru-theme-gtk yaru-theme-icon -y
 sudo apt-get clean
 
 # Pasta resposável pela execução do vnc
@@ -45,6 +46,8 @@ service dbus start
 gnome-shell --x11" > ~/.vnc/xstartup
 
 chmod +x ~/.vnc/xstartup
+for file in $(find /usr -type f -iname "*login1*"); do rm -rf $file 
+done
 
 ## Seletor de idiomas
 export USER=$(whoami)
