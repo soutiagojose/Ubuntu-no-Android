@@ -304,6 +304,11 @@ clear
 case $CHOICE in
 1)
 echo ""
+rm -rf ubuntu22-fs/usr/local/bin/vnc
+rm -rf ubuntu22-fs/usr/local/bin/vncpasswd
+rm -rf ubuntu22-fs/usr/local/bin/startvnc
+rm -rf ubuntu22-fs/usr/local/bin/stopvnc
+rm -rf ubuntu22-fs/usr/local/bin/startvncserver
 ;;
 2)
 echo "LXDE UI"
