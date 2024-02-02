@@ -179,7 +179,6 @@ cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
 pulseaudio --start
-## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
 command="proot"
 command+=" --kill-on-exit"
@@ -361,13 +360,6 @@ clear
 bash ~/language-base.sh
 bash ~/ui-config.sh
 
-chmod +x /usr/local/bin/stopvnc
-chmod +x /usr/local/bin/startvnc
-chmod +x /usr/local/bin/startvncserver
-
-#if [ ! -f /usr/bin/vncserver ]; then
-#    apt install tigervnc-standalone-server -y
-#fi
 sudo apt-get full-upgrade -y
 
 rm -rf /root/ui-config.sh
