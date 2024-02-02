@@ -182,7 +182,7 @@ cat > $bin <<- EOM
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
-dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+#dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 command="proot"
 command+=" --kill-on-exit"
 command+=" --link2symlink"
@@ -203,7 +203,7 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
-command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
+#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
 command+=" -b ${cur}/${folder}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${folder}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${folder}/proc/fakethings/version:/proc/version"
