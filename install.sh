@@ -173,13 +173,17 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
+mkdir /data/data/com.termux/files/usr/var/run/dbus
+
 bin=start-ubuntu.sh
 echo "writing launch script"
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
 pulseaudio --start
+## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
+dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 command="proot"
 command+=" --kill-on-exit"
 command+=" --link2symlink"
@@ -200,6 +204,7 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
+command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
 command+=" -b ${cur}/${folder}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${folder}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${folder}/proc/fakethings/version:/proc/version"
@@ -311,7 +316,6 @@ rm -rf ubuntu22-fs/usr/local/bin/startvncserver
 ;;
 2)
 echo "LXDE UI"
-
 wget --tries=20 "$extralink/lxde/lxde-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
@@ -327,10 +331,6 @@ echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
-mkdir /data/data/com.termux/files/usr/var/run/dbus
-sed -i '\|unset LD_PRELOAD|a dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket' ./start-ubuntu.sh
-dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
-sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
 ;;
 
 
