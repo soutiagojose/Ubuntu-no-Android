@@ -338,13 +338,13 @@ esac
 
 clear
 
-echo "fixing shebang of $bin"
+#echo "fixing shebang of $bin"
 termux-fix-shebang $bin
 
-echo "making $bin executable"
+#echo "making $bin executable"
 chmod +x $bin
 
-echo "removing image for some space"
+#echo "removing image for some space"
 #rm $tarball
 
 echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
