@@ -1,5 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-pkg install wget pulseaudio dbus -y 
+pkg install wget dbus -y 
 folder=ubuntu22-fs
 cur=`pwd`
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
@@ -180,7 +180,6 @@ echo "writing launch script"
 cat > $bin <<- EOM
 #!/bin/bash
 cd \$(dirname \$0)
-pulseaudio --start
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
 dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
