@@ -69,10 +69,6 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 # Para Chromium Web Browser
 sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
-sudo apt-get install nautilus -y
-sudo apt-get install gdebi -y
-sudo apt-get install font-vewer -y
-sudo apt-get install tumbler -y
-sudo apt-get install bleachbit -y
+sudo apt-get install nautilus gdebi font-fiewer tumbler bleachbit gedit -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y #dpkg-reconfigure tzdata
