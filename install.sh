@@ -357,8 +357,6 @@ clear
 bash ~/language-base.sh
 bash ~/ui-config.sh
 
-sudo apt-get full-upgrade -y
-
 rm -rf /root/ui-config.sh
 rm -rf ~/.bash_profile
 clear" > $folder/root/.bash_profile 
