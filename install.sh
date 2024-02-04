@@ -173,7 +173,7 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
-mkdir /data/data/com.termux/files/usr/var/run/dbus
+
 
 bin=start-ubuntu.sh
 echo "writing launch script"
@@ -229,8 +229,6 @@ rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 
 # Seletor de idiomas
-
-
 
 # Script de instalação adicional
 export USER=$(whoami)
@@ -327,6 +325,10 @@ sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/fi
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
+mkdir /data/data/com.termux/files/usr/var/run/dbus
+rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 esac
