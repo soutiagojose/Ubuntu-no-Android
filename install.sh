@@ -174,6 +174,7 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 fi
 
 
+mkdir /data/data/com.termux/files/usr/var/run/dbus
 
 bin=start-ubuntu.sh
 echo "writing launch script"
@@ -329,7 +330,6 @@ sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/fi
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-mkdir /data/data/com.termux/files/usr/var/run/dbus
 rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
 dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 ls
