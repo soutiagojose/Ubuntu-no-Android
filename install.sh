@@ -175,6 +175,9 @@ fi
 
 # Parte da resolução do problema do gnome e do systemd
 mkdir /data/data/com.termux/files/usr/var/run/dbus
+rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+
 
 bin=start-ubuntu.sh
 echo "writing launch script"
@@ -229,6 +232,13 @@ else
     \$command -c "\$com"
 fi
 EOM
+
+#sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
+#sed -i '/command="proot"/i \
+#if [ ! -e "$system_bus_socket_path" ]; then\n\
+#    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid\n\
+#    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path\n\
+#fi\n' ./start-ubuntu.sh
 
 mkdir -p ubuntu22-fs/var/tmp
 rm -rf ubuntu22-fs/usr/local/bin/*
@@ -330,15 +340,6 @@ sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/fi
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
-dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
-ls
-#sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
-#sed -i '/command="proot"/i \
-#if [ ! -e "$system_bus_socket_path" ]; then\n\
-#    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid\n\
-#    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path\n\
-#fi\n' ./start-ubuntu.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 esac
