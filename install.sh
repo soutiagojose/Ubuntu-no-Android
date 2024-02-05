@@ -182,6 +182,10 @@ cat > $bin <<- EOM
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
+if [ ! -e "$system_bus_socket_path" ]; then
+    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path
+fi
 command="proot"
 command+=" --kill-on-exit"
 command+=" --link2symlink"
@@ -202,6 +206,7 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
+command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
 command+=" -b ${cur}/${folder}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${folder}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${folder}/proc/fakethings/version:/proc/version"
@@ -289,8 +294,7 @@ export PORT=1
 OPTIONS=(1 "No GUI"
 		 2 "LXDE"
 		 3 "XFCE"
-		 4 "Gnome"
-        )
+		 4 "Gnome")
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -329,7 +333,12 @@ mkdir /data/data/com.termux/files/usr/var/run/dbus
 rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
 dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 ls
-sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
+#sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
+#sed -i '/command="proot"/i \
+#if [ ! -e "$system_bus_socket_path" ]; then\n\
+#    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid\n\
+#    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path\n\
+#fi\n' ./start-ubuntu.sh
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 esac
