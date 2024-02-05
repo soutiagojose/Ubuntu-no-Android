@@ -173,7 +173,7 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
-
+# Resolve o problema do gnome e do systemd
 mkdir /data/data/com.termux/files/usr/var/run/dbus
 
 bin=start-ubuntu.sh
