@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rm -rf /usr/local/bin/startvncserver
+bash ~/language*-base.sh
+
+if [ ! -e "language*-base.sh" ]; then
+    wget --tries=20 "$extralink/tigervnc/startvncserver" -P usr/local/bin > /dev/null
+fi
+
+bash ~/ui-config.sh
