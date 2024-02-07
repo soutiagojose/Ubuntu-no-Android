@@ -204,7 +204,7 @@ cat > $bin <<- EOM
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
-if [ ! -e "$system_bus_socket_path" ]; then
+if [ ! -e "system_bus_socket" ]; then
     rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
     dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path
 fi
