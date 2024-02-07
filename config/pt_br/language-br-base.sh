@@ -13,6 +13,12 @@ echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
 
+rm -rf /usr/local/bin/vnc #remove o resíduo do vnc
+rm -rf /usr/local/bin/vncpasswd #remove o resíduo do vncpasswd
+rm -rf /usr/local/bin/startvnc #remove o resíduo do starvnc
+rm -rf /usr/local/bin/stopvnc #remove o resíduo do stopvnc
+rm -rf /usr/local/bin/startvncserver #remove o resíduo do startvncserver
+
 # Arquivos necessários para a tradução do VNC
 wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P /usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P /usr/local/bin > /dev/null
