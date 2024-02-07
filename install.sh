@@ -262,7 +262,6 @@ export USER=$(whoami)
 HEIGHT=0
 WIDTH=0
 CHOICE_HEIGHT=5
-TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
@@ -271,7 +270,6 @@ OPTIONS=(1 "Default (en_US)"
         )
 
 CHOICE=$(dialog --clear \
-                --title "$TITLE" \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
@@ -281,11 +279,11 @@ clear
 case $CHOICE in
 1)
 echo ""
-wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20 "$extralink/pt_br/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20 "$extralink/startserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
 chmod +x ubuntu22-fs/usr/local/bin/vnc
 chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/startvnc
@@ -298,8 +296,8 @@ echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
 echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
-wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-base.sh
-chmod +x $folder/root/language-base.sh
+wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-br-base.sh
+chmod +x $folder/root/language-br-base.sh
 clear
 ;;
 esac
@@ -309,7 +307,6 @@ export USER=$(whoami)
 HEIGHT=0
 WIDTH=0
 CHOICE_HEIGHT=5
-TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
@@ -319,7 +316,6 @@ OPTIONS=(1 "No GUI"
 		 4 "Gnome")
 
 CHOICE=$(dialog --clear \
-                --title "$TITLE" \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
                 "${OPTIONS[@]}" \
@@ -339,19 +335,19 @@ rm -rf ubuntu22-fs/usr/local/bin/startvncserver
 echo "LXDE UI"
 wget --tries=20 "$extralink/lxde/lxde-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 3)
 echo "XFCE UI"
 wget --tries=20 "$extralink/xfce/xfce-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 4)
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 esac
 
@@ -376,10 +372,8 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
-bash ~/language-base.sh
-bash ~/ui-config.sh
+bash ~/language*-base.sh
 
-rm -rf /root/ui-config.sh
 rm -rf ~/.bash_profile
 clear" > $folder/root/.bash_profile 
 
