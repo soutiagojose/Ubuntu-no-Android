@@ -182,7 +182,6 @@ if grep -q '<listen>tcp:host=localhost,bind=*,port=6667,family=ipv4</listen>' /d
    grep -q '<listen>unix:tmpdir=/tmp</listen>' /data/data/com.termux/files/usr/share/dbus-1/system.conf &&
    grep -q '<auth>ANONYMOUS</auth>' /data/data/com.termux/files/usr/share/dbus-1/system.conf &&
    grep -q '<allow_anonymous/>' /data/data/com.termux/files/usr/share/dbus-1/system.conf; then
-else
 sed -i 's|<auth>EXTERNAL</auth>|<listen>tcp:host=localhost,bind=*,port=6667,family=ipv4</listen>\
   <listen>unix:tmpdir=/tmp</listen>\
   <auth>EXTERNAL</auth>\
