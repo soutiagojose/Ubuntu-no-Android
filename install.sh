@@ -363,7 +363,7 @@ termux-fix-shebang $bin
 chmod +x $bin
 
 #echo "removing image for some space"
-#rm $tarball
+rm $tarball
 
 echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
 touch $folder/root/.hushlogin
