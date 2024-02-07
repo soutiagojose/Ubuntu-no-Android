@@ -72,6 +72,8 @@ O repositório Ubuntu no Android permite instalar o Ubuntu ARM64 em dispositivos
 |    **↳** [**Resolvendo a inicialização do Vivaldi**](#resolvendo-a-inicialização-do-vivaldi-web-browser)|
 |    **↳** [**Resolvendo a inicialização do VSCode**](#resolvendo-a-inicialização-do-vscode)|
 |    **↳** [**Resolvendo a inicialização do Figma Linux**](#resolvendo-a-inicialização-do-figma-linux)|
+||
+|[**Lista de aparelhos usados nos testes**](#lista-de-aparelhos-usados-nos-testes)|
 <!--
 h1
 |[** **]()|
@@ -106,7 +108,8 @@ O script de instalação deste repositório usa o [PRoot](https://wiki.termux.co
 <br>
 
 # Requisitos mínimos
-Para o bom funcionamento do sistema, será necessário que atenda às especificações abaixo
+Para o bom funcionamento do sistema, será necessário que atenda às especificações abaixo. Também é possível conferir quais dispositvos funcionam e quais não nessa lista: [aparelhos usados nos testes](#lista-de-aparelhos-usados-nos-testes)
+
 |  Área | Requisito | Recomendável |Aceito, mas não recomendado |
 | ------------- | --- | ------------- | ---- |
 |Sistema operacional| Android 10 ou superior|
@@ -131,9 +134,9 @@ Para que tudo funcione corretamente, é necessário a instalação do **Termux**
 |------|
 ||
 |**Termux**|
-|<a href="https://github.com/termux/termux-app/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.termux/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a>|
+|<a href="https://github.com/termux/termux-app/releases" target="_blank"><img width="196px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.termux/" target="_blank"><img width="196px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a>|
 |**AVNC**|
-|<a href="https://github.com/gujjwal00/avnc/releases" target="_blank"><img width="256px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.gaurav.avnc/" target="_blank"><img width="256px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a> <a href="https://play.google.com/store/apps/details?id=com.gaurav.avnc" target="_blank"><img width="256px" src="/badges/get-it-on-google-play.png" alt="Baixe pelo Google Play Store"></a>|
+|<a href="https://github.com/gujjwal00/avnc/releases" target="_blank"><img width="196px" src="/badges/get-it-on-github.png" alt="Baixe pelo GitHub"></a> <a href="https://f-droid.org/pt_BR/packages/com.gaurav.avnc/" target="_blank"><img width="196px" src="/badges/get-it-on-fdroid.png" alt="Baixe pelo F-Droid"></a> <a href="https://play.google.com/store/apps/details?id=com.gaurav.avnc" target="_blank"><img width="196px" src="/badges/get-it-on-google-play.png" alt="Baixe pelo Google Play Store"></a>|
 > [!WARNING]
 > O Termux da Google Play Store está desatualizado e não há mais suporte oficial.
 
@@ -146,12 +149,24 @@ Para que tudo funcione corretamente, é necessário a instalação do **Termux**
 <br>
 
 ## Passo 1 - instalando o Ubuntu
-1. Copie o código abaixo e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
+1. Escolha entre uma das versões abaixo, copie e depois cole o código no termux usando o atalho `ctrl + alt + v` caso esteja usando um teclado ou clique e pessione na área da tela próxima do cifrão (`$`), clique em `paste` para colar e após isso, tecle `enter`.
  > [!IMPORTANT]
- > O instalador ainda está em fase de testes. Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
+ > Caso ache algum problema, relate na opção "[Issues](https://github.com/allytiago/Ubuntu-no-Android/issues)".
 
+>[!NOTE]
+> A versão `estável` é a finalizada, com menos problemas de instalação.
+>A versão `beta` é a de testes. Antes da versão `estável` ser atualizada, a versão `beta` que será usada para testar, encontrar problemas e trazer melhorias. Esta é uma versão com muito mais problemas.
+
+**Estável**
 ```shell
 pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
+```
+
+**Beta**
+> [!IMPORTANT]
+> Só escolha esta versão se a intenção for a de contribuir com melhorias ou adições de novas funções.
+```shell
+pkg update -y && pkg install wget curl proot tar -y && wget https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/install.sh -O ubuntu-install.sh && chmod +x ubuntu-install.sh && bash ubuntu-install.sh
 ```
 
 > [!NOTE]
@@ -531,3 +546,24 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 ```shell
 sed -i 's|Exec=/opt/figma-linux/figma-linux|Exec=/opt/figma-linux/figma-linux --no-sandbox|' /usr/share/applications/figma-linux.desktop
 ```
+
+<br>
+<br>
+
+# Lista de aparelhos usados nos testes
+
+> [!NOTE]
+> 🟢 Funcionou/Passou. <br>
+> 🔴 Não funcionou. <br>
+> 🟠 Inconclusivo/Sem dados suficientes ou ainda sendo testado. <br>
+
+
+| Dispositivo | Versão do Android | Memória interna |Memória RAM | Status |
+| ------------- | --- | ------------- | ---- | --- |
+|Samsung Galaxy S20 FE | 13 | 128GB | 6GB | 🟢 |
+|Motorola Moto G22     | 12 | 128GB | 4GB | 🟢 |
+|Samsung Galaxy Tab A9+| 13 | 64GB  | 4GB | 🔴 |
+|Xiaomi Mi Pad 3       | 7  | 64GB  | 4GB | 🔴 |
+
+> [!NOTE]
+> Caso seu aparelho não esteja na lista e ao tentar fazer a instalação note que não deu certo, [relate o problema aqui](https://github.com/allytiago/Ubuntu-no-Android/issues).

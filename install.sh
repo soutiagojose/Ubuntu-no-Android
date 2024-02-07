@@ -1,8 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
-pkg install wget -y 
+pkg install wget dbus -y 
 folder=ubuntu22-fs
 cur=`pwd`
-extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/main/config"
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 
 if [ -d "$folder" ]; then
 	first=1
@@ -173,6 +173,29 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 	EOF
 fi
 
+# Parte da resolução do problema do gnome e do systemd
+mkdir /data/data/com.termux/files/usr/var/run/dbus
+rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+
+if grep -q "<listen>tcp:host=localhost" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null &&
+   grep -q "<listen>unix:tmpdir=/tmp</listen>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null &&
+   grep -q "<auth>ANONYMOUS</auth>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null &&
+   grep -q "<allow_anonymous/>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null; then
+	echo ""
+	else
+	echo ""
+	sed -i 's|<auth>EXTERNAL</auth>|<listen>tcp:host=localhost,bind=*,port=6667,family=ipv4</listen>\
+   <listen>unix:tmpdir=/tmp</listen>\
+   <auth>EXTERNAL</auth>\
+   <auth>ANONYMOUS</auth>\
+   <allow_anonymous/>|' /data/data/com.termux/files/usr/share/dbus-1/system.conf
+fi
+
+rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+
+
 bin=start-ubuntu.sh
 echo "writing launch script"
 cat > $bin <<- EOM
@@ -180,6 +203,10 @@ cat > $bin <<- EOM
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
+if [ ! -e "$system_bus_socket_path" ]; then
+    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path
+fi
 command="proot"
 command+=" --kill-on-exit"
 command+=" --link2symlink"
@@ -200,6 +227,7 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
+command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
 command+=" -b ${cur}/${folder}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${folder}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${folder}/proc/fakethings/version:/proc/version"
@@ -226,11 +254,9 @@ mkdir -p ubuntu22-fs/var/tmp
 rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 
+# Seletor de idiomas
+
 # Script de instalação adicional
-wget --tries=20 $extralink/install.sh -O $folder/root/ubuntu-config.sh
-
-
-#GUI de interface
 export USER=$(whoami)
 HEIGHT=0
 WIDTH=0
@@ -239,8 +265,9 @@ TITLE="Select"
 MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
 export PORT=1
 
-OPTIONS=(1 "Ubuntu LXDE"
-	 2 "Ubuntu XFCE")
+OPTIONS=(1 "Default (en_US)"
+		 2 "Português brasileiro (pt_BR)"
+        )
 
 CHOICE=$(dialog --clear \
                 --title "$TITLE" \
@@ -252,33 +279,90 @@ CHOICE=$(dialog --clear \
 clear
 case $CHOICE in
 1)
-echo "Você escolheu a interface LXDE"
-echo "Configurando a instalação do servidor vnc para o LXDE"
-wget --tries=20 $extralink/lxde/lxde-config.sh -O $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+echo ""
+wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+chmod +x ubuntu22-fs/usr/local/bin/vnc
+chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
+chmod +x ubuntu22-fs/usr/local/bin/startvnc
+chmod +x ubuntu22-fs/usr/local/bin/stopvnc
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
+clear
 ;;
 2)
-echo "Você escolheu a interface XFCE"
-echo "Configurando a instalação do servidor vnc para o XFCE"
-wget --tries=20 $extralink/xfce/xfce-config.sh -O $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
-chmod +x $folder/root/xfce4-themes-config.sh
+echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
+echo "As configurações de idioma já serão instaladas..."
+echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
+echo "As configurações de idioma já serão instaladas..."
+wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-base.sh
+chmod +x $folder/root/language-base.sh
+clear
 ;;
+esac
 
+#GUI de interface
+export USER=$(whoami)
+HEIGHT=0
+WIDTH=0
+CHOICE_HEIGHT=5
+TITLE="Select"
+MENU="Escolha algumas das seguintes opções: \n \nChoose any of the following options: "
+export PORT=1
+
+OPTIONS=(1 "No GUI"
+		 2 "LXDE"
+		 3 "XFCE"
+		 4 "Gnome")
+
+CHOICE=$(dialog --clear \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+1)
+echo ""
+rm -rf ubuntu22-fs/usr/local/bin/vnc
+rm -rf ubuntu22-fs/usr/local/bin/vncpasswd
+rm -rf ubuntu22-fs/usr/local/bin/startvnc
+rm -rf ubuntu22-fs/usr/local/bin/stopvnc
+rm -rf ubuntu22-fs/usr/local/bin/startvncserver
+;;
+2)
+echo "LXDE UI"
+wget --tries=20 "$extralink/lxde/lxde-config.sh" -O $folder/root/ui-config.sh
+chmod +x $folder/root/ui-config.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+;;
+3)
+echo "XFCE UI"
+wget --tries=20 "$extralink/xfce/xfce-config.sh" -O $folder/root/ui-config.sh
+chmod +x $folder/root/ui-config.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+;;
+4)
+echo "Gnome UI"
+wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
+chmod +x $folder/root/ui-config.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+;;
 esac
 
 clear
 
-chmod +x $folder/root/ubuntu-config.sh
-chmod +x $folder/root/ui-config.sh
-
-echo "fixing shebang of $bin"
+#echo "fixing shebang of $bin"
 termux-fix-shebang $bin
 
-echo "making $bin executable"
+#echo "making $bin executable"
 chmod +x $bin
 
-echo "removing image for some space"
+#echo "removing image for some space"
 rm $tarball
 
 echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
@@ -291,19 +375,11 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
-bash ~/ubuntu-config.sh
+bash ~/language-base.sh
 bash ~/ui-config.sh
 
-chmod +x /usr/local/bin/stopvnc
-chmod +x /usr/local/bin/startvnc
-chmod +x /usr/local/bin/startvncserver
-
-if [ ! -f /usr/bin/vncserver ]; then
-    apt install tigervnc-standalone-server -y
-fi
-
-rm -rf /root/ubuntu-config.sh
 rm -rf /root/ui-config.sh
-rm -rf ~/.bash_profile" > $folder/root/.bash_profile 
+rm -rf ~/.bash_profile
+clear" > $folder/root/.bash_profile 
 
 bash $bin
