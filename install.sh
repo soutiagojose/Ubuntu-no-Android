@@ -174,17 +174,17 @@ if [ ! -f "${cur}/${folder}/proc/fakethings/vmstat" ]; then
 fi
 
 # Parte da resolução do problema do gnome e do systemd
-mkdir /data/data/com.termux/files/usr/var/run/dbus
-rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
-dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+mkdir /data/data/com.termux/files/usr/var/run/dbus # criar a pasta que o dbus funcionará
+rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid #remover o pid para que o dbus-daemon funcione corretamente
+dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket #cria o arquivo
 
-if grep -q "<listen>tcp:host=localhost" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null &&
-   grep -q "<listen>unix:tmpdir=/tmp</listen>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null &&
-   grep -q "<auth>ANONYMOUS</auth>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null &&
-   grep -q "<allow_anonymous/>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null; then
+if grep -q "<listen>tcp:host=localhost" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null && # verifica se existe a linha com esse texto
+   grep -q "<listen>unix:tmpdir=/tmp</listen>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null && # verifica se existe a linha com esse texto
+   grep -q "<auth>ANONYMOUS</auth>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null && # verifica se existe a linha com esse texto
+   grep -q "<allow_anonymous/>" /data/data/com.termux/files/usr/share/dbus-1/system.conf > /dev/null ; then # verifica se existe a linha com esse texto
 	echo ""
 	else
-	echo ""
+	echo "" # caso não exista as linhas verificadas, alterar e adicionar as linhas no arquivo usando o sed
 	sed -i 's|<auth>EXTERNAL</auth>|<listen>tcp:host=localhost,bind=*,port=6667,family=ipv4</listen>\
    <listen>unix:tmpdir=/tmp</listen>\
    <auth>EXTERNAL</auth>\
@@ -192,6 +192,7 @@ if grep -q "<listen>tcp:host=localhost" /data/data/com.termux/files/usr/share/db
    <allow_anonymous/>|' /data/data/com.termux/files/usr/share/dbus-1/system.conf
 fi
 
+# É necessário repetir o processo toda vez que alterar o system.conf
 rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
 dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 
@@ -350,6 +351,10 @@ sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/fi
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
+<<<<<<< HEAD
+sed -i '\|command+=" -b /proc/self/fd:/dev/fd"|a command+=" -b system_bus_socket:/run/dbus/system_bus_socket"' ./start-ubuntu.sh
+=======
+>>>>>>> b193908a896dbeb3bb43fb9c0cd2b14c44240a4b
 sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
 ;;
 esac
