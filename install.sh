@@ -178,16 +178,11 @@ mkdir /data/data/com.termux/files/usr/var/run/dbus
 rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
 dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 
-if grep -q '<listen>tcp:host=localhost,bind=*,port=6667,family=ipv4</listen>' /data/data/com.termux/files/usr/share/dbus-1/system.conf &&
-   grep -q '<listen>unix:tmpdir=/tmp</listen>' /data/data/com.termux/files/usr/share/dbus-1/system.conf &&
-   grep -q '<auth>ANONYMOUS</auth>' /data/data/com.termux/files/usr/share/dbus-1/system.conf &&
-   grep -q '<allow_anonymous/>' /data/data/com.termux/files/usr/share/dbus-1/system.conf; then
 sed -i 's|<auth>EXTERNAL</auth>|<listen>tcp:host=localhost,bind=*,port=6667,family=ipv4</listen>\
-  <listen>unix:tmpdir=/tmp</listen>\
-  <auth>EXTERNAL</auth>\
-  <auth>ANONYMOUS</auth>\
-  <allow_anonymous/>|' /data/data/com.termux/files/usr/share/dbus-1/system.conf
-fi
+   <listen>unix:tmpdir=/tmp</listen>\
+   <auth>EXTERNAL</auth>\
+   <auth>ANONYMOUS</auth>\
+   <allow_anonymous/>|' /data/data/com.termux/files/usr/share/dbus-1/system.conf
 
 bin=start-ubuntu.sh
 echo "writing launch script"
