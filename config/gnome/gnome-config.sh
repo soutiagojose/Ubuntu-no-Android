@@ -24,8 +24,6 @@ mkdir -p ~/.vnc
 echo "#!/bin/bash
 export PULSE_SERVER=127.0.0.1
 export LANG
-export XDG_CURRENT_DESKTOP="GNOME"
-#service dbus start
 gnome-shell --x11" > ~/.vnc/xstartup
 
 chmod +x ~/.vnc/xstartup
