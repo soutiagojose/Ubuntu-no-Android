@@ -285,7 +285,7 @@ wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /
 wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/startserver" -P ubuntu22-fs/usr/local/bin > /dev/null
 chmod +x ubuntu22-fs/usr/local/bin/vnc
 chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/startvnc
@@ -339,19 +339,19 @@ rm -rf ubuntu22-fs/usr/local/bin/startvncserver
 echo "LXDE UI"
 wget --tries=20 "$extralink/lxde/lxde-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startserver"' ./start-ubuntu.sh
 ;;
 3)
 echo "XFCE UI"
 wget --tries=20 "$extralink/xfce/xfce-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startserver"' ./start-ubuntu.sh
 ;;
 4)
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startserver"' ./start-ubuntu.sh
 ;;
 esac
 
