@@ -308,6 +308,9 @@ chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/startvnc
 chmod +x ubuntu22-fs/usr/local/bin/stopvnc
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
+sed -i 's|LANG=C.UTF-8|LANG=pt_BR.UTF-8|' start-ubuntu.sh
+
+
 clear
 ;;
 esac
@@ -392,5 +395,6 @@ wget --tries=20 "$extralink/startconfig-1" -O ubuntu22-fs/usr/local/bin/startvnc
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 
 bash $bin
+sed -i 's|LANG=.*.UTF-8|LANG=C.UTF-8|' $bin
 echo -e  "\033[4;35m =========================================================== \033[0m"
 bash $bin #reboot
