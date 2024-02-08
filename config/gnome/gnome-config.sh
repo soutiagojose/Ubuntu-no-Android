@@ -42,3 +42,5 @@ gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgr
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
+
+bash pacotes.sh
