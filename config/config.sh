@@ -8,6 +8,8 @@ sudo apt-get full-upgrade -y
 
 # Instalar pacotes necessários
 sudo apt-get install sudo wget nano dialog inetutils-tools dbus-x11 -y
+sudo apt-get install keyboard-configuration -y
+sudo apt-get install tzdata -y #dpkg-reconfigure tzdata
 sudo apt-get install exo-utils --no-install-recommends -y
 sudo apt-get install tigervnc-standalone-server tigervnc-common tigervnc-tools --no-install-recommends -y
 #sudo apt install udisks2 -y
