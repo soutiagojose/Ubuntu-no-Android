@@ -12,7 +12,9 @@ locale-gen
 echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
-# Arquivos necessários para a tradução do VNC
 
-
+if [ ! -f /usr/local/bin/startvncserver ]; then
+    wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P usr/local/bin > /dev/null
+    chmod +x usr/local/bin/startvncserver
+fi
 
