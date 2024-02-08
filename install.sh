@@ -294,8 +294,8 @@ clear
 2)
 echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
-wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-br-base.sh
-chmod +x $folder/root/language-br-base.sh
+wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-base.sh
+chmod +x $folder/root/language-base.sh
 
 wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/null
 wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
