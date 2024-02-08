@@ -9,3 +9,4 @@ if [ ! -f language-base.sh ]; then
 fi
 
 bash ~/ui-config.sh
+bash ~/language-base.sh
