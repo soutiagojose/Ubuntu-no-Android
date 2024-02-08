@@ -23,7 +23,6 @@ sudo apt-get clean
 mkdir -p ~/.vnc
 echo "#!/bin/bash
 export PULSE_SERVER=127.0.0.1
-export LANG
 gnome-shell --x11" > ~/.vnc/xstartup
 
 chmod +x ~/.vnc/xstartup
