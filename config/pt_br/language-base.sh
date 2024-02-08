@@ -4,7 +4,7 @@ extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/co
 sudo apt-get install locales language-pack-pt language-pack-pt-base language-pack-gnome-pt language-pack-gnome-pt-base -y
 
 ## Gerar o idioma
-#sed -i 's/^# *\(pt_BR.UTF-8\)/\1/' /etc/locale.gen
+sed -i 's/^# *\(pt_BR.UTF-8\)/\1/' /etc/locale.gen
 locale-gen
 
 ## Exportar os comandos de configuração de idioma para ~/.bashrc
