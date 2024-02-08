@@ -1,10 +1,11 @@
 #!/bin/bash
 
 rm -rf /usr/local/bin/startvncserver
-bash ~/language*-base.sh
+bash ~/language-base.sh
 
-if [ ! -e "language*-base.sh" ]; then
+if [ ! -f language-base.sh ]; then
     wget --tries=20 "$extralink/tigervnc/startvncserver" -P usr/local/bin > /dev/null
+    chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 fi
 
 bash ~/ui-config.sh
