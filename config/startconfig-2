@@ -30,6 +30,15 @@ if [ ! -f language-base.sh ]; then
 fi
 
 echo -e  "\033[0;34m =========================================================== \033[0m"
-bash ~/ui-config.sh
 
-startvnc
+sudo apt-get install keyboard-configuration -y
+sudo apt-get install tzdata -y #dpkg-reconfigure tzdata
+
+echo "
+
+
+
+"
+echo "Execução sussedida"
+
+#bash ~/ui-config.sh
