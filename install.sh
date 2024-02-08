@@ -308,9 +308,6 @@ chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/startvnc
 chmod +x ubuntu22-fs/usr/local/bin/stopvnc
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
-sed -i 's|LANG=C.UTF-8|LANG=pt_BR.UTF-8|' start-ubuntu.sh
-
-
 clear
 ;;
 esac
@@ -386,15 +383,12 @@ apt update -y && apt install sudo wget -y > /dev/null
 clear
 
 bash ~/language-base.sh
+bash ~/ui-config.sh
 
 rm -rf ~/.bash_profile
+rm -rf ~/language-base.sh
+rm -rf ~/ui-config.sh
 clear" > $folder/root/.bash_profile
 
-rm -rf ubuntu22-fs/usr/local/bin/startvncserver #remove o resíduo do startvncserver
-wget --tries=20 "$extralink/startconfig-1" -O ubuntu22-fs/usr/local/bin/startvncserver > /dev/null
-chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 
 bash $bin
-sed -i 's|LANG=.*.UTF-8|LANG=C.UTF-8|' $bin
-echo -e  "\033[4;35m =========================================================== \033[0m"
-bash $bin #reboot
