@@ -31,6 +31,7 @@ fi
 
 echo -e  "\033[0;34m =========================================================== \033[0m"
 
+sudo apt-get install dialog -y
 sudo apt-get install keyboard-configuration -y
 sudo apt-get install tzdata -y #dpkg-reconfigure tzdata
 
