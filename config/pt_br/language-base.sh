@@ -29,7 +29,7 @@ fi
 
 if [ ! -f /usr/local/bin/startvncserver ]; then
     echo -e  "\033[42m =========================================================== \033[0m"
-    wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P usr/local/bin > /dev/null
-    chmod +x usr/local/bin/startvncserver
+    wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P /usr/local/bin > /dev/null
+    chmod +x /usr/local/bin/startvncserver
 fi
 
