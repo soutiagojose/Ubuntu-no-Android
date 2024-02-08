@@ -12,6 +12,6 @@ if [ ! -f language-base.sh ]; then
     chmod +x /usr/local/bin/startvncserver
 fi
 echo -e  "\033[0;34m =========================================================== \033[0m"
-#bash ~/ui-config.sh
+bash ~/ui-config.sh
 bash ~/language-base.sh
 echo -e  "\033[0;32m =========================================================== \033[0m"
