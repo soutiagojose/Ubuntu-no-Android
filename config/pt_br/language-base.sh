@@ -16,8 +16,5 @@ echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
 sed -i 's|export LANG|export LANG=pt_BR.UTF-8\nexport LANG|' ~/.vnc/xstartup
 # Arquivos necessários para a tradução do VNC
 
-if [ ! -e "/usr/local/bin/startvncserver" ]; then
-    wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
-    chmod +x ubuntu22-fs/usr/local/bin/startvncserver
-fi
+
 
