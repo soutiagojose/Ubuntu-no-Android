@@ -9,9 +9,23 @@ locale-gen
 
 ## Exportar os comandos de configuração de idioma para ~/.bashrc
 ### Essa configuração necessita de reboot
-echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
-echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
-echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
+if grep -q "export LC_ALL=pt_BR.UTF-8" ~/.bashrc > /dev/null ; then
+    echo ""
+	else
+	echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
+fi
+
+if grep -q "export LANG=pt_BR.UTF-8" ~/.bashrc > /dev/null ; then
+    echo ""
+	else
+	echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
+fi
+
+if grep -q "export LANGUAGE=pt_BR.UTF-8" ~/.bashrc > /dev/null ; then
+    echo ""
+	else
+	echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
+fi
 
 if [ ! -f /usr/local/bin/startvncserver ]; then
     echo -e  "\033[42m =========================================================== \033[0m"
