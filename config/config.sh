@@ -34,3 +34,5 @@ fi
 wget --tries=20 "$extralink/icons/Uos-fulldistro-icons.tar.xz" -P /usr/share/icons
 
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
+
+rm -rf config.sh
