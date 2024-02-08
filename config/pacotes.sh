@@ -70,5 +70,3 @@ sed -i 's|Exec=/usr/share/code/code|Exec=/usr/share/code/code --no-sandbox|' /us
 sed -i 's|Exec=chromium-browser|Exec=chromium-browser --no-sandbox|' /usr/share/applications/chromium-browser.desktop
 
 sudo apt-get install nautilus gdebi font-fiewer tumbler bleachbit gedit -y
-sudo apt-get install keyboard-configuration -y
-sudo apt-get install tzdata -y #dpkg-reconfigure tzdata
