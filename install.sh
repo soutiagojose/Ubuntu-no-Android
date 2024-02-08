@@ -388,7 +388,7 @@ rm -rf ~/.bash_profile
 clear" > $folder/root/.bash_profile
 
 rm -rf ubuntu22-fs/usr/local/bin/startvncserver #remove o resíduo do startvncserver
-wget --tries=20 "$extralink/startconfig-1" -O /usr/local/bin/startvncserver > /dev/null
+wget --tries=20 "$extralink/startconfig-1" -O ubuntu22-fs/usr/local/bin/startvncserver > /dev/null
 chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 
 bash $bin
