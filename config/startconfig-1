@@ -14,7 +14,7 @@ echo "
 "
 echo -e  "\033[0;31m =========================================================== \033[0m"
 rm -rf /usr/local/bin/startvncserver
-wget --tries=20 "$extralink/starconfig-2" -O /usr/local/bin/startvncserver > /dev/null
+wget --tries=20 "$extralink/startconfig-2" -O /usr/local/bin/startvncserver > /dev/null
 chmod +x /usr/local/bin/startvncserver
 echo "
 
