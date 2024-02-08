@@ -1,16 +1,12 @@
 #!/bin/bash
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
-
 wget --tries=20 "$extralink/config.sh"
-wget --tries=20 "$extralink/pacotes.sh"
-
 chmod +x config.sh
-chmod +x pacotes.sh
-
 bash config.sh
-
 clear
+
+
 echo -e  "\033[0;32mGnome UI\033[0m"
 
 clear
@@ -42,10 +38,5 @@ gsettings set org.gnome.desktop.background picture-uri 'file:///usr/share/backgr
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
-
-bash pacotes.sh
-
-rm -rf config.sh
-rm -rf pacotes.sh
 
 
