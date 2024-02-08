@@ -33,3 +33,4 @@ if [ ! -f /usr/local/bin/startvncserver ]; then
     chmod +x /usr/local/bin/startvncserver
 fi
 
+rm -rf language-base.sh
