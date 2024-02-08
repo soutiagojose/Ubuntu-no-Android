@@ -1,16 +1,12 @@
 #!/bin/bash
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
-
 wget --tries=20 "$extralink/config.sh"
-wget --tries=20 "$extralink/pacotes.sh"
-
 chmod +x config.sh
-chmod +x pacotes.sh
-
 bash config.sh
-
 clear
+
+
 echo -e  "\033[0;32mLXDE UI\033[0m"
 
 clear
@@ -232,9 +228,4 @@ sed -i 's|wallpaper=/etc/alternatives/desktop-background|wallpaper=/usr/share/ba
 vncserver -kill
 rm -rf /tmp/.X$pt-lock
 rm -rf /tmp/.X11-unix/X$pt
-#rm -rf Uos-fulldistro-icons.tar.xz
-
-bash pacotes.sh
-
-rm -rf config.sh
-rm -rf pacotes.sh
+rm -rf Uos-fulldistro-icons.tar.xz
