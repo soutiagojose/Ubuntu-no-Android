@@ -283,7 +283,7 @@ wget --tries=20 "$extralink/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/nu
 wget --tries=20 "$extralink/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
 wget --tries=20 "$extralink/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
 wget --tries=20 "$extralink/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
-wget --tries=20 "$extralink/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/tigervnc/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
 chmod +x ubuntu22-fs/usr/local/bin/vnc
 chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
 chmod +x ubuntu22-fs/usr/local/bin/startvnc
@@ -296,6 +296,17 @@ echo -e  "\033[0;32mVocê escolheu o idioma Português Brasileiro\033[0m"
 echo "As configurações de idioma já serão instaladas..."
 wget --tries=20 "$extralink/pt_br/language-base.sh" -O $folder/root/language-br-base.sh
 chmod +x $folder/root/language-br-base.sh
+wget --tries=20 "$extralink/pt_br/tigervnc/vnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/vncpasswd" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/stopvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvnc" -P ubuntu22-fs/usr/local/bin > /dev/null
+wget --tries=20 "$extralink/pt_br/tigervnc/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+
+chmod +x ubuntu22-fs/usr/local/bin/vnc
+chmod +x ubuntu22-fs/usr/local/bin/vncpasswd
+chmod +x ubuntu22-fs/usr/local/bin/startvnc
+chmod +x ubuntu22-fs/usr/local/bin/stopvnc
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 clear
 ;;
 esac
@@ -374,5 +385,9 @@ bash ~/language*-base.sh
 
 rm -rf ~/.bash_profile
 clear" > $folder/root/.bash_profile 
+
+rm -rf ubuntu22-fs/usr/local/bin/startvncserver #remove o resíduo do startvncserver
+wget --tries=20 "$extralink/startvncserver" -P ubuntu22-fs/usr/local/bin > /dev/null
+chmod +x ubuntu22-fs/usr/local/bin/startvncserver
 
 bash $bin
