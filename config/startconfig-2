@@ -1,4 +1,5 @@
 #!/bin/bash
+extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 
 echo -e  "\033[0;34m =========================================================== \033[0m"
 echo -e  "\033[0;34m =========================================================== \033[0m"
