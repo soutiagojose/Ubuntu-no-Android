@@ -382,11 +382,9 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
-bash ~/language-base.sh
 bash ~/ui-config.sh
 
 rm -rf ~/.bash_profile
-rm -rf ~/language-base.sh
 rm -rf ~/ui-config.sh
 clear" > $folder/root/.bash_profile
 
