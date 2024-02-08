@@ -12,8 +12,6 @@ locale-gen
 echo 'export LC_ALL=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANG=pt_BR.UTF-8' >> ~/.bashrc
 echo 'export LANGUAGE=pt_BR.UTF-8' >> ~/.bashrc
-
-sed -i 's|export LANG|export LANG=pt_BR.UTF-8\nexport LANG|' ~/.vnc/xstartup
 # Arquivos necessários para a tradução do VNC
 
 
