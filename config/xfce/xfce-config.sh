@@ -64,3 +64,6 @@ rm -rf xfce4-panel.tar.bz2
 rm -rf Uos-fulldistro-icons.tar.xz
 
 bash pacotes.sh
+
+rm -rf config.sh
+rm -rf pacotes.sh
