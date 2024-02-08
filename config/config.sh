@@ -1,6 +1,8 @@
 #!/bin/bash
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
+wget --tries=20 "$extralink/pacotes.sh"
+chmod +x pacotes.sh
 
 # Atualizar lista e pacotes
 sudo apt-get update
@@ -35,4 +37,13 @@ wget --tries=20 "$extralink/icons/Uos-fulldistro-icons.tar.xz" -P /usr/share/ico
 
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
+
+bash language-base.sh
+bash pacotes.sh
+
 rm -rf config.sh
+rm -rf pacotes.sh
+rm -rf language-base.sh
+
+
+#Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files
