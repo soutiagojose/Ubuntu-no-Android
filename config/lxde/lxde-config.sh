@@ -24,7 +24,6 @@ mkdir -p ~/.vnc
 echo "#!/bin/bash
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 export PULSE_SERVER=127.0.0.1
-export LANG
 [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
 [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
 echo $$ > /tmp/xsession.pid
