@@ -29,4 +29,4 @@ if [ ! -f language-base.sh ]; then
 fi
 
 echo -e  "\033[0;34m =========================================================== \033[0m"
-bash ~/ui-config.sh
+#bash ~/ui-config.sh
