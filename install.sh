@@ -206,7 +206,7 @@ cd \$(dirname \$0)
 unset LD_PRELOAD
 if [ ! -e "system_bus_socket" ]; then
     rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
-    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=$system_bus_socket_path
+    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
 fi
 command="proot"
 command+=" --kill-on-exit"
@@ -254,6 +254,9 @@ EOM
 mkdir -p ubuntu22-fs/var/tmp
 rm -rf ubuntu22-fs/usr/local/bin/*
 echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
+
+rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+rm -rf system_bus_socket
 
 # Seletor de idiomas
 
