@@ -257,6 +257,9 @@ echo "127.0.0.1 localhost localhost" > $folder/etc/hosts
 
 
 
+wget --tries=20 "$extralink/config.sh" -O $folder/root/system-config.sh
+chmod +x $folder/root/system-config.sh
+
 # Seletor de idiomas
 
 # Script de instalação adicional
@@ -384,12 +387,10 @@ mkdir -p ~/.vnc
 apt update -y && apt install sudo wget -y > /dev/null
 clear
 
-bash ~/ui-config.sh
-
-
+bash ~/system-config.sh
 
 rm -rf ~/.bash_profile
-rm -rf ~/ui-config.sh
+rm -rf ~/system-config.sh
 clear" > $folder/root/.bash_profile
 
 
@@ -402,10 +403,11 @@ echo "
 sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
 
 echo "#!/bin/bash
-
+apt update -y && apt install sudo wget -y > /dev/null
 bash ~/ui-config.sh
 
 rm -rf ~/.bash_profile
 rm -rf ~/ui-config.sh
 clear" > $folder/root/.bash_profile
+
 bash $bin
