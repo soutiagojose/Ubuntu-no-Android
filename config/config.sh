@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files
-sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
+
 
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
 wget --tries=20 "$extralink/pacotes.sh"
