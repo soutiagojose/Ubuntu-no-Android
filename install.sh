@@ -201,13 +201,13 @@ bin=start-ubuntu.sh
 echo "writing launch script"
 cat > $bin <<- EOM
 #!/bin/bash
+if [ ! -e "system_bus_socket" ]; then
+    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
+    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
+fi
 cd \$(dirname \$0)
 ## unset LD_PRELOAD in case termux-exec is installed
 unset LD_PRELOAD
-#if [ ! -e "system_bus_socket" ]; then
-#    rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
-#    dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket
-#fi
 command="proot"
 command+=" --kill-on-exit"
 command+=" --link2symlink"
@@ -228,7 +228,7 @@ command+=" -b /proc/self/fd/1:/dev/stdout"
 command+=" -b /proc/self/fd/0:/dev/stdin"
 command+=" -b /dev/urandom:/dev/random"
 command+=" -b /proc/self/fd:/dev/fd"
-command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
+#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"
 command+=" -b ${cur}/${folder}/proc/fakethings/stat:/proc/stat"
 command+=" -b ${cur}/${folder}/proc/fakethings/vmstat:/proc/vmstat"
 command+=" -b ${cur}/${folder}/proc/fakethings/version:/proc/version"
@@ -342,24 +342,24 @@ rm -rf ubuntu22-fs/usr/local/bin/vncpasswd
 rm -rf ubuntu22-fs/usr/local/bin/startvnc
 rm -rf ubuntu22-fs/usr/local/bin/stopvnc
 rm -rf ubuntu22-fs/usr/local/bin/startvncserver
-sed -i '1 a\if [ ! -e "system_bus_socket" ]; then\n	rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid \n	dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket\nfi' start-ubuntu.sh
+sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' $bin
 ;;
 2)
 echo "LXDE UI"
 wget --tries=20 "$extralink/lxde/lxde-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
-;;
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' $bin
 3)
 echo "XFCE UI"
 wget --tries=20 "$extralink/xfce/xfce-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' $bin
 ;;
 4)
 echo "Gnome UI"
 wget --tries=20 "$extralink/gnome/gnome-config.sh" -O $folder/root/ui-config.sh
 chmod +x $folder/root/ui-config.sh
-sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' ./start-ubuntu.sh
+sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/files/home/ubuntu22-fs/usr/local/bin/startvncserver"' $bin
 ;;
 esac
 
@@ -396,4 +396,4 @@ rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
 rm -rf system_bus_socket
 
 bash $bin
-sed -i '1 a\if [ ! -e "system_bus_socket" ]; then\n	rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid \n	dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket\nfi' $bin
+#sed -i '1 a\if [ ! -e "system_bus_socket" ]; then\n	rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid \n	dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket\nfi' $bin
