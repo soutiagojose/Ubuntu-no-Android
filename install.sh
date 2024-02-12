@@ -390,10 +390,5 @@ rm -rf ~/.bash_profile
 rm -rf ~/ui-config.sh
 clear" > $folder/root/.bash_profile
 
-
-
-rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid
-rm -rf system_bus_socket
-
 bash $bin
 #sed -i '1 a\if [ ! -e "system_bus_socket" ]; then\n	rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid \n	dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket\nfi' $bin
