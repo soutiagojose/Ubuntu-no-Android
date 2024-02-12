@@ -392,9 +392,16 @@ rm -rf ~/.bash_profile
 rm -rf ~/ui-config.sh
 clear" > $folder/root/.bash_profile
 
-# Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files
-#sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
 
 bash $bin
-#sed -i '1 a\if [ ! -e "system_bus_socket" ]; then\n	rm -rf /data/data/com.termux/files/usr/var/run/dbus/pid \n	dbus-daemon --fork --config-file=/data/data/com.termux/files/usr/share/dbus-1/system.conf --address=unix:path=system_bus_socket\nfi' $bin
+# Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files
+sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
+
+echo "#!/bin/bash
+
+bash ~/ui-config.sh
+
+rm -rf ~/.bash_profile
+rm -rf ~/ui-config.sh
+clear" > $folder/root/.bash_profile
 bash $bin
