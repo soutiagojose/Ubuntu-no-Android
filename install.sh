@@ -342,7 +342,6 @@ rm -rf ubuntu22-fs/usr/local/bin/vncpasswd
 rm -rf ubuntu22-fs/usr/local/bin/startvnc
 rm -rf ubuntu22-fs/usr/local/bin/stopvnc
 rm -rf ubuntu22-fs/usr/local/bin/startvncserver
-sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' $bin
 ;;
 2)
 echo "LXDE UI"

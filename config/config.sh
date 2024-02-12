@@ -38,6 +38,10 @@ wget --tries=20 "$extralink/icons/Uos-fulldistro-icons.tar.xz" -P /usr/share/ico
 tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 
+
+#sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
+
+
 bash language-base.sh
 bash pacotes.sh
 
