@@ -12,7 +12,7 @@ echo -e  "\033[0;32mGnome UI\033[0m"
 clear
 # Instalar pacotes necessários da interface
 sudo apt-get install gnome-shell gnome-terminal gnome-tweaks gnome-shell-extensions gnome-shell-extension-ubuntu-dock -y
-sudo apt-get install  yaru-theme-gtk yaru-theme-icon -y
+#sudo apt-get install  yaru-theme-gtk yaru-theme-icon -y
 sudo apt-get clean
 
 # Pasta resposável pela execução do vnc
