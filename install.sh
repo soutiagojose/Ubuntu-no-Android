@@ -394,7 +394,11 @@ clear" > $folder/root/.bash_profile
 
 
 bash $bin
-# Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files
+clear
+echo "Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files"
+echo "
+
+"
 sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
 
 echo "#!/bin/bash
