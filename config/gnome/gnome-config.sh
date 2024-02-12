@@ -22,8 +22,6 @@ export PULSE_SERVER=127.0.0.1
 gnome-shell --x11" > ~/.vnc/xstartup
 
 chmod +x ~/.vnc/xstartup
-#for file in $(find /usr -type f -iname "*login1*"); do rm -rf $file 
-#done
 
 echo "export DISPLAY=":1"" >> /etc/profile
 source /etc/profile
