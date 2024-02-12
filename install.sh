@@ -393,3 +393,4 @@ clear" > $folder/root/.bash_profile
 
 
 bash $bin
+echo -e "\e[94mTexto em azul claro\e[0m"
