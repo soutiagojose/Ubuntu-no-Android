@@ -1,10 +1,5 @@
 #!/bin/bash
-
-
-
 extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
-wget --tries=20 "$extralink/pacotes.sh"
-chmod +x pacotes.sh
 
 # Atualizar lista e pacotes
 sudo apt-get update
@@ -112,5 +107,4 @@ tar -xf Uos-fulldistro-icons.tar.xz -C /usr/share/icons
 
 
 rm -rf config.sh
-rm -rf pacotes.sh
 rm -rf language-base.sh
