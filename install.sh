@@ -317,6 +317,42 @@ clear
 ;;
 esac
 
+
+
+#echo "fixing shebang of $bin"
+termux-fix-shebang $bin
+
+#echo "making $bin executable"
+chmod +x $bin
+
+#echo "removing image for some space"
+rm $tarball
+
+echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
+touch $folder/root/.hushlogin
+
+echo "#!/bin/bash
+rm -rf /etc/resolv.conf
+echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+mkdir -p ~/.vnc
+apt update -y && apt install sudo wget -y > /dev/null
+clear
+
+bash ~/system-config.sh
+
+rm -rf ~/.bash_profile
+rm -rf ~/system-config.sh
+clear
+exit" > $folder/root/.bash_profile
+
+
+bash $bin
+
+clear
+echo "Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files"
+echo "
+
+"
 #GUI de interface
 export USER=$(whoami)
 HEIGHT=0
@@ -367,39 +403,6 @@ sed -i '\|command+=" /bin/bash --login"|a command+=" -b /data/data/com.termux/fi
 esac
 
 clear
-
-#echo "fixing shebang of $bin"
-termux-fix-shebang $bin
-
-#echo "making $bin executable"
-chmod +x $bin
-
-#echo "removing image for some space"
-rm $tarball
-
-echo "APT::Acquire::Retries \"3\";" > $folder/etc/apt/apt.conf.d/80-retries #Setting APT retry count
-touch $folder/root/.hushlogin
-
-echo "#!/bin/bash
-rm -rf /etc/resolv.conf
-echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
-mkdir -p ~/.vnc
-apt update -y && apt install sudo wget -y > /dev/null
-clear
-
-bash ~/system-config.sh
-
-rm -rf ~/.bash_profile
-rm -rf ~/system-config.sh
-clear" > $folder/root/.bash_profile
-
-
-bash $bin
-clear
-echo "Corrige o Error: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.PackageKit was not provided by any .service files"
-echo "
-
-"
 sed -i 's|#command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|command+=" -b system_bus_socket:/run/dbus/system_bus_socket"|' /data/data/com.termux/files/home/start-ubuntu.sh
 
 echo "#!/bin/bash
