@@ -1,11 +1,4 @@
 #!/bin/bash
-
-extralink="https://raw.githubusercontent.com/allytiago/Ubuntu-no-Android/beta/config"
-wget --tries=20 "$extralink/config.sh"
-chmod +x config.sh
-bash config.sh
-clear
-
 echo -e  "\033[0;32mGnome UI\033[0m"
 
 clear
