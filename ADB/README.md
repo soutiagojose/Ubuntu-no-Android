@@ -150,6 +150,8 @@ adb shell "/system/bin/device_config set_sync_disabled_for_tests persistent"
 ```shell
 adb shell "/system/bin/device_config put activity_manager max_phantom_processes 2147483647"
 ```
+<!-- este comando irá mostra executou: adb shell "/system/bin/device_config list activity_manager" -->
+
 ```shell
 adb shell settings put global settings_enable_monitor_phantom_procs false
 ```
